@@ -1,0 +1,234 @@
+{
+  "canvasSelector": "#left_bottom_container #app_gamma",
+  "entities": {
+    "actors": [
+      {
+        "model3dSource": "box_model",
+        "name": "box_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "solder_model_entity_1",
+        "name": "solder_actor_1",
+        "position": {
+          "x": -3,
+          "y": 25,
+          "z": 2
+        },
+        "rotation": {
+          "x": 1.5,
+          "y": 0,
+          "z": 3.14
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "solder_model_entity_2",
+        "name": "solder_actor_2",
+        "position": {
+          "x": 4,
+          "y": 23,
+          "z": 2
+        },
+        "rotation": {
+          "x": 1.5,
+          "y": 0,
+          "z": 3.14
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "states": {
+          "animationsFsm": {
+            "name": "dance_anim_fsm"
+          }
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 0,
+          "y": 30,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [],
+    "envMaps": [],
+    "fogs": [
+      {
+        "color": "#A0A0A0",
+        "far": 35,
+        "name": "main_fog",
+        "near": 10
+      }
+    ],
+    "fsm": [
+      {
+        "initial": "Idle",
+        "name": "dance_anim_fsm",
+        "transitions": [
+          ["Idle", "Dance", "Dance"],
+          ["Dance", "Idle", "Idle"]
+        ],
+        "type": "animation"
+      }
+    ],
+    "intersections": [],
+    "lights": [
+      {
+        "color": "#FFFFFF",
+        "groundColor": "#8D8D8D",
+        "intensity": 3,
+        "name": "ambient_light",
+        "position": {
+          "x": 0,
+          "y": 20,
+          "z": 0
+        },
+        "type": "HemisphereLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "box_material",
+        "options": {
+          "color": "#4638DF"
+        },
+        "type": "MeshBasicMaterial"
+      },
+      {
+        "name": "particles_material",
+        "options": {
+          "blending": "AdditiveBlending",
+          "color": "#FFFFFF",
+          "depthWrite": false,
+          "size": 0.5,
+          "sizeAttenuation": true,
+          "transparent": true,
+          "vertexColors": false
+        },
+        "textures": {
+          "alphaMap": "particles_alpha_map_texture"
+        },
+        "type": "PointsMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "box_material",
+        "model3dSource": "cube",
+        "name": "box_model",
+        "options": {
+          "depth": 1,
+          "height": 1,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "model3dSource": "solder_model",
+        "name": "solder_model_entity_1"
+      },
+      {
+        "animationsSource": ["dance_anim"],
+        "castShadow": true,
+        "model3dSource": "solder_model",
+        "name": "solder_model_entity_2"
+      }
+    ],
+    "particles": [
+      {
+        "material": "particles_material",
+        "name": "bubbles",
+        "position": {
+          "x": 0,
+          "y": 20,
+          "z": 0
+        }
+      }
+    ],
+    "physics": {},
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 100,
+        "mapWidth": 100,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase_space_gamma",
+  "resources": {
+    "animations": [
+      {
+        "name": "dance_anim",
+        "url": "resources/Models/Solder/animations/samba.glb"
+      }
+    ],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [
+      {
+        "name": "solder_model",
+        "url": "resources/Models/Solder/Solder.glb"
+      }
+    ],
+    "textures": [
+      {
+        "name": "particles_alpha_map_texture",
+        "url": "resources/particles/2.png"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase_scene",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

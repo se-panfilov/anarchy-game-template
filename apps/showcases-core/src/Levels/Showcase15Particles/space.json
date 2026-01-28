@@ -1,0 +1,280 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "position": {
+          "x": 0,
+          "y": -4,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "model3dSource": "sphere_textile_model",
+        "name": "textile_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "model3dSource": "sphere_glass_model",
+        "name": "glass_actor",
+        "position": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 3,
+          "y": 20,
+          "z": 35
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [],
+    "fsm": [],
+    "intersections": [],
+    "lights": [
+      {
+        "castShadow": true,
+        "color": "#FFFFFF",
+        "intensity": 1,
+        "name": "directional_light",
+        "position": {
+          "x": 0.25,
+          "y": 2,
+          "z": 2.25
+        },
+        "shadow": {
+          "camera": {
+            "far": 15,
+            "type": "OrthographicCamera"
+          },
+          "mapSize": {
+            "x": 1024,
+            "y": 1024
+          },
+          "normalBias": 0.05
+        },
+        "type": "DirectionalLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "surface_material",
+        "options": {
+          "color": "#5EDCAE"
+        },
+        "type": "MeshStandardMaterial"
+      },
+      {
+        "name": "sphere_material",
+        "options": {
+          "color": "#E91E63"
+        },
+        "type": "MeshStandardMaterial"
+      },
+      {
+        "name": "textile_material",
+        "options": {
+          "displacementScale": 0.1
+        },
+        "textures": {
+          "aoMap": "textile_ao_map_texture",
+          "displacementMap": "textile_displacement_map_texture",
+          "map": "textile_map_texture",
+          "normalMap": "textile_normal_map_texture",
+          "roughnessMap": "textile_roughness_map_texture"
+        },
+        "type": "MeshPhysicalMaterial"
+      },
+      {
+        "name": "glass_material",
+        "options": {
+          "clearcoat": 0.8,
+          "clearcoatRoughness": 0.09,
+          "displacementScale": 0.1,
+          "ior": 1.26,
+          "iridescence": 0,
+          "iridescenceIOR": 1.38,
+          "metalness": 0,
+          "roughness": 0,
+          "thickness": 0.5,
+          "transmission": 0.77
+        },
+        "type": "MeshPhysicalMaterial"
+      },
+      {
+        "name": "particles_material",
+        "options": {
+          "blending": "AdditiveBlending",
+          "color": "#E91E63",
+          "depthWrite": false,
+          "size": 0.5,
+          "sizeAttenuation": true,
+          "transparent": true,
+          "vertexColors": false
+        },
+        "textures": {
+          "alphaMap": "particles_alpha_map_texture"
+        },
+        "type": "PointsMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "surface_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 40,
+          "heightSegments": 1,
+          "width": 60,
+          "widthSegments": 1
+        },
+        "receiveShadow": true
+      },
+      {
+        "castShadow": true,
+        "material": "textile_material",
+        "model3dSource": "sphere",
+        "name": "sphere_textile_model",
+        "options": {
+          "radius": 0.7
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "glass_material",
+        "model3dSource": "sphere",
+        "name": "sphere_glass_model",
+        "options": {
+          "radius": 0.7
+        }
+      }
+    ],
+    "particles": [
+      {
+        "material": "particles_material",
+        "name": "bubbles",
+        "position": {
+          "x": 0,
+          "y": 6,
+          "z": 0
+        }
+      }
+    ],
+    "physics": {},
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 40,
+        "mapWidth": 60,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [],
+    "textures": [
+      {
+        "name": "textile_ao_map_texture",
+        "url": "resources/Dirty_Carpet/dirty_carpet_ao_1k.jpg"
+      },
+      {
+        "name": "textile_map_texture",
+        "url": "resources/Dirty_Carpet/dirty_carpet_diff_1k.jpg"
+      },
+      {
+        "name": "textile_normal_map_texture",
+        "url": "resources/Dirty_Carpet/dirty_carpet_nor_dx_1k.jpg"
+      },
+      {
+        "name": "textile_displacement_map_texture",
+        "url": "resources/Dirty_Carpet/dirty_carpet_disp_1k.png"
+      },
+      {
+        "name": "textile_roughness_map_texture",
+        "url": "resources/Dirty_Carpet/dirty_carpet_rough_1k.jpg"
+      },
+      {
+        "name": "particles_alpha_map_texture",
+        "url": "resources/particles/2.png"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

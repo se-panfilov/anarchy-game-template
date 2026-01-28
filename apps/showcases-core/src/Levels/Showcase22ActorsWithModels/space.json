@@ -1,0 +1,259 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "agent": "default",
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "solder_model_entity_1",
+        "name": "solder_actor_1",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "solder_model_entity_2",
+        "name": "solder_actor_2",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.8,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "states": {
+          "animationsFsm": {
+            "name": "dance_anim_fsm"
+          }
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 100,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": -0.38285677478225244,
+          "y": 1.6765175675261688,
+          "z": -2.325788911245251
+        },
+        "rotation": {
+          "x": -2.790842312567902,
+          "y": -0.31607921685338025,
+          "z": -3.0283485157291197
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "target": {
+          "x": 0.8417751508669972,
+          "y": 0.6701857083888713,
+          "z": 0.2663253875600635
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [
+      {
+        "color": "#A0A0A0",
+        "far": 35,
+        "name": "main_fog",
+        "near": 10
+      }
+    ],
+    "fsm": [
+      {
+        "initial": "Idle",
+        "name": "dance_anim_fsm",
+        "transitions": [
+          ["Idle", "Dance", "Dance"],
+          ["Dance", "Idle", "Idle"]
+        ],
+        "type": "animation"
+      }
+    ],
+    "intersections": [],
+    "lights": [
+      {
+        "castShadow": true,
+        "color": "#FFFFFF",
+        "intensity": 3,
+        "name": "directional_light",
+        "position": {
+          "x": -3,
+          "y": 10,
+          "z": -10
+        },
+        "shadow": {
+          "camera": {
+            "bottom": -10,
+            "far": 40,
+            "left": -10,
+            "near": 0.1,
+            "right": 10,
+            "top": 10,
+            "type": "OrthographicCamera"
+          },
+          "mapSize": {
+            "x": 2048,
+            "y": 2048
+          },
+          "normalBias": 0.05
+        },
+        "type": "DirectionalLight"
+      },
+      {
+        "color": "#FFFFFF",
+        "groundColor": "#8D8D8D",
+        "intensity": 3,
+        "name": "ambient_light",
+        "position": {
+          "x": 0,
+          "y": 20,
+          "z": 0
+        },
+        "type": "HemisphereLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "surface_material",
+        "options": {
+          "color": "#CBCBCB",
+          "depthWrite": false,
+          "opacity": 0.9,
+          "transparent": true
+        },
+        "type": "MeshPhongMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "surface_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 100,
+          "heightSegments": 1,
+          "width": 100,
+          "widthSegments": 1
+        },
+        "receiveShadow": true,
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "castShadow": true,
+        "model3dSource": "solder_model",
+        "name": "solder_model_entity_1"
+      },
+      {
+        "animationsSource": ["dance_anim"],
+        "castShadow": true,
+        "model3dSource": "solder_model",
+        "name": "solder_model_entity_2"
+      }
+    ],
+    "particles": [],
+    "physics": {},
+    "renderers": [
+      {
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 100,
+        "mapWidth": 100,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [
+      {
+        "name": "dance_anim",
+        "url": "resources/Models/Solder/animations/samba.glb"
+      }
+    ],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [
+      {
+        "name": "solder_model",
+        "url": "resources/Models/Solder/Solder.glb"
+      }
+    ],
+    "textures": []
+  },
+  "scenes": [
+    {
+      "background": "#A0A0A0",
+      "isActive": true,
+      "name": "showcase"
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

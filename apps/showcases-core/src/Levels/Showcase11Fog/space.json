@@ -1,0 +1,190 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "tags": ["surface"]
+      },
+      {
+        "model3dSource": "sphere_model",
+        "name": "sphere_actor",
+        "position": {
+          "x": 2,
+          "y": 6,
+          "z": -2
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "tags": ["physics", "glass"]
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 3,
+          "y": 20,
+          "z": 35
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [
+      {
+        "color": "#353CA7",
+        "far": 100,
+        "name": "main_fog",
+        "near": 1
+      }
+    ],
+    "fsm": [],
+    "intersections": [],
+    "lights": [
+      {
+        "color": "#9999FF",
+        "groundColor": "#FF007B",
+        "intensity": 1,
+        "name": "hemisphere_light",
+        "position": {
+          "x": 0.25,
+          "y": 2,
+          "z": 6
+        },
+        "tags": ["hemisphere"],
+        "type": "HemisphereLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "surface_material",
+        "options": {
+          "color": "#FFFFFF"
+        },
+        "type": "MeshToonMaterial"
+      },
+      {
+        "name": "sphere_material",
+        "options": {
+          "clearcoat": 0.8,
+          "clearcoatRoughness": 0.09,
+          "displacementScale": 0.1,
+          "ior": 1.26,
+          "iridescence": 0,
+          "iridescenceIOR": 1.38,
+          "metalness": 0,
+          "roughness": 0,
+          "thickness": 0.5,
+          "transmission": 0.77
+        },
+        "type": "MeshPhysicalMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "surface_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 40,
+          "heightSegments": 1,
+          "width": 60,
+          "widthSegments": 1
+        },
+        "receiveShadow": true,
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "sphere_material",
+        "model3dSource": "sphere",
+        "name": "sphere_model",
+        "options": {
+          "radius": 3
+        }
+      }
+    ],
+    "particles": [],
+    "physics": {},
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 40,
+        "mapWidth": 60,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [],
+    "textures": []
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

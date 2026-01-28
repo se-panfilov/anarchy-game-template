@@ -1,0 +1,244 @@
+{
+  "canvasSelector": "#left_top_container #app_alpha",
+  "entities": {
+    "actors": [
+      {
+        "model3dSource": "sphere_model",
+        "name": "sphere_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "model3dSource": "move_model_left",
+        "name": "move_actor_left",
+        "position": {
+          "x": 0,
+          "y": 10,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "cube_1_model",
+        "name": "actor_2",
+        "physicsBodyName": "cube_1_model_physics",
+        "position": {
+          "x": -4,
+          "y": 24,
+          "z": 3
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 0,
+          "y": 30,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [],
+    "envMaps": [],
+    "fogs": [],
+    "fsm": [],
+    "intersections": [],
+    "lights": [],
+    "materials": [
+      {
+        "name": "sphere_material",
+        "options": {
+          "color": "#E91E63"
+        },
+        "type": "MeshBasicMaterial"
+      },
+      {
+        "name": "move_material",
+        "options": {
+          "clearcoat": 0.8,
+          "clearcoatRoughness": 0.09,
+          "displacementScale": 0.1,
+          "ior": 1,
+          "iridescence": 0,
+          "iridescenceIOR": 1.38,
+          "metalness": 0,
+          "roughness": 0,
+          "thickness": 0.5,
+          "transmission": 0.77
+        },
+        "type": "MeshPhysicalMaterial"
+      },
+      {
+        "name": "box_material",
+        "options": {
+          "color": "#8E8E8E"
+        },
+        "type": "MeshStandardMaterial"
+      },
+      {
+        "name": "particles_material",
+        "options": {
+          "blending": "AdditiveBlending",
+          "color": "#FFFFFF",
+          "depthWrite": false,
+          "size": 1,
+          "sizeAttenuation": true,
+          "transparent": true,
+          "vertexColors": false
+        },
+        "textures": {
+          "alphaMap": "particles_alpha_map_texture"
+        },
+        "type": "PointsMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "sphere_material",
+        "model3dSource": "sphere",
+        "name": "sphere_model",
+        "options": {
+          "radius": 1
+        }
+      },
+      {
+        "castShadow": false,
+        "material": "move_material",
+        "model3dSource": "sphere",
+        "name": "move_model_left",
+        "options": {
+          "radius": 2
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "box_material",
+        "model3dSource": "cube",
+        "name": "cube_1_model",
+        "options": {
+          "depth": 1,
+          "height": 4,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      }
+    ],
+    "particles": [
+      {
+        "material": "particles_material",
+        "name": "bubbles",
+        "position": {
+          "x": 0,
+          "y": 20,
+          "z": 0
+        }
+      }
+    ],
+    "physics": {
+      "world": {
+        "gravity": {
+          "x": 0,
+          "y": -1,
+          "z": 0
+        }
+      },
+      "bodies": [
+        {
+          "name": "cube_1_model_physics",
+          "position": {
+            "x": 0,
+            "y": 10,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "collisionShape": "cuboid",
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 2,
+            "hz": 0.5
+          },
+          "type": "dynamic"
+        }
+      ]
+    },
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 10,
+        "mapWidth": 10,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase_space_alpha",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [],
+    "textures": [
+      {
+        "name": "particles_alpha_map_texture",
+        "url": "resources/particles/8.png"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase_scene",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

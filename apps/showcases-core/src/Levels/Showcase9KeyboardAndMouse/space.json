@@ -1,0 +1,570 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "position": {
+          "x": 0,
+          "y": 0.5,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "tags": ["surface"]
+      },
+      {
+        "model3dSource": "sphere_keyboard_model",
+        "name": "sphere_keyboard_actor",
+        "position": {
+          "x": -2,
+          "y": 2,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "tags": ["keyboard"]
+      },
+      {
+        "agent": "kinematic",
+        "model3dSource": "sphere_mouse_model",
+        "name": "sphere_mouse_actor",
+        "position": {
+          "x": 4,
+          "y": 2,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        },
+        "tags": ["mouse", "connected"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "key_w_model",
+        "position": {
+          "x": -19,
+          "y": 2,
+          "z": 9
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["key", "W"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "key_a_model",
+        "position": {
+          "x": -22,
+          "y": 2,
+          "z": 12
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["key", "A"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "key_s_model",
+        "position": {
+          "x": -19,
+          "y": 2,
+          "z": 12
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["key", "S"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "key_d_model",
+        "position": {
+          "x": -16,
+          "y": 2,
+          "z": 12
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["key", "D"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "mkey_left_model",
+        "position": {
+          "x": -12,
+          "y": 2,
+          "z": 9
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["mkey", "Left"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "mkey_middle_model",
+        "position": {
+          "x": -10,
+          "y": 2,
+          "z": 10
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["mkey", "Middle"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "mkey_right_model",
+        "position": {
+          "x": -8,
+          "y": 2,
+          "z": 9
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["mkey", "Right"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "mkey_forward_model",
+        "position": {
+          "x": -12,
+          "y": 2,
+          "z": 12
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["mkey", "Forward"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "mkey_back_model",
+        "position": {
+          "x": -12,
+          "y": 2,
+          "z": 14
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["mkey", "Back"]
+      },
+      {
+        "model3dSource": "key_model",
+        "name": "mkey_extra_model",
+        "position": {
+          "x": -12,
+          "y": 2,
+          "z": 16
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "tags": ["mkey", "Extra"]
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 3,
+          "y": 20,
+          "z": 35
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [],
+    "fsm": [],
+    "intersections": [],
+    "lights": [
+      {
+        "color": "#FFFFFF",
+        "intensity": 0.5,
+        "name": "ambient_light",
+        "position": {
+          "x": 0.25,
+          "y": 2,
+          "z": 2.25
+        },
+        "type": "AmbientLight"
+      },
+      {
+        "castShadow": true,
+        "color": "#FFFFFF",
+        "intensity": 1.4,
+        "name": "directional_light",
+        "position": {
+          "x": 0.25,
+          "y": 15,
+          "z": 2.25
+        },
+        "shadow": {
+          "camera": {
+            "bottom": -50,
+            "far": 40,
+            "left": -50,
+            "near": 0.1,
+            "right": 50,
+            "top": 50,
+            "type": "OrthographicCamera"
+          },
+          "mapSize": {
+            "x": 1024,
+            "y": 1024
+          },
+          "normalBias": 0.05
+        },
+        "type": "DirectionalLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "surface_material",
+        "options": {
+          "color": "#5EDCAE"
+        },
+        "type": "MeshToonMaterial"
+      },
+      {
+        "name": "sphere_keyboard_material",
+        "options": {
+          "color": "#E91E63"
+        },
+        "type": "MeshToonMaterial"
+      },
+      {
+        "name": "sphere_mouse_material",
+        "options": {
+          "color": "#E91ED8"
+        },
+        "type": "MeshToonMaterial"
+      },
+      {
+        "name": "keys_material",
+        "options": {
+          "color": "#373739"
+        },
+        "type": "MeshToonMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "surface_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 40,
+          "heightSegments": 1,
+          "width": 60,
+          "widthSegments": 1
+        },
+        "receiveShadow": true,
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "sphere_keyboard_material",
+        "model3dSource": "sphere",
+        "name": "sphere_keyboard_model",
+        "options": {
+          "radius": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "sphere_mouse_material",
+        "model3dSource": "sphere",
+        "name": "sphere_mouse_model",
+        "options": {
+          "radius": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "keys_material",
+        "model3dSource": "cube",
+        "name": "key_model",
+        "options": {
+          "depth": 2,
+          "height": 2,
+          "width": 2
+        }
+      }
+    ],
+    "particles": [],
+    "physics": {},
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 40,
+        "mapWidth": 60,
+        "name": "main_grid"
+      }
+    ],
+    "texts": [
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_w",
+        "position": {
+          "x": -19,
+          "y": 3,
+          "z": 9
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "key", "W"],
+        "text": "W",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_a",
+        "position": {
+          "x": -22,
+          "y": 3,
+          "z": 12
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "key", "A"],
+        "text": "A",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_s",
+        "position": {
+          "x": -19,
+          "y": 3,
+          "z": 12
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "key", "S"],
+        "text": "S",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_d",
+        "position": {
+          "x": -16,
+          "y": 3,
+          "z": 12
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "key", "D"],
+        "text": "D",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_l",
+        "position": {
+          "x": -12,
+          "y": 3,
+          "z": 9
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "mkey", "Left"],
+        "text": "L",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_r",
+        "position": {
+          "x": -8,
+          "y": 3,
+          "z": 9
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "mkey", "Right"],
+        "text": "R",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_back",
+        "position": {
+          "x": -10,
+          "y": 2,
+          "z": 14
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "mkey", "Back"],
+        "text": "Back",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_forward",
+        "position": {
+          "x": -9,
+          "y": 2,
+          "z": 12
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "mkey", "Forward"],
+        "text": "Forward",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontSize": "0.1rem"
+        },
+        "name": "text_extra",
+        "position": {
+          "x": -10,
+          "y": 2,
+          "z": 16
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "tags": ["text", "mkey", "Extra"],
+        "text": "Extra",
+        "type": "text_3d"
+      }
+    ]
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [],
+    "textures": []
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

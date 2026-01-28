@@ -1,0 +1,235 @@
+{
+  "canvasSelector": "#right_top_container #app_beta",
+  "entities": {
+    "actors": [
+      {
+        "model3dSource": "box_model",
+        "name": "box_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 0,
+          "y": 30,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [
+      {
+        "color": "#353CA7",
+        "far": 10,
+        "name": "main_fog",
+        "near": 1
+      }
+    ],
+    "fsm": [],
+    "intersections": [],
+    "lights": [
+      {
+        "color": "#FFFFFF",
+        "intensity": 0.5,
+        "name": "ambient_light",
+        "position": {
+          "x": 0.25,
+          "y": 2,
+          "z": 2.25
+        },
+        "type": "AmbientLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "box_material",
+        "options": {
+          "color": "#4638DF"
+        },
+        "type": "MeshBasicMaterial"
+      },
+      {
+        "name": "particles_material",
+        "options": {
+          "blending": "AdditiveBlending",
+          "color": "#FFFFFF",
+          "depthWrite": false,
+          "size": 0.6,
+          "sizeAttenuation": true,
+          "transparent": true,
+          "vertexColors": false
+        },
+        "textures": {
+          "alphaMap": "particles_alpha_map_texture"
+        },
+        "type": "PointsMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "box_material",
+        "model3dSource": "cube",
+        "name": "box_model",
+        "options": {
+          "depth": 1,
+          "height": 1,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "model3dSource": "fox_glb",
+        "name": "fox_model_3d",
+        "position": {
+          "x": 1.2,
+          "y": 25,
+          "z": 1.2
+        },
+        "rotation": {
+          "x": 0,
+          "y": 1.57,
+          "z": -1.57
+        },
+        "scale": {
+          "x": 0.025,
+          "y": 0.025,
+          "z": 0.025
+        },
+        "tags": []
+      }
+    ],
+    "particles": [
+      {
+        "material": "particles_material",
+        "name": "bubbles",
+        "position": {
+          "x": 0,
+          "y": 20,
+          "z": 0
+        }
+      }
+    ],
+    "physics": {},
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 100,
+        "mapWidth": 100,
+        "name": "main_grid"
+      }
+    ],
+    "texts": [
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontFamily": "\"Roboto\", sans-serif",
+          "fontSize": "0.2rem"
+        },
+        "name": "some_3d_text",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 8
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "text": "some 3d text",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontFamily": "\"Roboto\", sans-serif",
+          "fontSize": "1rem"
+        },
+        "name": "some_2d_text",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": -5
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "text": "some 2d text",
+        "type": "text_2d"
+      }
+    ]
+  },
+  "name": "showcase_space_beta",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [
+      {
+        "name": "fox_glb",
+        "url": "resources/Models/Fox/Fox.glb"
+      }
+    ],
+    "textures": [
+      {
+        "name": "particles_alpha_map_texture",
+        "url": "resources/particles/4.png"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase_scene",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

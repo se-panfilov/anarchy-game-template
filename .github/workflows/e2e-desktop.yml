@@ -1,0 +1,314 @@
+# Runs desktop E2E by "button"
+
+name: E2E Desktop (manual run)
+run-name: E2E Desktop (ref=${{ github.event.inputs.ref }}, targets=${{ github.event.inputs.e2eTargets }}, updateSnapshots=${{ github.event.inputs.updateSnapshots }}, failFast=${{ github.event.inputs.failFast }}, deepDebug=${{ github.event.inputs.deepDebug }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        type: string
+        required: true
+        default: main
+        description: "Branch/tag/sha to test"
+
+      e2eTargets:
+        type: choice
+        required: true
+        default: "mac:app:arm64"
+        options:
+          - "linux:app:arm64"
+          - "linux:app:x64"
+          - "mac:app:arm64"
+          - "mac:app:x64"
+          - "win:app:arm64"
+          - "win:app:x64"
+        description: "Target: platform:artifact:arch"
+
+      updateSnapshots:
+        type: boolean
+        required: true
+        default: false
+        description: "Snapshot-update mode"
+
+      failFast:
+        type: boolean
+        required: true
+        default: true
+        description: "Stop after the first failure"
+
+      deepDebug:
+        type: boolean
+        required: true
+        default: false
+        description: "Deep debug (very verbose)"
+
+      reporter:
+        type: choice
+        required: true
+        default: line
+        options: [ line, list, dot ]
+        description: "Reporter (console output)"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  # Important: do NOT cancel previous runs; allow parallel runs for different targets
+  group: e2e-desktop-${{ github.event.inputs.ref }}-${{ github.event.inputs.e2eTargets }}
+  cancel-in-progress: false
+
+
+jobs:
+  matrix_prep:
+    # Extra safety: this workflow must only run via the manual button
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - name: Debug trigger
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "actor=${{ github.actor }}"
+          echo "ref=${{ github.ref }}"
+          echo "input.ref=${{ github.event.inputs.ref }}"
+          echo "input.e2eTargets=${{ github.event.inputs.e2eTargets }}"
+          echo "input.updateSnapshots=${{ github.event.inputs.updateSnapshots }}"
+          echo "input.failFast=${{ github.event.inputs.failFast }}"
+          echo "input.deepDebug=${{ github.event.inputs.deepDebug }}"
+          echo "input.reporter=${{ github.event.inputs.reporter }}"
+
+      - name: Verify actor permission (must be collaborator with write+)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          perm="$(gh api "repos/${{ github.repository }}/collaborators/${{ github.actor }}/permission" --jq .permission || true)"
+          echo "actor_permission=$perm"
+          case "$perm" in
+            admin|maintain|write) ;;
+            *)
+              echo "::error::Actor '${{ github.actor }}' is not allowed to run snapshot PR workflow (need write/maintain/admin)."
+              exit 1
+              ;;
+          esac
+
+      - name: Verify ref is a branch (required for snapshot PR)
+        if: ${{ github.event.inputs.updateSnapshots == 'true' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ref="${{ github.event.inputs.ref }}"
+          if gh api "repos/${{ github.repository }}/git/ref/heads/${ref}" >/dev/null 2>&1; then
+            echo "Ref is a branch: $ref"
+          else
+            echo "::error::updateSnapshots=true requires 'ref' to be a BRANCH name (not tag/sha). Got: $ref"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build matrix from input
+        id: m
+        shell: bash
+        run: |
+          set -euo pipefail
+          MATRIX="$(DESKTOP_TARGETS='${{ github.event.inputs.e2eTargets }}' DESKTOP_ENV='e2e' node ./scripts/release/desktop-targets-to-matrix.mjs)"
+          echo "matrix<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$MATRIX" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+  e2e:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    needs: [ matrix_prep ]
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJson(needs.matrix_prep.outputs.matrix) }}
+    runs-on: ${{ matrix.target.os }}
+
+    steps:
+      - name: Debug target
+        run: |
+          echo "os=${{ matrix.target.os }}"
+          echo "platform=${{ matrix.target.platform }}"
+          echo "artifact=${{ matrix.target.artifact }}"
+          echo "arch=${{ matrix.target.arch }}"
+          echo "ref=${{ github.event.inputs.ref }}"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Detect installed Playwright version
+        id: pw
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE' >> "$GITHUB_OUTPUT"
+          const fs = require('fs');
+          const path = require('path');
+
+          function readVersion(pkgName) {
+            try {
+              const pkgPath = require.resolve(path.posix.join(pkgName, 'package.json'));
+              return JSON.parse(fs.readFileSync(pkgPath, 'utf8')).version;
+            } catch {
+              return null;
+            }
+          }
+
+          const v = readVersion('@playwright/test') || readVersion('playwright') || 'unknown';
+          console.log(`version=${v}`);
+          NODE
+
+      - name: Cache Playwright browsers (optional)
+        uses: actions/cache@v4
+        with:
+          path: .playwright-browsers
+          key: ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-${{ hashFiles('package-lock.json', 'apps/showcases-e2e/playwright.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-
+            ${{ runner.os }}-node24-pw-
+
+      # NOTE:
+      # Desktop E2E may not require Playwright browser downloads (depends on your setup).
+      # If you see errors like "browserType.launch: Executable doesn't exist" or missing Chromium,
+      # uncomment this block.
+      #
+      # - name: Install Playwright browsers (chromium only) [OPTIONAL]
+      #   working-directory: apps/showcases-e2e
+      #   shell: bash
+      #   env:
+      #     PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      #   run: |
+      #     set -euo pipefail
+      #     if [ "${RUNNER_OS}" = "Linux" ]; then
+      #       npx playwright install chromium --with-deps
+      #     else
+      #       npx playwright install chromium
+      #     fi
+
+      - name: Build showcases-core (desktop)
+        shell: bash
+        run: npm run --workspace apps/showcases-core build:prod:desktop
+
+      - name: Build showcases-desktop (E2E build)
+        shell: bash
+        run: |
+          set -euo pipefail
+          PLATFORM="${{ matrix.target.platform }}"
+          ARTIFACT="${{ matrix.target.artifact }}"
+          ARCH="${{ matrix.target.arch }}"
+          npm run --workspace apps/showcases-desktop "build:e2e:${PLATFORM}:${ARTIFACT}:${ARCH}"
+
+      - name: Run E2E desktop
+        shell: bash
+        env:
+          FORCE_COLOR: "1"
+          PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+          E2E_SNAPSHOT_PLATFORM: ${{ matrix.target.platform }}
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event.inputs.deepDebug }}" = "true" ]; then
+            export DEBUG="pw:api"
+          fi
+
+          EXTRA_ARGS=("--reporter=${{ github.event.inputs.reporter }}")
+
+          if [ "${{ github.event.inputs.failFast }}" = "true" ]; then
+            EXTRA_ARGS+=("--max-failures=1")
+          fi
+
+          if [ "${{ github.event.inputs.updateSnapshots }}" = "true" ]; then
+            npm run --workspace apps/showcases-e2e e2e:desktop -- --update-snapshots "${EXTRA_ARGS[@]}"
+          else
+            npm run --workspace apps/showcases-e2e e2e:desktop -- "${EXTRA_ARGS[@]}"
+          fi
+
+      - name: Create PR with updated snapshots (desktop)
+        if: ${{ success() && github.event.inputs.updateSnapshots == 'true' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          REF="${{ github.event.inputs.ref }}"
+          SAFE_REF="$(echo "$REF" | tr '/' '-' | tr -cd 'A-Za-z0-9._-')"
+
+          TARGET="${{ matrix.target.platform }}-${{ matrix.target.artifact }}-${{ matrix.target.arch }}"
+          SAFE_TARGET="$(echo "$TARGET" | tr '/' '-' | tr -cd 'A-Za-z0-9._-')"
+
+          BRANCH="bot/snapshots/desktop/${SAFE_REF}/${SAFE_TARGET}/run-${{ github.run_id }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git switch -c "$BRANCH"
+
+          # Add only desktop snapshot area
+          git add apps/showcases-e2e/src/desktop
+
+          if git diff --cached --quiet; then
+            echo "No snapshot changes detected. Skipping PR."
+            exit 0
+          fi
+
+          git commit -m "[E2E]: Update screenshots (desktop) (${TARGET}, ref=${REF}, run=${{ github.run_id }})"
+          git push --set-upstream origin "$BRANCH"
+
+          TITLE="[E2E]: Update screenshots (desktop) (${TARGET})"
+          BODY=$'Automated snapshot update from CI.\n\n'
+          BODY+=$'- Ref: '"${REF}"$'\n'
+          BODY+=$'- Target: '"${TARGET}"$'\n'
+          BODY+=$'- Run: '"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"$'\n'
+
+          gh pr create \
+            --base "$REF" \
+            --head "$BRANCH" \
+            --title "$TITLE" \
+            --body "$BODY"
+
+      - name: Upload Playwright report (if exists)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-desktop-${{ matrix.target.platform }}-${{ matrix.target.arch }}-${{ github.run_id }}
+          path: |
+            apps/showcases-e2e/reports/e2e/playwright-report/**
+            apps/showcases-e2e/reports/e2e/test-results/**
+          if-no-files-found: ignore
+          retention-days: 14

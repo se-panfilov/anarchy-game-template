@@ -1,0 +1,344 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "agent": "default",
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "mutant_model_entity_1",
+        "name": "mutant_actor_1",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 3.14,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "medea_model_entity",
+        "name": "medea_actor",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 4
+        },
+        "rotation": {
+          "x": 0,
+          "y": 3.14,
+          "z": 0
+        },
+        "scale": {
+          "x": 7,
+          "y": 7,
+          "z": 7
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        },
+        "states": {
+          "animationsFsm": {
+            "name": "shoot_anim_fsm"
+          }
+        }
+      },
+      {
+        "agent": "default",
+        "model3dSource": "box_model_entity",
+        "name": "box_actor",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 8
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      }
+    ],
+    "audio": [
+      {
+        "audioSource": "persimmon_music",
+        "name": "bg_music"
+      },
+      {
+        "audioSource": "monster_sound",
+        "maxDistance": 7,
+        "name": "monster_singing",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "refDistance": 1
+      },
+      {
+        "audioSource": "gunshot_sound",
+        "maxDistance": 3,
+        "name": "gunshot_1",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "refDistance": 1
+      },
+      {
+        "agent": "connected",
+        "audioSource": "gunshot_sound",
+        "maxDistance": 4,
+        "name": "gunshot_2",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "refDistance": 1
+      }
+    ],
+    "cameras": [
+      {
+        "audioListener": "main_listener",
+        "far": 100,
+        "fov": 45,
+        "isActive": true,
+        "name": "main_camera",
+        "near": 1,
+        "position": {
+          "x": -0.58,
+          "y": 1.2,
+          "z": -3.93
+        },
+        "rotation": {
+          "x": 0,
+          "y": 3.14,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main_camera",
+        "isActive": true,
+        "name": "fps_controls",
+        "options": {
+          "lookSpeed": 0.05,
+          "lookVertical": false,
+          "movementSpeed": 3
+        },
+        "type": "FirstPersonControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [
+      {
+        "color": "#A0A0A0",
+        "far": 35,
+        "name": "main_fog",
+        "near": 10
+      }
+    ],
+    "fsm": [
+      {
+        "initial": "Idle",
+        "name": "shoot_anim_fsm",
+        "transitions": [
+          ["Idle", "Shoot", "Shoot"],
+          ["Shoot", "Idle", "Idle"]
+        ],
+        "type": "animation"
+      }
+    ],
+    "intersections": [],
+    "lights": [
+      {
+        "castShadow": true,
+        "color": "#FFFFFF",
+        "intensity": 3,
+        "name": "directional_light",
+        "position": {
+          "x": -3,
+          "y": 10,
+          "z": -10
+        },
+        "shadow": {
+          "camera": {
+            "bottom": -10,
+            "far": 40,
+            "left": -10,
+            "near": 0.1,
+            "right": 10,
+            "top": 10,
+            "type": "OrthographicCamera"
+          },
+          "mapSize": {
+            "x": 2048,
+            "y": 2048
+          },
+          "normalBias": 0.05
+        },
+        "type": "DirectionalLight"
+      },
+      {
+        "color": "#FFFFFF",
+        "groundColor": "#8D8D8D",
+        "intensity": 3,
+        "name": "ambient_light",
+        "position": {
+          "x": 0,
+          "y": 20,
+          "z": 0
+        },
+        "type": "HemisphereLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "surface_material",
+        "options": {
+          "color": "#CBCBCB",
+          "depthWrite": false
+        },
+        "type": "MeshPhongMaterial"
+      },
+      {
+        "name": "sphere_material",
+        "options": {
+          "color": "#E91E63"
+        },
+        "type": "MeshStandardMaterial"
+      },
+      {
+        "name": "cube_material",
+        "options": {
+          "color": "#5EDCAE"
+        },
+        "type": "MeshStandardMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "surface_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 100,
+          "heightSegments": 1,
+          "width": 100,
+          "widthSegments": 1
+        },
+        "receiveShadow": true
+      },
+      {
+        "castShadow": true,
+        "model3dSource": "mutant_model",
+        "name": "mutant_model_entity_1"
+      },
+      {
+        "castShadow": true,
+        "model3dSource": "medea_model",
+        "name": "medea_model_entity"
+      },
+      {
+        "castShadow": true,
+        "material": "cube_material",
+        "model3dSource": "cube",
+        "name": "box_model_entity",
+        "options": {
+          "depth": 1,
+          "height": 1,
+          "width": 1
+        }
+      }
+    ],
+    "particles": [],
+    "physics": {},
+    "renderers": [
+      {
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 100,
+        "mapWidth": 100,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [],
+    "audio": [
+      {
+        "name": "persimmon_music",
+        "url": "resources/Audio/Pierce Murphy - Persimmon.mp3"
+      },
+      {
+        "name": "monster_sound",
+        "url": "resources/Audio/girl_singing.mp3"
+      },
+      {
+        "name": "gunshot_sound",
+        "url": "resources/Audio/357-magnum-revolver-gunshot.mp3"
+      }
+    ],
+    "envMaps": [],
+    "models3d": [
+      {
+        "name": "mutant_model",
+        "url": "resources/Models/Mutant/Mutant.glb"
+      },
+      {
+        "name": "medea_model",
+        "url": "resources/Models/Medea/medea.glb"
+      }
+    ],
+    "textures": []
+  },
+  "scenes": [
+    {
+      "background": "#A0A0A0",
+      "isActive": true,
+      "name": "showcase"
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

@@ -1,0 +1,393 @@
+name: Build App (manual run)
+run-name: Build (ref=${{ inputs.ref }}, app=${{ inputs.app }}, mode=${{ inputs.mode }}, target=${{ inputs.target }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        type: string
+        required: true
+        default: main
+        description: "Branch"
+      app:
+        type: choice
+        required: true
+        default: showcases-desktop
+        options:
+          - showcases-core
+          - showcases-desktop
+        description: "App to build"
+      mode:
+        type: choice
+        required: true
+        default: dev
+        options:
+          - prod
+          - e2e
+          - dev
+        description: "Build mode"
+      target:
+        type: choice
+        required: true
+        default: "mac:app:arm64"
+        options:
+          - "linux:app:arm64"
+          - "linux:app:x64"
+          - "linux:appimage:arm64"
+          - "linux:appimage:x64"
+          - "mac:app:arm64"
+          - "mac:app:universal"
+          - "mac:app:x64"
+          - "mac:dmg:arm64"
+          - "mac:dmg:universal"
+          - "mac:dmg:x64"
+          - "win:app:arm64"
+          - "win:app:x64"
+          - "win:nsis:arm64"
+          - "win:nsis:x64"
+        description: "Target: platform:artifact:arch"
+
+permissions:
+  contents: read
+
+concurrency:
+  # Group by ref+app+mode+target, but do NOT mix targets (win build won't cancel linux build).
+  group: build-app-${{ inputs.ref }}-${{ inputs.app }}-${{ inputs.mode }}-${{ inputs.target }}
+  # Cancel only duplicates of the EXACT same group (saves runner time).
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    name: Build (${{ inputs.app }} / ${{ inputs.mode }} / ${{ inputs.target }})
+    runs-on: ${{ startsWith(inputs.target, 'win:') && 'windows-latest' || startsWith(inputs.target, 'mac:') && 'macos-latest' || 'ubuntu-latest' }}
+    timeout-minutes: 30
+
+    env:
+      NODE_VERSION: "24"
+      TARGET: ${{ inputs.target }}
+      MODE: ${{ inputs.mode }}
+      APP: ${{ inputs.app }}
+
+    steps:
+      - name: Debug inputs + runner
+        shell: bash
+        run: |
+          echo "runner.os=${RUNNER_OS}"
+          echo "ref=${{ inputs.ref }}"
+          echo "app=${{ inputs.app }}"
+          echo "mode=${{ inputs.mode }}"
+          echo "target=${{ inputs.target }}"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install deps
+        shell: bash
+        run: npm ci
+
+      # ---- Optional caches for big Electron-related downloads (huge win in CI) ----
+      - name: Cache Electron / electron-builder downloads (Linux)
+        if: ${{ inputs.app == 'showcases-desktop' && runner.os == 'Linux' }}
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/electron
+            ~/.cache/electron-builder
+          key: ${{ runner.os }}-electron-cache-node24-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-electron-cache-node24-
+            ${{ runner.os }}-electron-cache-
+
+      - name: Cache Electron / electron-builder downloads (macOS)
+        if: ${{ inputs.app == 'showcases-desktop' && runner.os == 'macOS' }}
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/electron
+            ~/Library/Caches/electron-builder
+          key: ${{ runner.os }}-electron-cache-node24-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-electron-cache-node24-
+            ${{ runner.os }}-electron-cache-
+
+      - name: Cache Electron / electron-builder downloads (Windows)
+        if: ${{ inputs.app == 'showcases-desktop' && runner.os == 'Windows' }}
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.LOCALAPPDATA }}\electron\Cache
+            ${{ env.LOCALAPPDATA }}\electron-builder\Cache
+          key: ${{ runner.os }}-electron-cache-node24-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-electron-cache-node24-
+            ${{ runner.os }}-electron-cache-
+
+      - name: Parse + validate target
+        id: t
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          platform="${TARGET%%:*}"
+          rest="${TARGET#*:}"
+          artifact="${rest%%:*}"
+          arch="${rest#*:}"
+
+          # Basic validation.
+          case "$platform" in
+            linux|mac|win) ;;
+            *) echo "Invalid platform in target: $platform"; exit 1;;
+          esac
+
+          case "$artifact" in
+            app|appimage|dmg|nsis) ;;
+            *) echo "Invalid artifact in target: $artifact"; exit 1;;
+          esac
+
+          case "$arch" in
+            x64|arm64|universal) ;;
+            *) echo "Invalid arch in target: $arch"; exit 1;;
+          esac
+
+          # Cross-field validation (useful even with choice inputs as a guardrail).
+          if [ "$platform" = "linux" ] && [ "$artifact" = "dmg" ]; then
+            echo "Invalid linux target: dmg is mac-only"; exit 1
+          fi
+
+          if [ "$platform" = "linux" ] && [ "$artifact" = "nsis" ]; then
+            echo "Invalid linux target: nsis is win-only"; exit 1
+          fi
+
+          if [ "$platform" = "mac" ] && [ "$artifact" = "nsis" ]; then
+            echo "Invalid mac target: nsis is win-only"; exit 1
+          fi
+
+          if [ "$platform" = "win" ] && [ "$artifact" = "dmg" ]; then
+            echo "Invalid win target: dmg is mac-only"; exit 1
+          fi
+
+          if [ "$platform" = "win" ] && [ "$artifact" = "appimage" ]; then
+            echo "Invalid win target: appimage is linux-only"; exit 1
+          fi
+
+          if [ "$platform" != "mac" ] && [ "$arch" = "universal" ]; then
+            echo "Invalid target: universal arch is mac-only"; exit 1
+          fi
+
+          if [ "$platform" = "mac" ] && [ "$arch" = "universal" ] && [ "$artifact" != "app" ] && [ "$artifact" != "dmg" ]; then
+            echo "Invalid mac universal target (artifact must be app or dmg): ${TARGET}"; exit 1
+          fi
+
+          echo "platform=$platform" >> "$GITHUB_OUTPUT"
+          echo "artifact=$artifact" >> "$GITHUB_OUTPUT"
+          echo "arch=$arch" >> "$GITHUB_OUTPUT"
+
+          echo "platform=$platform"
+          echo "artifact=$artifact"
+          echo "arch=$arch"
+
+      - name: Make safe strings for artifact name
+        id: safe
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Replace forbidden chars with '-'
+          safe_target="$(echo "${TARGET}" | tr '":<>|*?/\\' '-' | tr ':' '-')"
+          safe_ref="$(echo "${{ inputs.ref }}" | tr '":<>|*?/\\' '-' | tr ':' '-')"
+          echo "target=${safe_target}" >> "$GITHUB_OUTPUT"
+          echo "ref=${safe_ref}" >> "$GITHUB_OUTPUT"
+
+      # ---- Showcases-core build caches ----
+      # Split caches so we don't accidentally skip web build due to a desktop cache hit (and vice versa).
+      - name: Restore showcases-core build cache (web)
+        id: corecache_web
+        if: ${{ inputs.app == 'showcases-core' }}
+        uses: actions/cache@v4
+        with:
+          path: apps/showcases-core/dist-web
+          key: ${{ runner.os }}-core-web-${{ inputs.mode }}-${{ hashFiles('package-lock.json', 'apps/showcases-core/**/*', 'packages/**/*', 'tsconfig*.json', 'vite.config.*', 'apps/showcases-core/vite.config.*') }}
+          restore-keys: |
+            ${{ runner.os }}-core-web-${{ inputs.mode }}-
+            ${{ runner.os }}-core-web-
+
+      - name: Restore showcases-core build cache (desktop)
+        id: corecache_desktop
+        if: ${{ inputs.app == 'showcases-desktop' }}
+        uses: actions/cache@v4
+        with:
+          path: apps/showcases-core/dist-desktop
+          key: ${{ runner.os }}-core-desktop-${{ inputs.mode }}-${{ hashFiles('package-lock.json', 'apps/showcases-core/**/*', 'packages/**/*', 'tsconfig*.json', 'vite.config.*', 'apps/showcases-core/vite.config.*') }}
+          restore-keys: |
+            ${{ runner.os }}-core-desktop-${{ inputs.mode }}-
+            ${{ runner.os }}-core-desktop-
+
+      # ---- Build showcases-core (web) ----
+      - name: Build showcases-core (web)
+        if: ${{ inputs.app == 'showcases-core' && steps.corecache_web.outputs.cache-hit != 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # e2e.web mode exists for start, but build uses dev.web pipeline.
+          if [ "${MODE}" = "prod" ]; then
+            npm run --workspace apps/showcases-core build:prod:web
+          else
+            npm run --workspace apps/showcases-core build:dev:web
+          fi
+
+      # ---- Build showcases-core (desktop variant) before desktop packaging ----
+      - name: Build showcases-core (desktop)
+        if: ${{ inputs.app == 'showcases-desktop' && steps.corecache_desktop.outputs.cache-hit != 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # For desktop packaging:
+          # - dev -> build:dev:desktop
+          # - e2e -> build:dev:desktop
+          # - prod -> build:prod:desktop
+          if [ "${MODE}" = "prod" ]; then
+            npm run --workspace apps/showcases-core build:prod:desktop
+          else
+            npm run --workspace apps/showcases-core build:dev:desktop
+          fi
+
+      - name: Linux prerequisites (AppImage)
+        if: ${{ inputs.app == 'showcases-desktop' && steps.t.outputs.platform == 'linux' && steps.t.outputs.artifact == 'appimage' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          # AppImage tooling typically requires FUSE 2 on ubuntu-latest.
+          sudo apt-get install -y libfuse2
+
+      # ---- Build showcases-desktop artifact ----
+      - name: Build showcases-desktop (${{ inputs.mode }} / ${{ inputs.target }})
+        if: ${{ inputs.app == 'showcases-desktop' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PLATFORM="${{ steps.t.outputs.platform }}"
+          ARTIFACT="${{ steps.t.outputs.artifact }}"
+          ARCH="${{ steps.t.outputs.arch }}"
+          npm run --workspace apps/showcases-desktop "build:${MODE}:${PLATFORM}:${ARTIFACT}:${ARCH}"
+
+      # ---- Reduce artifact size (keep only final installers) ----
+      - name: Prepare artifacts (showcases-desktop)
+        if: ${{ inputs.app == 'showcases-desktop' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p apps/showcases-desktop/dist-artifacts
+
+          shopt -s nullglob
+
+          # Keep only final installer archives; drop huge unpacked dirs.
+          for ext in dmg exe AppImage zip tar.gz deb rpm; do
+            for f in apps/showcases-desktop/dist/*.${ext}; do
+              cp -v "$f" apps/showcases-desktop/dist-artifacts/
+            done
+          done
+
+          # If nothing matched (e.g., "app/dir" target), keep the whole dist folder.
+          if [ "$(ls -A apps/showcases-desktop/dist-artifacts 2>/dev/null | wc -l | tr -d ' ')" = "0" ]; then
+            echo "No installer files found in dist/; falling back to upload dist/** (dir target?)"
+            rm -rf apps/showcases-desktop/dist-artifacts
+            mkdir -p apps/showcases-desktop/dist-artifacts
+            cp -R apps/showcases-desktop/dist/* apps/showcases-desktop/dist-artifacts/ || true
+          fi
+
+          echo "Prepared artifacts:"
+          (cd apps/showcases-desktop/dist-artifacts && ls -lah) || true
+
+      # ---- Upload artifacts ----
+      # Keep retention low because artifacts are huge.
+      - name: Upload artifact (showcases-core)
+        if: ${{ inputs.app == 'showcases-core' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ inputs.app }}-${{ inputs.mode }}-${{ steps.safe.outputs.target }}-${{ github.run_id }}
+          path: |
+            apps/showcases-core/dist-web/**
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Upload artifact (showcases-desktop)
+        if: ${{ inputs.app == 'showcases-desktop' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ inputs.app }}-${{ inputs.mode }}-${{ steps.safe.outputs.target }}-${{ github.run_id }}
+          path: |
+            apps/showcases-desktop/dist-artifacts/**
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: macOS quarantine warning (mac:app:* only)
+        if: ${{ steps.t.outputs.platform == 'mac' && steps.t.outputs.artifact == 'app' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Yellow-highlighted warning in logs
+          echo "::warning title=macOS Gatekeeper quarantine::This build is likely quarantined after download. Run: xattr -dr com.apple.quarantine \"/path/to/AnarchyDemo.app\""
+
+          # Big + visible warning in the Step Summary
+          {
+            echo ""
+            echo "# 🚨 IMPORTANT (macOS .app from CI)"
+            echo ""
+            echo "> **This CI-built macOS `.app` is likely placed into _quarantine_ after download.**"
+            echo ""
+            echo "Run this locally to unblock it:"
+            echo ""
+            echo '```bash'
+            echo 'xattr -dr com.apple.quarantine "/path/to/AppName.app"'
+            echo '```'
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Build artifacts"
+            echo ""
+            echo "- App: **${APP}**"
+            echo "- Mode: **${MODE}**"
+            echo "- Target: **${TARGET}**"
+            echo "- Runner: **${RUNNER_OS}**"
+            echo "- Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo ""
+
+            if [ "${APP}" = "showcases-core" ]; then
+              echo "### Output"
+              echo "- apps/showcases-core/dist-web"
+              echo ""
+              echo "### Cache"
+              echo "- showcases-core web cache hit: **${{ steps.corecache_web.outputs.cache-hit }}**"
+              echo ""
+              echo "### Files"
+              (cd apps/showcases-core/dist-web && ls -lah) || true
+            else
+              echo "### Cache"
+              echo "- showcases-core desktop cache hit: **${{ steps.corecache_desktop.outputs.cache-hit }}**"
+              echo ""
+              echo "### Files"
+              (cd apps/showcases-desktop/dist-artifacts && ls -lah) || true
+            fi
+
+            echo ""
+            echo "Artifacts are attached to this run (see the **Artifacts** section on the run page)."
+          } >> "$GITHUB_STEP_SUMMARY"

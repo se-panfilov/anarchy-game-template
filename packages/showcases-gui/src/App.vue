@@ -1,0 +1,36 @@
+<script setup lang="ts">
+import './assets/style.scss';
+
+import { eventsListenerService } from '@Showcases/GUI/services';
+import Bottom from '@Showcases/GUI/views/Bottom.vue';
+import { vueTranslationService } from '@Showcases/i18n';
+import type { Subscription } from 'rxjs';
+import { onMounted, onUnmounted } from 'vue';
+
+let appEventsSub$: Subscription | undefined;
+
+onMounted((): void => {
+  appEventsSub$ = eventsListenerService.startListeningAppEvents();
+});
+
+onUnmounted((): void => {
+  vueTranslationService.destroy$.next();
+  appEventsSub$?.unsubscribe();
+});
+</script>
+
+<template>
+  <div class="gui">
+    <Bottom class="gui__item -bottom" />
+  </div>
+</template>
+
+<style scoped lang="scss">
+.gui {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+</style>

@@ -1,0 +1,134 @@
+{
+  "canvasSelector": "#text_container #app",
+  "entities": {
+    "actors": [],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 4.557771335235449,
+          "y": 28.817881148777833,
+          "z": 27.977784875694173
+        },
+        "rotation": {
+          "x": -0.8001886407642653,
+          "y": 0.11299286865102773,
+          "z": 0.11562026066859303
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [],
+    "envMaps": [],
+    "fogs": [],
+    "fsm": [],
+    "intersections": [],
+    "lights": [],
+    "materials": [],
+    "models3d": [],
+    "particles": [],
+    "physics": {},
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 100,
+        "mapWidth": 100,
+        "name": "main_grid"
+      }
+    ],
+    "texts": [
+      {
+        "cssProps": {
+          "color": "#0000FF",
+          "fontFamily": "\"LongCang\", sans-serif",
+          "fontSize": "4rem"
+        },
+        "name": "text_2d",
+        "position": {
+          "x": -10,
+          "y": 10,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "text": "Text 2d",
+        "type": "text_2d"
+      },
+      {
+        "cssProps": {
+          "color": "#00FF00",
+          "fontFamily": "\"RubikScribble\", sans-serif",
+          "fontSize": "0.2rem"
+        },
+        "name": "text_3d_1",
+        "position": {
+          "x": 10,
+          "y": -10,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "text": "Text 3d",
+        "type": "text_3d"
+      },
+      {
+        "cssProps": {
+          "color": "#000000",
+          "fontFamily": "\"LongCang\", sans-serif",
+          "fontSize": "32rem"
+        },
+        "name": "text_3d_2",
+        "position": {
+          "x": 0,
+          "y": 10,
+          "z": 10
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "text": "Text 3d (texture)",
+        "type": "text_3d_texture"
+      }
+    ]
+  },
+  "name": "SpaceTexts",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [],
+    "textures": []
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

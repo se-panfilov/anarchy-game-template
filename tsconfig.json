@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@Anarchy/Engine": ["packages/anarchy-engine/src/index.ts"],
+      "@Anarchy/Engine/*": ["packages/anarchy-engine/src/*"],
+      "@Anarchy/Legal": ["packages/anarchy-legal/src/index.ts"],
+      "@Anarchy/Legal/*": ["packages/anarchy-legal/src/*"],
+      "@Anarchy/Shared": ["packages/anarchy-shared/src/index.ts"],
+      "@Anarchy/Shared/*": ["packages/anarchy-shared/src/*"],
+      "@Anarchy/i18n": ["packages/anarchy-i18n/src/index.ts"],
+      "@Anarchy/i18n/*": ["packages/anarchy-i18n/src/*"],
+      "@Anarchy/Tracking": ["packages/anarchy-tracking/src/index.ts"],
+      "@Anarchy/Tracking/*": ["packages/anarchy-tracking/src/*"],
+      "@Showcases/E2E": ["apps/showcases-e2e/src/index.ts"],
+      "@Showcases/E2E/*": ["apps/showcases-e2e/src/*"],
+      "@Showcases/Menu": ["packages/showcases-menu/src/index.ts"],
+      "@Showcases/Menu/*": ["packages/showcases-menu/src/*"],
+      "@Showcases/GUI": ["packages/showcases-gui/src/index.ts"],
+      "@Showcases/GUI/*": ["packages/showcases-gui/src/*"]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ESNext",
+    "types": ["node", "vite/client", "three", "vitest/importMeta", "vitest/globals"],
+    "useDefineForClassFields": true
+  },
+  "include": ["vite.config.ts"]
+}

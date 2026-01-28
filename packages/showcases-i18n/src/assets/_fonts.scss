@@ -1,0 +1,106 @@
+// This file is for defining @font-face rules for all fonts used in the app (defined in packages/anarchy-i18n/src/Constants/Locales.gen.ts).
+// You need to download the font files and place them in the same directory as this file.
+// You can get the Noto fonts from Google Fonts: https://fonts.google.com/noto
+
+// Mixin for creating font-face declarations with consistent properties
+@mixin font-face($font-family, $font-file, $font-weight: 400, $font-style: normal, $font-display: swap) {
+  @font-face {
+    font-family: $font-family;
+    src: url('./#{$font-file}.woff2') format('woff2');
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-display: $font-display;
+  }
+}
+
+// IMPORTANT!!!: This font-face (LongCang) is used only for dev purposes (to see if font change actually works), no need on the real production.
+// Remove it (and the font file) when not needed.
+// Also remove it from fonts definition for the NL lang in packages/showcases-i18n/src/Constants/ShowcasesLocales.ts
+@include font-face('LongCang', 'LongCang-Regular');
+
+// ===== UNIVERSAL LATIN + GREEK + CYRILLIC + VIETNAMESE =====
+// Covers: af-ZA, az-Latn-AZ, bs-BA, ca-ES, cs-CZ, cy-GB, da-DK,
+// de-AT, de-CH, de-DE, en-AU, en-CA, en-GB, en-IE, en-IN, en-NZ, en-US, en-ZA,
+// es-AR, es-CL, es-CO, es-ES, es-MX, es-PE, es-US, et-EE, fi-FI, fil-PH,
+// fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, hr-HR, hu-HU, id-ID, is-IS,
+// it-CH, it-IT, jv-ID, lt-LT, lv-LV, ms-MY, nb-NO, nn-NO, nl-BE, nl-NL,
+// pl-PL, pt-BR, pt-PT, ro-RO, sk-SK, sl-SI, sq-AL, sr-Cyrl-RS, sr-Latn-RS,
+// sv-FI, sv-SE, sw-KE, tr-TR, vi-VN, zu-ZA, be-BY, bg-BG, ru-RU, uk-UA, el-GR
+@include font-face('Noto Sans', 'NotoSans-VariableFont_wdth,wght');
+
+// ===== ARABIC SCRIPT =====
+// Covers: ar-SA, fa-IR (Persian), az-Arab-IR
+@include font-face('Noto Sans Arabic', 'NotoSansArabic-Regular');
+
+// Covers:ur-PK,
+@include font-face('Noto Nastaliq Urdu', 'NotoNastaliqUrdu-Regular');
+
+// ===== HEBREW =====
+// Covers: he-IL
+@include font-face('Noto Sans Hebrew', 'NotoSansHebrew-Regular');
+
+// ===== DEVANAGARI =====
+// Covers: hi-IN (Hindi), mr-IN (Marathi), ne-NP (Nepali)
+@include font-face('Noto Sans Devanagari', 'NotoSansDevanagari-Regular');
+
+// ===== BENGALI =====
+// Covers: bn-BD, bn-IN
+@include font-face('Noto Sans Bengali', 'NotoSansBengali-Regular');
+
+// ===== GURMUKHI =====
+// Covers: pa-IN (Punjabi)
+@include font-face('Noto Sans Gurmukhi', 'NotoSansGurmukhi-Regular');
+
+// ===== GUJARATI =====
+// Covers: gu-IN
+@include font-face('Noto Sans Gujarati', 'NotoSansGujarati-Regular');
+
+// ===== KANNADA =====
+// Covers: kn-IN
+@include font-face('Noto Sans Kannada', 'NotoSansKannada-Regular');
+
+// ===== MALAYALAM =====
+// Covers: ml-IN
+@include font-face('Noto Sans Malayalam', 'NotoSansMalayalam-Regular');
+
+// ===== SINHALA =====
+// Covers: si-LK
+@include font-face('Noto Sans Sinhala', 'NotoSansSinhala-Regular');
+
+// ===== TAMIL =====
+// Covers: ta-IN, ta-LK
+@include font-face('Noto Sans Tamil', 'NotoSansTamil-Regular');
+
+// ===== THAI =====
+// Covers: th-TH
+@include font-face('Noto Sans Thai', 'NotoSansThai-Regular');
+
+// ===== KHMER =====
+// Covers: km-KH
+@include font-face('Noto Sans Khmer', 'NotoSansKhmer-Regular');
+
+// ===== LAO =====
+// Covers: lo-LA
+@include font-face('Noto Sans Lao', 'NotoSansLao-Regular');
+
+// ===== ETHIOPIC (AMHARIC) =====
+// Covers: am-ET
+@include font-face('Noto Sans Ethiopic', 'NotoSansEthiopic-Regular');
+
+// ===== Chinese =====
+// Simplified Chinese — Covers: zh-Hans-CN, zh-Hans-SG
+@include font-face('Noto Sans SC', 'NotoSansSC-Regular');
+
+// Traditional Chinese for Hong Kong — Covers: zh-Hant-HK
+@include font-face('Noto Sans HK', 'NotoSansHK-Regular');
+
+// Traditional Chinese for Taiwan — Covers: zh-Hant-TW
+@include font-face('Noto Sans TC', 'NotoSansTC-Regular');
+
+// ===== Japanese =====
+// Covers: ja-JP
+@include font-face('Noto Sans JP', 'NotoSansJP-Regular');
+
+// ===== Korean =====
+// Covers: ko-KR
+@include font-face('Noto Sans KR', 'NotoSansKR-Regular');

@@ -1,0 +1,758 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "agent": "physics",
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "physicsBodyName": "surface_physics",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "wall_left_model",
+        "name": "wall_left_actor",
+        "physicsBodyName": "wall_left_actor_physics",
+        "position": {
+          "x": -10.5,
+          "y": 1,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "wall_right_model",
+        "name": "wall_right_actor",
+        "physicsBodyName": "wall_right_actor_physics",
+        "position": {
+          "x": 10.5,
+          "y": 1,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "wall_front_model",
+        "name": "wall_front_actor",
+        "physicsBodyName": "wall_front_actor_physics",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": -10.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": -1.57,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "wall_back_model",
+        "name": "wall_back_actor",
+        "physicsBodyName": "wall_back_actor_physics",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": 10.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": -1.57,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "sphere_model",
+        "name": "sphere_actor",
+        "physicsBodyName": "sphere_actor_physics",
+        "position": {
+          "x": 0,
+          "y": 6,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "obstacle_1_model",
+        "name": "obstacle_1_actor",
+        "physicsBodyName": "obstacle_1_actor_physics",
+        "position": {
+          "x": -4,
+          "y": 2,
+          "z": 2
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "obstacle_2_model",
+        "name": "obstacle_2_actor",
+        "physicsBodyName": "obstacle_2_actor_physics",
+        "position": {
+          "x": 4,
+          "y": 2,
+          "z": 1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "obstacle_3_model",
+        "name": "obstacle_3_actor",
+        "physicsBodyName": "obstacle_3_actor_physics",
+        "position": {
+          "x": 1,
+          "y": 8,
+          "z": -4
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "obstacle_4_model",
+        "name": "obstacle_4_actor",
+        "physicsBodyName": "obstacle_4_actor_physics",
+        "position": {
+          "x": 2,
+          "y": 12,
+          "z": -4
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": false
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 45,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 14,
+          "y": 5,
+          "z": 6
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [
+      {
+        "isActive": true,
+        "name": "shanghai_bund_env_map",
+        "texture": "shanghai_bund_hdr"
+      }
+    ],
+    "fogs": [],
+    "fsm": [],
+    "intersections": [],
+    "lights": [
+      {
+        "castShadow": true,
+        "color": "#FFFFFF",
+        "intensity": 1,
+        "name": "directional_light",
+        "position": {
+          "x": 0.25,
+          "y": 2,
+          "z": 2.25
+        },
+        "shadow": {
+          "camera": {
+            "far": 15,
+            "type": "OrthographicCamera"
+          },
+          "mapSize": {
+            "x": 1024,
+            "y": 1024
+          },
+          "normalBias": 0.05
+        },
+        "type": "DirectionalLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "metal_material",
+        "options": {
+          "clearcoat": 1,
+          "clearcoatRoughness": 0.12,
+          "displacementScale": 0,
+          "ior": 2.3,
+          "iridescence": 0.655,
+          "iridescenceIOR": 1.86,
+          "metalness": 0.97,
+          "roughness": 0.8,
+          "thickness": 0,
+          "transmission": 0
+        },
+        "textures": {
+          "bumpMap": "metal_bump_map_texture",
+          "displacementMap": "metal_displacement_map_texture",
+          "map": "metal_map_texture",
+          "metalnessMap": "metal_metalness_map_texture",
+          "normalMap": "metal_normal_map_texture",
+          "roughnessMap": "metal_roughness_map_texture"
+        },
+        "type": "MeshPhysicalMaterial"
+      },
+      {
+        "name": "glass_1_material",
+        "options": {
+          "clearcoat": 0.8,
+          "clearcoatRoughness": 0.09,
+          "displacementScale": 0.1,
+          "ior": 1.26,
+          "iridescence": 0,
+          "iridescenceIOR": 1.38,
+          "metalness": 0,
+          "roughness": 0,
+          "thickness": 0.5,
+          "transmission": 0.77
+        },
+        "type": "MeshPhysicalMaterial"
+      },
+      {
+        "name": "glass_2_material",
+        "options": {
+          "clearcoat": 0.8,
+          "clearcoatRoughness": 0.12,
+          "displacementScale": 0.1,
+          "ior": 1.5,
+          "iridescence": 0,
+          "iridescenceIOR": 1.38,
+          "metalness": 0,
+          "roughness": 3,
+          "thickness": 0.5,
+          "transmission": 0.77
+        },
+        "type": "MeshPhysicalMaterial"
+      },
+      {
+        "name": "wood_material",
+        "options": {
+          "displacementScale": 0.1
+        },
+        "textures": {
+          "alphaMap": "wood_alpha_map_texture",
+          "aoMap": "wood_ao_map_texture",
+          "displacementMap": "wood_displacement_map_texture",
+          "map": "wood_map_texture",
+          "metalnessMap": "wood_metalness_map_texture",
+          "normalMap": "wood_normal_map_texture",
+          "roughnessMap": "wood_roughness_map_texture"
+        },
+        "type": "MeshPhysicalMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "metal_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 20,
+          "heightSegments": 1,
+          "width": 20,
+          "widthSegments": 1
+        },
+        "receiveShadow": true
+      },
+      {
+        "castShadow": true,
+        "material": "metal_material",
+        "model3dSource": "cube",
+        "name": "wall_left_model",
+        "options": {
+          "depth": 20,
+          "height": 2.5,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "metal_material",
+        "model3dSource": "cube",
+        "name": "wall_right_model",
+        "options": {
+          "depth": 20,
+          "height": 2.5,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "metal_material",
+        "model3dSource": "cube",
+        "name": "wall_front_model",
+        "options": {
+          "depth": 22,
+          "height": 2.5,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "metal_material",
+        "model3dSource": "cube",
+        "name": "wall_back_model",
+        "options": {
+          "depth": 22,
+          "height": 2.5,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "metal_material",
+        "model3dSource": "sphere",
+        "name": "sphere_model",
+        "options": {
+          "radius": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "metal_material",
+        "model3dSource": "cube",
+        "name": "obstacle_1_model",
+        "options": {
+          "depth": 1,
+          "height": 4,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "glass_1_material",
+        "model3dSource": "cube",
+        "name": "obstacle_2_model",
+        "options": {
+          "depth": 1,
+          "height": 4,
+          "heightSegments": 1,
+          "width": 1,
+          "widthSegments": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "glass_2_material",
+        "model3dSource": "sphere",
+        "name": "obstacle_3_model",
+        "options": {
+          "radius": 1
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "wood_material",
+        "model3dSource": "sphere",
+        "name": "obstacle_4_model",
+        "options": {
+          "radius": 1
+        }
+      }
+    ],
+    "particles": [],
+    "physics": {
+      "bodies": [
+        {
+          "collisionShape": "cuboid",
+          "name": "surface_physics",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": -1.57,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 10,
+            "hy": 10,
+            "hz": 0.025
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "wall_left_actor_physics",
+          "position": {
+            "x": -10.5,
+            "y": 1,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 1.25,
+            "hz": 10
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "wall_right_actor_physics",
+          "position": {
+            "x": 10.5,
+            "y": 1,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 1.25,
+            "hz": 10
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "wall_front_actor_physics",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "z": -10.5
+          },
+          "rotation": {
+            "x": 0,
+            "y": -1.57,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 1.25,
+            "hz": 11
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "wall_back_actor_physics",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "z": 10.5
+          },
+          "rotation": {
+            "x": 0,
+            "y": -1.57,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 1.25,
+            "hz": 11
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "ball",
+          "name": "sphere_actor_physics",
+          "position": {
+            "x": 0,
+            "y": 6,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "radius": 1
+          },
+          "type": "dynamic"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "obstacle_1_actor_physics",
+          "position": {
+            "x": -4,
+            "y": 2,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 2,
+            "hz": 0.5
+          },
+          "type": "dynamic"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "obstacle_2_actor_physics",
+          "position": {
+            "x": 4,
+            "y": 2,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 0.5,
+            "hy": 2,
+            "hz": 0.5
+          },
+          "type": "dynamic"
+        },
+        {
+          "collisionShape": "ball",
+          "name": "obstacle_3_actor_physics",
+          "position": {
+            "x": 1,
+            "y": 8,
+            "z": -4
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "radius": 1
+          },
+          "type": "dynamic"
+        },
+        {
+          "collisionShape": "ball",
+          "name": "obstacle_4_actor_physics",
+          "position": {
+            "x": 2,
+            "y": 12,
+            "z": -4
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "radius": 1
+          },
+          "type": "dynamic"
+        }
+      ],
+      "world": {
+        "gravity": {
+          "x": 0,
+          "y": -9.81,
+          "z": 0
+        }
+      }
+    },
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 20,
+        "mapWidth": 20,
+        "name": "main_grid"
+      }
+    ],
+    "texts": []
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [
+      {
+        "name": "shanghai_bund_hdr",
+        "url": "resources/hdr/shanghai_bund_4k.hdr"
+      }
+    ],
+    "models3d": [],
+    "textures": [
+      {
+        "name": "metal_bump_map_texture",
+        "url": "resources/Brushed_Metal/MetalSteelBrushed001_BUMP_1K_METALNESS.png"
+      },
+      {
+        "name": "metal_map_texture",
+        "url": "resources/Brushed_Metal/MetalSteelBrushed001_COL_1K_METALNESS.png"
+      },
+      {
+        "name": "metal_normal_map_texture",
+        "url": "resources/Brushed_Metal/MetalSteelBrushed001_NRM_1K_METALNESS.png"
+      },
+      {
+        "name": "metal_displacement_map_texture",
+        "url": "resources/Brushed_Metal/MetalSteelBrushed001_DISP_1K_METALNESS.png"
+      },
+      {
+        "name": "metal_metalness_map_texture",
+        "url": "resources/Brushed_Metal/MetalSteelBrushed001_BUMP16_1K_METALNESS.png"
+      },
+      {
+        "name": "metal_roughness_map_texture",
+        "url": "resources/Brushed_Metal/MetalSteelBrushed001_ROUGHNESS_1K_METALNESS.png"
+      },
+      {
+        "name": "wood_ao_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_ambientOcclusion.jpg"
+      },
+      {
+        "name": "wood_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_basecolor.jpg"
+      },
+      {
+        "name": "wood_normal_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_normal.jpg"
+      },
+      {
+        "name": "wood_displacement_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_height.png"
+      },
+      {
+        "name": "wood_alpha_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_opacity.jpg"
+      },
+      {
+        "name": "wood_metalness_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_metallic.jpg"
+      },
+      {
+        "name": "wood_roughness_map_texture",
+        "url": "resources/Door_Wood/Door_Wood_001_roughness.jpg"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}

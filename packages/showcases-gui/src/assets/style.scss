@@ -1,0 +1,74 @@
+@use '@hellpig/anarchy-shared/assets/_constants.scss' as anarchy_constants;
+//Adds dynamic font-family (changed on locale/lang change)
+@use '@hellpig/anarchy-i18n/assets/_i18n.scss';
+@use 'showcases-i18n/src/assets/_fonts';
+@import url(sanitize.css);
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: anarchy_constants.$base-font-size;
+  font-style: normal;
+  font-weight: normal;
+  line-height: anarchy_constants.$base-line-height;
+  user-select: none;
+  -webkit-app-region: no-drag;
+}
+
+:lang(zh),
+:lang(ja),
+:lang(ko) {
+  line-height: anarchy_constants.$base-asian-line-height;
+}
+
+:lang(ar) {
+  line-height: anarchy_constants.$base-arabian-line-height;
+}
+
+:lang(ur) {
+  line-height: anarchy_constants.$base-nastaliq-line-height;
+}
+
+p {
+  line-height: anarchy_constants.$base-line-height;
+}
+
+h1 {
+  line-height: anarchy_constants.$big-title-line-height;
+}
+
+h2 {
+  line-height: anarchy_constants.$big-title-line-height;
+}
+
+h3 {
+  line-height: anarchy_constants.$big-title-line-height;
+}
+
+h4 {
+  line-height: anarchy_constants.$small-title-line-height;
+}
+
+h5 {
+  line-height: anarchy_constants.$small-title-line-height;
+}
+
+h6 {
+  line-height: anarchy_constants.$small-title-line-height;
+}
+
+#gui {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: auto;
+
+  &.-active {
+    display: flex;
+  }
+}

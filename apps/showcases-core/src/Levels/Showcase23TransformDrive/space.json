@@ -1,0 +1,385 @@
+{
+  "canvasSelector": "#app",
+  "entities": {
+    "actors": [
+      {
+        "agent": "physics",
+        "model3dSource": "surface_model",
+        "name": "surface_actor",
+        "physicsBodyName": "surface_actor_physics",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "box_model_1",
+        "name": "box_actor_1",
+        "physicsBodyName": "box_actor_1_physics",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": -20
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      },
+      {
+        "agent": "physics",
+        "model3dSource": "box_model_2",
+        "name": "box_actor_2",
+        "physicsBodyName": "box_actor_2_physics",
+        "position": {
+          "x": 20,
+          "y": 20,
+          "z": -10
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "spatial": {
+          "grid": "main_grid",
+          "isAutoUpdate": true
+        }
+      }
+    ],
+    "audio": [],
+    "cameras": [
+      {
+        "far": 10000,
+        "fov": 50,
+        "isActive": true,
+        "name": "main",
+        "near": 1,
+        "position": {
+          "x": 3,
+          "y": 15,
+          "z": 20
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": "PerspectiveCamera"
+      }
+    ],
+    "controls": [
+      {
+        "cameraName": "main",
+        "isActive": true,
+        "name": "orbit_controls",
+        "options": {
+          "enableDamping": true
+        },
+        "type": "OrbitControls"
+      }
+    ],
+    "envMaps": [],
+    "fogs": [],
+    "fsm": [],
+    "intersections": [],
+    "lights": [
+      {
+        "color": "#FFFFFF",
+        "intensity": 0.01,
+        "name": "ambient_light",
+        "position": {
+          "x": 0.25,
+          "y": 2,
+          "z": 2.25
+        },
+        "type": "AmbientLight"
+      },
+      {
+        "castShadow": false,
+        "color": "#FF0000",
+        "decay": 1,
+        "distance": 1,
+        "intensity": 100,
+        "name": "point_light",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 0
+        },
+        "type": "PointLight"
+      },
+      {
+        "castShadow": true,
+        "color": "#FFFFFF",
+        "intensity": 0.5,
+        "name": "directional_light",
+        "position": {
+          "x": 0.25,
+          "y": 15,
+          "z": 2.25
+        },
+        "shadow": {
+          "camera": {
+            "bottom": -50,
+            "far": 40,
+            "left": -50,
+            "near": 0.1,
+            "right": 50,
+            "top": 50,
+            "type": "OrthographicCamera"
+          },
+          "mapSize": {
+            "x": 1024,
+            "y": 1024
+          },
+          "normalBias": 0.05
+        },
+        "type": "DirectionalLight"
+      }
+    ],
+    "materials": [
+      {
+        "name": "surface_material",
+        "options": {
+          "color": "#5EDCAE"
+        },
+        "type": "MeshStandardMaterial"
+      },
+      {
+        "name": "particles_material",
+        "options": {
+          "blending": "AdditiveBlending",
+          "color": "#E91E63",
+          "depthWrite": false,
+          "size": 0.5,
+          "sizeAttenuation": true,
+          "transparent": true,
+          "vertexColors": false
+        },
+        "textures": {
+          "alphaMap": "particles_alpha_map_texture"
+        },
+        "type": "PointsMaterial"
+      }
+    ],
+    "models3d": [
+      {
+        "castShadow": false,
+        "material": "surface_material",
+        "model3dSource": "plane",
+        "name": "surface_model",
+        "options": {
+          "height": 100,
+          "heightSegments": 1,
+          "width": 100,
+          "widthSegments": 1
+        },
+        "receiveShadow": true,
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "castShadow": true,
+        "material": "surface_material",
+        "model3dSource": "cube",
+        "name": "box_model_1",
+        "options": {
+          "depth": 2,
+          "height": 20,
+          "heightSegments": 1,
+          "width": 20,
+          "widthSegments": 1
+        },
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -20
+        },
+        "receiveShadow": true
+      },
+      {
+        "castShadow": true,
+        "material": "surface_material",
+        "model3dSource": "cube",
+        "name": "box_model_2",
+        "options": {
+          "depth": 40,
+          "height": 2,
+          "heightSegments": 1,
+          "width": 2,
+          "widthSegments": 1
+        },
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -20
+        },
+        "receiveShadow": true
+      }
+    ],
+    "particles": [
+      {
+        "material": "particles_material",
+        "name": "bubbles",
+        "position": {
+          "x": 0,
+          "y": 6,
+          "z": 0
+        }
+      }
+    ],
+    "physics": {
+      "world": {
+        "gravity": {
+          "x": 0,
+          "y": -9.81,
+          "z": 0
+        }
+      },
+      "bodies": [
+        {
+          "collisionShape": "cuboid",
+          "name": "box_actor_2_physics",
+          "position": {
+            "x": 20,
+            "y": 20,
+            "z": -10
+          },
+          "rotation": {
+            "x": -1.57,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 1,
+            "hy": 1,
+            "hz": 20
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "surface_actor_physics",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": -1.57,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 50,
+            "hy": 50,
+            "hz": 0.025
+          },
+          "type": "fixed"
+        },
+        {
+          "collisionShape": "cuboid",
+          "name": "box_actor_1_physics",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "z": -20
+          },
+          "rotation": {
+            "x": -1.57,
+            "y": 0,
+            "z": 0
+          },
+          "shapeParams": {
+            "hx": 10,
+            "hy": 10,
+            "hz": 1
+          },
+          "type": "fixed"
+        }
+      ]
+    },
+    "renderers": [
+      {
+        "alpha": true,
+        "isActive": true,
+        "mode": "webgl2",
+        "name": "main"
+      }
+    ],
+    "spatialGrids": [
+      {
+        "cellSize": 10,
+        "centerX": 0,
+        "centerZ": 0,
+        "mapHeight": 100,
+        "mapWidth": 100,
+        "name": "main_grid"
+      }
+    ],
+    "texts": [
+      {
+        "cssProps": {
+          "color": "#FF0000",
+          "fontFamily": "\"Roboto\", sans-serif",
+          "fontSize": "0.1rem"
+        },
+        "name": "sphere_text",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 0
+        },
+        "rotation": {
+          "x": -1.57,
+          "y": 0,
+          "z": 0
+        },
+        "text": "Sphere",
+        "type": "text_3d"
+      }
+    ]
+  },
+  "name": "showcase",
+  "resources": {
+    "animations": [],
+    "audio": [],
+    "envMaps": [],
+    "models3d": [],
+    "textures": [
+      {
+        "name": "particles_alpha_map_texture",
+        "url": "resources/particles/2.png"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "isActive": true,
+      "name": "showcase",
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "version": "1.0.0"
+}
