@@ -6,12 +6,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "XXX_REPO_URL@github.com:se-panfilov/anarchy-engine.git",
+    "url": "XXX_REPO_URL@",
     "directory": "packages/menu"
   },
   "homepage": "XXX_HOMEPAGE_URL/tree/main/packages/menu#readme",
   "bugs": {
-    "url": "XXX_BUGS_URL//github.com/se-panfilov/anarchy-engine/issues"
+    "url": "XXX_BUGS_URL"
   },
   "license": "MIT",
   "description": "Anarchy Showcases-Menu – a menu for Anarchy Engine Showcases.",

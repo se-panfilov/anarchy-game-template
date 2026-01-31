@@ -6,12 +6,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "XXX_REPO_URL@github.com:se-panfilov/anarchy-engine.git",
+    "url": "XXX_REPO_URL@",
     "directory": "packages/shared"
   },
   "homepage": "XXX_HOMEPAGE_URL/tree/main/packages/shared#readme",
   "bugs": {
-    "url": "XXX_BUGS_URL//github.com/se-panfilov/anarchy-engine/issues"
+    "url": "XXX_BUGS_URL"
   },
   "sideEffects": false,
   "license": "MIT",
