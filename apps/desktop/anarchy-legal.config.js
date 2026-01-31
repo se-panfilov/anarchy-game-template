@@ -1,16 +1,16 @@
-import showcasesConfig from '../core/anarchy-legal.config.js';
-import { ShowcasesDisplayName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/ShowcasesLegalConstants.js';
+import gameConfig from '../core/anarchy-legal.config.js';
+import { GameDisplayName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/ShowcasesLegalConstants.js';
 
 //Commercial configuration for legal docs
 export default {
-  ...showcasesConfig,
+  ...gameConfig,
   GENERIC: {
-    ...showcasesConfig.GENERIC,
+    ...gameConfig.GENERIC,
     messages: {
-      ...showcasesConfig.GENERIC.messages,
+      ...gameConfig.GENERIC.messages,
 
       //The brand name of the product (registered trademark)
-      PRODUCT_DISPLAY_NAME: ShowcasesDisplayName,
+      PRODUCT_DISPLAY_NAME: GameDisplayName,
 
       SUPPORTED_PLATFORMS: ShowcasesSupportedPlatforms.Desktop,
       MIN_SYSTEM_REQUIREMENTS: ShowcasesSystemRequirements.Desktop.Minimum,

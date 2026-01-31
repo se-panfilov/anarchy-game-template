@@ -1,5 +1,5 @@
 import commercialBase from '../../configs/AnarchyLegal/anarchy-legal.base.commercial.config.js';
-import { ShowcasesDisplayName, ShowcasesSoftwareFamilyName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/ShowcasesLegalConstants.js';
+import { GameDisplayName, ShowcasesSoftwareFamilyName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/ShowcasesLegalConstants.js';
 
 //Commercial configuration for legal docs
 export default {
@@ -9,7 +9,7 @@ export default {
     messages: {
       ...commercialBase.GENERIC.messages,
       //The brand name of the product (registered trademark)
-      PRODUCT_DISPLAY_NAME: ShowcasesDisplayName,
+      PRODUCT_DISPLAY_NAME: GameDisplayName,
       IS_GAME: true,
 
       SUPPORTED_PLATFORMS: ShowcasesSupportedPlatforms.Web,
