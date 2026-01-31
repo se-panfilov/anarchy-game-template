@@ -1,4 +1,4 @@
-import type { TFromMenuEvent, TLoadDocPayload, TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TFromMenuEvent, TLoadDocPayload, TShowcasesGameSettings } from '@Shared';
 import type { Subject } from 'rxjs';
 
 export type TEventsEmitterService = Readonly<{

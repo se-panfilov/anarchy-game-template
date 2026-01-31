@@ -1,5 +1,5 @@
-import type { FullScreenMode } from '@Showcases/Desktop/Constants/FullScreenModes';
-import type { TResolution } from '@Showcases/Shared';
+import type { FullScreenMode } from '@Desktop/Constants/FullScreenModes';
+import type { TResolution } from '@Shared';
 import type { BrowserWindow } from 'electron';
 
 import type { TDesktopAppConfig } from './TDesktopAppConfig';

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { NavDirection, NavStyle } from '@Showcases/Menu/components/Navigation/constants';
-import Navigation from '@Showcases/Menu/components/Navigation/Navigation.vue';
-import PageTitle from '@Showcases/Menu/components/PageTitle.vue';
-import { Routes } from '@Showcases/Menu/constants';
-import type { TVueNavOption } from '@Showcases/Menu/models';
-import { eventsEmitterService } from '@Showcases/Menu/services';
-import { useMenuOptionsStore } from '@Showcases/Menu/stores/MenuOptionsStore';
-import { useRouterStore } from '@Showcases/Menu/stores/RouterStore';
+import { NavDirection, NavStyle } from '@Menu/components/Navigation/constants';
+import Navigation from '@Menu/components/Navigation/Navigation.vue';
+import PageTitle from '@Menu/components/PageTitle.vue';
+import { Routes } from '@Menu/constants';
+import type { TVueNavOption } from '@Menu/models';
+import { eventsEmitterService } from '@Menu/services';
+import { useMenuOptionsStore } from '@Menu/stores/MenuOptionsStore';
+import { useRouterStore } from '@Menu/stores/RouterStore';
 import type { ComputedRef } from 'vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

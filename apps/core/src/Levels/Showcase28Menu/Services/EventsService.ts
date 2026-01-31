@@ -1,6 +1,6 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TFromMenuEvent, TLegalDoc, TLoadDocPayload, TShowcasesGameSettings, TToMenuEvent } from '@Showcases/Shared';
-import { FromMenuEvents, isLoadDocPayload, isSettings, ToMenuEvents } from '@Showcases/Shared';
+import type { TFromMenuEvent, TLegalDoc, TLoadDocPayload, TShowcasesGameSettings, TToMenuEvent } from '@Shared';
+import { FromMenuEvents, isLoadDocPayload, isSettings, ToMenuEvents } from '@Shared';
 import type { Observable, Subject } from 'rxjs';
 
 import type { TEventsService, TEventsServiceDependencies } from '@/Levels/Showcase28Menu/Models';

@@ -1,6 +1,6 @@
 import type { TLocaleId } from '@Anarchy/i18n';
 import type { TBrowserInfo } from '@Anarchy/Shared/Models';
-import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Shared';
 
 export type TPlatformDriver = Readonly<{
   closeApp: () => void;

@@ -1,4 +1,4 @@
-import type { TFromGuiEvent, TMenuOptions, TToGuiEvent } from '@Showcases/Shared';
+import type { TFromGuiEvent, TMenuOptions, TToGuiEvent } from '@Shared';
 import type { Observable, Subject } from 'rxjs';
 
 //Suppress TS check for gui app (assume it's always "any")

@@ -1,5 +1,5 @@
-import type { TFromGuiActionPayload } from '@Showcases/GUI/models/TFromGuiActionEvent';
-import type { TFromGuiEvent } from '@Showcases/Shared';
+import type { TFromGuiActionPayload } from '@GUI/models/TFromGuiActionEvent';
+import type { TFromGuiEvent } from '@Shared';
 import type { Subject } from 'rxjs';
 
 export type TEventsEmitterService = Readonly<{

@@ -1,9 +1,9 @@
 import { isDefined } from '@Anarchy/Shared/Utils';
-import { initVueI18n, vueTranslationService } from '@Showcases/i18n';
-import { eventsEmitterService, eventsListenerService } from '@Showcases/Menu/services';
-import { menuPinia } from '@Showcases/Menu/stores/CreatePinia';
-import { useMenuOptionsStore } from '@Showcases/Menu/stores/MenuOptionsStore';
-import type { TFromMenuEvent, TMenuOptions, TToMenuEvent } from '@Showcases/Shared';
+import { initVueI18n, vueTranslationService } from '@i18n';
+import { eventsEmitterService, eventsListenerService } from '@Menu/services';
+import { menuPinia } from '@Menu/stores/CreatePinia';
+import { useMenuOptionsStore } from '@Menu/stores/MenuOptionsStore';
+import type { TFromMenuEvent, TMenuOptions, TToMenuEvent } from '@Shared';
 import type { Observable, Subject } from 'rxjs';
 import type { App as VueApp } from 'vue';
 import { createApp } from 'vue';

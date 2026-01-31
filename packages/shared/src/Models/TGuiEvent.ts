@@ -1,4 +1,4 @@
-import type { FromGuiEvents, ToGuiEvents } from '@Showcases/Shared/Constants';
+import type { FromGuiEvents, ToGuiEvents } from '@Shared/Constants';
 
 import type { TFromEvent, TToEvent } from './TEvent';
 

@@ -1,9 +1,9 @@
 import { existsSync } from 'node:fs';
 
 import { isDefined, isNotDefined } from '@Anarchy/Shared/Utils';
-import { FullScreenMode } from '@Showcases/Desktop/Constants/FullScreenModes';
-import type { TDesktopAppConfig, TWindowService } from '@Showcases/Desktop/Models';
-import type { TResolution } from '@Showcases/Shared';
+import { FullScreenMode } from '@Desktop/Constants/FullScreenModes';
+import type { TDesktopAppConfig, TWindowService } from '@Desktop/Models';
+import type { TResolution } from '@Shared';
 import { app, BrowserWindow, dialog } from 'electron';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';

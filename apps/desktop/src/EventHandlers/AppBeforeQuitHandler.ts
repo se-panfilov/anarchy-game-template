@@ -1,4 +1,4 @@
-import type { TDesktopAppService } from '@Showcases/Desktop/Models';
+import type { TDesktopAppService } from '@Desktop/Models';
 import type { App, Event } from 'electron';
 
 export function appBeforeQuitHandler(app: App, desktopAppService: TDesktopAppService): void {

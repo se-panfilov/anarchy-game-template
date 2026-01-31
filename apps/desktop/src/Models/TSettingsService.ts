@@ -1,5 +1,5 @@
 import type { TLocaleId } from '@Anarchy/i18n';
-import type { TResolution, TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TResolution, TShowcasesGameSettings } from '@Shared';
 
 export type TSettingsService = Readonly<{
   applyPlatformSettings: (platformSettings: TShowcasesGameSettings) => boolean;

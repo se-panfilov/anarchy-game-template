@@ -1,4 +1,4 @@
-import type { AllowedLegalDocNames } from '@Showcases/Shared/Constants';
+import type { AllowedLegalDocNames } from '@Shared/Constants';
 
 export type TLegalDoc = Readonly<{
   name: AllowedLegalDocNames;

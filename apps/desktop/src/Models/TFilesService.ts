@@ -1,4 +1,4 @@
-import type { AllowedAppFolders, AllowedSystemFolders } from '@Showcases/Desktop/Constants';
+import type { AllowedAppFolders, AllowedSystemFolders } from '@Desktop/Constants';
 
 export type TFilesService = {
   getPathToFile: (fileName: string, dir: AllowedSystemFolders | AllowedAppFolders) => string | never;

@@ -2,9 +2,9 @@ import { mkdir, open, readFile, rename, rm } from 'node:fs/promises';
 import * as path from 'node:path';
 
 import { validateJson } from '@Anarchy/Shared/Utils';
-import type { AllowedSystemFolders } from '@Showcases/Desktop/Constants';
-import { AllowedAppFolders } from '@Showcases/Desktop/Constants';
-import type { TFilesService } from '@Showcases/Desktop/Models';
+import type { AllowedSystemFolders } from '@Desktop/Constants';
+import { AllowedAppFolders } from '@Desktop/Constants';
+import type { TFilesService } from '@Desktop/Models';
 import type { App } from 'electron';
 import type { FileHandle } from 'fs/promises';
 import { nanoid } from 'nanoid';

@@ -1,9 +1,9 @@
 import type { TIntersectionEvent, TIntersectionsCameraWatcher, TModel3d, TModels3dRegistry, TSceneWrapper, TSpace, TSpaceConfig } from '@Anarchy/Engine';
 import { spaceService } from '@Anarchy/Engine';
 import { asRecord, isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TFromGuiActionEvent } from '@Showcases/GUI/models';
-import { showcasesTranslationService } from '@Showcases/i18n';
-import type { TFromGuiEvent } from '@Showcases/Shared';
+import type { TFromGuiActionEvent } from '@GUI/models';
+import { showcasesTranslationService } from '@i18n';
+import type { TFromGuiEvent } from '@Shared';
 import { filter, Subject } from 'rxjs';
 import { initGuiApp } from 'gui/src/main';
 import { initMenuApp } from 'menu/src/main';

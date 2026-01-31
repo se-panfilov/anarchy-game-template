@@ -1,7 +1,7 @@
-import { PlatformActions } from '@Showcases/Desktop/Constants';
-import type { THandleRequestDependencies } from '@Showcases/Desktop/Models';
-import { isPlatformAction } from '@Showcases/Desktop/Utils';
-import { isLoadDocPayload, isPartialSettings, isSettings, makeReleaseName } from '@Showcases/Shared';
+import { PlatformActions } from '@Desktop/Constants';
+import type { THandleRequestDependencies } from '@Desktop/Models';
+import { isPlatformAction } from '@Desktop/Utils';
+import { isLoadDocPayload, isPartialSettings, isSettings, makeReleaseName } from '@Shared';
 import type { IpcMainInvokeEvent } from 'electron';
 
 export async function handleAppRequest(

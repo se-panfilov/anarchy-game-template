@@ -1,6 +1,6 @@
 import type { TLocale } from '@Anarchy/i18n';
 import { isDefined, isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TVueTranslationService } from '@Showcases/i18n';
+import type { TVueTranslationService } from '@i18n';
 import type { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs';
 import type { ShallowRef } from 'vue';

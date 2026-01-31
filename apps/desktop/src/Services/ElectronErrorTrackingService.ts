@@ -1,7 +1,7 @@
 import type { TTrackingService } from '@Anarchy/Tracking';
 import { DesktopTrackingService } from '@Anarchy/Tracking/Services/DesktopTrackingService';
-import type { TElectronErrorTrackingService } from '@Showcases/Desktop/Models';
-import { makeDistName } from '@Showcases/Shared';
+import type { TElectronErrorTrackingService } from '@Desktop/Models';
+import { makeDistName } from '@Shared';
 
 export function ElectronErrorTrackingService(): TElectronErrorTrackingService {
   function start(packagesVersions: Record<string, string>): TTrackingService | undefined {

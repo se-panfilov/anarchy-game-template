@@ -1,4 +1,4 @@
-import type { TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TShowcasesGameSettings } from '@Shared';
 
 export type TSettingsService = Readonly<{
   applyAppSettings: (appSettings: TShowcasesGameSettings) => boolean;

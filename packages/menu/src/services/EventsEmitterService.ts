@@ -1,7 +1,7 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TEventsEmitterService } from '@Showcases/Menu/models';
-import type { TFromMenuEvent, TLoadDocPayload, TShowcasesGameSettings } from '@Showcases/Shared';
-import { FromMenuEvents } from '@Showcases/Shared';
+import type { TEventsEmitterService } from '@Menu/models';
+import type { TFromMenuEvent, TLoadDocPayload, TShowcasesGameSettings } from '@Shared';
+import { FromMenuEvents } from '@Shared';
 import type { Subject } from 'rxjs';
 import { toRaw } from 'vue';
 

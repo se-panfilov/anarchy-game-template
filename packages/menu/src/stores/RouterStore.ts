@@ -1,4 +1,4 @@
-import { Routes } from '@Showcases/Menu/constants';
+import { Routes } from '@Menu/constants';
 import { defineStore } from 'pinia';
 import type { ComputedRef } from 'vue';
 import { computed, reactive } from 'vue';

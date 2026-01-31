@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { TWriteable } from '@Anarchy/Shared/Utils';
-import Checkbox from '@Showcases/Menu/components/Checkbox.vue';
-import Navigation from '@Showcases/Menu/components/Navigation/Navigation.vue';
-import SettingsGroup from '@Showcases/Menu/components/SettingsGroup.vue';
-import View from '@Showcases/Menu/components/View.vue';
-import ViewActions from '@Showcases/Menu/components/ViewActions.vue';
-import ViewForm from '@Showcases/Menu/components/ViewForm.vue';
-import { useSettingsStore } from '@Showcases/Menu/stores/SettingsStore';
-import type { TGraphicsSettings } from '@Showcases/Shared';
+import Checkbox from '@Menu/components/Checkbox.vue';
+import Navigation from '@Menu/components/Navigation/Navigation.vue';
+import SettingsGroup from '@Menu/components/SettingsGroup.vue';
+import View from '@Menu/components/View.vue';
+import ViewActions from '@Menu/components/ViewActions.vue';
+import ViewForm from '@Menu/components/ViewForm.vue';
+import { useSettingsStore } from '@Menu/stores/SettingsStore';
+import type { TGraphicsSettings } from '@Shared';
 import { reactive } from 'vue';
 
 const emit = defineEmits(['reset', 'save']);

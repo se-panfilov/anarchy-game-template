@@ -10,7 +10,7 @@ import type {
   TReleaseName,
   TShowcaseAnonymizedGameSettings,
   TShowcasesGameSettings
-} from '@Showcases/Shared/Models';
+} from '@Shared/Models';
 
 export const makeReleaseName = (prefix: string, version: string): TReleaseName => `${prefix}@${version}`;
 

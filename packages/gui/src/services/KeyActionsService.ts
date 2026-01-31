@@ -1,11 +1,11 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import { GuiActionType } from '@Showcases/GUI/constants';
-import type { TGuiActionPayload, TKeyActionsService } from '@Showcases/GUI/models';
-import { eventsEmitterService } from '@Showcases/GUI/services/EventsEmitterService';
-import { guiPinia } from '@Showcases/GUI/stores/CreatePinia';
-import { useGuiButtonStore } from '@Showcases/GUI/stores/GuiButtonsStore';
-import { ShowcasesLocales, vueTranslationService } from '@Showcases/i18n';
-import { FromGuiActionEvents, ToGuiEvents } from '@Showcases/Shared';
+import { GuiActionType } from '@GUI/constants';
+import type { TGuiActionPayload, TKeyActionsService } from '@GUI/models';
+import { eventsEmitterService } from '@GUI/services/EventsEmitterService';
+import { guiPinia } from '@GUI/stores/CreatePinia';
+import { useGuiButtonStore } from '@GUI/stores/GuiButtonsStore';
+import { ShowcasesLocales, vueTranslationService } from '@i18n';
+import { FromGuiActionEvents, ToGuiEvents } from '@Shared';
 
 const { Attack, Defense, MiniMap, Settings, Inventory, Language } = GuiActionType;
 const { SettingsToggle } = FromGuiActionEvents;

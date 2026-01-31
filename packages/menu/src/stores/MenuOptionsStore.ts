@@ -1,5 +1,5 @@
 import type { TDeepWriteable } from '@Anarchy/Shared/Utils';
-import type { TMenuOptions } from '@Showcases/Shared';
+import type { TMenuOptions } from '@Shared';
 import { defineStore } from 'pinia';
 import { computed, reactive } from 'vue';
 

@@ -1,4 +1,4 @@
-import type { TFromMenuEvent, TToMenuEvent } from '@Showcases/Shared';
+import type { TFromMenuEvent, TToMenuEvent } from '@Shared';
 import type { Observable, Subject } from 'rxjs';
 
 import type { TAppService } from './TAppService';

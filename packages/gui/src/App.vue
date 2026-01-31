@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import './assets/style.scss';
 
-import { eventsListenerService } from '@Showcases/GUI/services';
-import Bottom from '@Showcases/GUI/views/Bottom.vue';
-import { vueTranslationService } from '@Showcases/i18n';
+import { eventsListenerService } from '@GUI/services';
+import Bottom from '@GUI/views/Bottom.vue';
+import { vueTranslationService } from '@i18n';
 import type { Subscription } from 'rxjs';
 import { onMounted, onUnmounted } from 'vue';
 

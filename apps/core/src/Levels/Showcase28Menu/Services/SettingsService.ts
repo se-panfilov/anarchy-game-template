@@ -1,4 +1,4 @@
-import type { TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TShowcasesGameSettings } from '@Shared';
 
 import type { TSettingsService } from '@/Levels/Showcase28Menu/Models';
 import { platformApiService } from '@/Services';

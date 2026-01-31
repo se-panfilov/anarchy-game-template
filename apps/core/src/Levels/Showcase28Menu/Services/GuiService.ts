@@ -1,6 +1,6 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TFromGuiEvent } from '@Showcases/Shared';
-import { FromGuiActionEvents, FromGuiEvents } from '@Showcases/Shared';
+import type { TFromGuiEvent } from '@Shared';
+import { FromGuiActionEvents, FromGuiEvents } from '@Shared';
 import type { TFromGuiActionEvent, TFromGuiActionPayload } from 'gui/src/models/TFromGuiActionEvent';
 
 import type { TGuiService, TMainMenuService } from '@/Levels/Showcase28Menu/Models';

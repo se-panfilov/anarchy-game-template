@@ -1,4 +1,4 @@
-import type { FromGuiActionEvents, FromGuiEvents } from '@Showcases/Shared';
+import type { FromGuiActionEvents, FromGuiEvents } from '@Shared';
 
 export type TFromGuiActionEvent = Readonly<{
   type: FromGuiEvents.Action;

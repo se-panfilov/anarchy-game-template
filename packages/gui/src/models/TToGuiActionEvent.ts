@@ -1,5 +1,5 @@
-import type { GuiActionType } from '@Showcases/GUI/constants';
-import type { TToGuiEvent } from '@Showcases/Shared';
+import type { GuiActionType } from '@GUI/constants';
+import type { TToGuiEvent } from '@Shared';
 
 export type TToGuiActionEvent = Omit<TToGuiEvent, 'payload'> &
   Readonly<{

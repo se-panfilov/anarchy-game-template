@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { isNotDefined } from '@Anarchy/Shared/Utils';
 import type { ElectronApplication, Page } from '@playwright/test';
 import { _electron as electron } from '@playwright/test';
-import { Architectures, DesktopAppPaths, Platforms } from '@Showcases/E2E/Constants';
-import type { TDesktopAppLaunchResult } from '@Showcases/E2E/Models';
+import { Architectures, DesktopAppPaths, Platforms } from '@E2E/Constants';
+import type { TDesktopAppLaunchResult } from '@E2E/Models';
 import fs from 'fs';
 
 const VIEWPORT = { width: 800, height: 600 };

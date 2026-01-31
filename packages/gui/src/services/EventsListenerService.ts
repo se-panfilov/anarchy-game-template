@@ -1,8 +1,8 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TEventsListenerService, TToGuiActionEvent } from '@Showcases/GUI/models';
-import { keyActionsService } from '@Showcases/GUI/services/KeyActionsService';
-import type { TToGuiEvent } from '@Showcases/Shared';
-import { ToGuiEvents } from '@Showcases/Shared';
+import type { TEventsListenerService, TToGuiActionEvent } from '@GUI/models';
+import { keyActionsService } from '@GUI/services/KeyActionsService';
+import type { TToGuiEvent } from '@Shared';
+import { ToGuiEvents } from '@Shared';
 import type { Observable, Subscription } from 'rxjs';
 
 function EventsListenerService(): TEventsListenerService {

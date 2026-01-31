@@ -1,4 +1,4 @@
-import type { TFromGuiEvent, TToGuiEvent } from '@Showcases/Shared';
+import type { TFromGuiEvent, TToGuiEvent } from '@Shared';
 import { Subject } from 'rxjs';
 
 export const fromGuiEventsBus$: Subject<TFromGuiEvent> = new Subject<TFromGuiEvent>();

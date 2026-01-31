@@ -1,9 +1,9 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import { createFromGuiActionEvent } from '@Showcases/GUI/events';
-import type { TEventsEmitterService } from '@Showcases/GUI/models';
-import type { TFromGuiActionPayload } from '@Showcases/GUI/models/TFromGuiActionEvent';
-import type { TFromGuiEvent } from '@Showcases/Shared';
-import { FromGuiEvents } from '@Showcases/Shared';
+import { createFromGuiActionEvent } from '@GUI/events';
+import type { TEventsEmitterService } from '@GUI/models';
+import type { TFromGuiActionPayload } from '@GUI/models/TFromGuiActionEvent';
+import type { TFromGuiEvent } from '@Shared';
+import { FromGuiEvents } from '@Shared';
 import type { Subject } from 'rxjs';
 
 const { CloseGui } = FromGuiEvents;

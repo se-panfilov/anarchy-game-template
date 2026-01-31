@@ -1,6 +1,6 @@
 import type { TGameKey } from '@Anarchy/Engine';
 import { KeyCode, MouseButtonValue } from '@Anarchy/Engine';
-import { GuiActionType } from '@Showcases/GUI/constants/GuiActionType';
+import { GuiActionType } from '@GUI/constants/GuiActionType';
 
 const { Attack, MiniMap, Defense, Settings, Inventory, Language } = GuiActionType;
 

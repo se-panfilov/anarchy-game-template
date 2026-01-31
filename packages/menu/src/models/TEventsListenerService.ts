@@ -1,4 +1,4 @@
-import type { TToMenuEvent } from '@Showcases/Shared';
+import type { TToMenuEvent } from '@Shared';
 import type { Observable, Subscription } from 'rxjs';
 
 export type TEventsListenerService = Readonly<{

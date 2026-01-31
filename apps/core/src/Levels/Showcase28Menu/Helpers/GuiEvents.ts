@@ -1,7 +1,7 @@
 import type { TKeyboardService, TKeyEvent, TMouseService } from '@Anarchy/Engine';
 import { hasKey, isPressEvent, KeyCode } from '@Anarchy/Engine';
 import { isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
-import type { TToGuiEvent } from '@Showcases/Shared';
+import type { TToGuiEvent } from '@Shared';
 import type { Subject } from 'rxjs';
 import { GuiActionType } from 'gui/src/constants';
 import { createToGuiActionEvent } from 'gui/src/events';

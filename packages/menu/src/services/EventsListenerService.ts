@@ -1,10 +1,10 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TEventsListenerService } from '@Showcases/Menu/models';
-import { menuPinia } from '@Showcases/Menu/stores/CreatePinia';
-import { useLegalDocsStore } from '@Showcases/Menu/stores/LegalDocsStore';
-import { useSettingsStore } from '@Showcases/Menu/stores/SettingsStore';
-import type { TToMenuEvent } from '@Showcases/Shared';
-import { isLoadDoc, isSettings, ToMenuEvents } from '@Showcases/Shared';
+import type { TEventsListenerService } from '@Menu/models';
+import { menuPinia } from '@Menu/stores/CreatePinia';
+import { useLegalDocsStore } from '@Menu/stores/LegalDocsStore';
+import { useSettingsStore } from '@Menu/stores/SettingsStore';
+import type { TToMenuEvent } from '@Shared';
+import { isLoadDoc, isSettings, ToMenuEvents } from '@Shared';
 import type { Observable, Subscription } from 'rxjs';
 
 function EventsListenerService(): TEventsListenerService {

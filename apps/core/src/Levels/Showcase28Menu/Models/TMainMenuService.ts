@@ -1,4 +1,4 @@
-import type { TLegalDoc, TLoadDocPayload, TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TLegalDoc, TLoadDocPayload, TShowcasesGameSettings } from '@Shared';
 
 export type TMainMenuService = Readonly<{
   closeApp: () => void;

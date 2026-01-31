@@ -1,11 +1,11 @@
 import { isDefined } from '@Anarchy/Shared/Utils';
-import type { PlatformActions } from '@Showcases/Desktop/Constants';
-import { appBeforeQuitHandler, appCrashHandler, appWindowAllClosedHandler, windowNavigateHandler, windowReadyToShow, windowSecondInstanceHandler } from '@Showcases/Desktop/EventHandlers';
-import type { TDesktopAppConfig, TDesktopAppService, TDocsService, TFilesService, TSettingsService, TWindowService } from '@Showcases/Desktop/Models';
-import { DesktopAppService, DocsService, ElectronErrorTrackingService, FilesService, handleAppRequest, SettingsService, WindowService } from '@Showcases/Desktop/Services';
-import { getWindowSizeSafe, hideMenuBar, noZoom, turnOffMenuBarAndHotkeys } from '@Showcases/Desktop/Utils';
-import type { TResolution, TShowcasesGameSettings } from '@Showcases/Shared';
-import { platformApiChannel } from '@Showcases/Shared';
+import type { PlatformActions } from '@Desktop/Constants';
+import { appBeforeQuitHandler, appCrashHandler, appWindowAllClosedHandler, windowNavigateHandler, windowReadyToShow, windowSecondInstanceHandler } from '@Desktop/EventHandlers';
+import type { TDesktopAppConfig, TDesktopAppService, TDocsService, TFilesService, TSettingsService, TWindowService } from '@Desktop/Models';
+import { DesktopAppService, DocsService, ElectronErrorTrackingService, FilesService, handleAppRequest, SettingsService, WindowService } from '@Desktop/Services';
+import { getWindowSizeSafe, hideMenuBar, noZoom, turnOffMenuBarAndHotkeys } from '@Desktop/Utils';
+import type { TResolution, TShowcasesGameSettings } from '@Shared';
+import { platformApiChannel } from '@Shared';
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron';
 import { app, ipcMain } from 'electron';
 

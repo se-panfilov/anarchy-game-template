@@ -1,4 +1,4 @@
-import type { TNavOption } from '@Showcases/Shared';
+import type { TNavOption } from '@Shared';
 import type { ShallowRef } from 'vue';
 
 export type TVueNavOption = Omit<TNavOption, 'label'> & {

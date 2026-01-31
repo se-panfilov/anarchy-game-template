@@ -1,8 +1,8 @@
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import { AllowedAppFolders } from '@Showcases/Desktop/Constants';
-import type { TDocsService, TFilesService } from '@Showcases/Desktop/Models';
-import type { TLegalDoc, TLoadDocPayload } from '@Showcases/Shared';
-import { AllowedLegalDocNames, sanitizeMarkDown } from '@Showcases/Shared';
+import { AllowedAppFolders } from '@Desktop/Constants';
+import type { TDocsService, TFilesService } from '@Desktop/Models';
+import type { TLegalDoc, TLoadDocPayload } from '@Shared';
+import { AllowedLegalDocNames, sanitizeMarkDown } from '@Shared';
 
 export function DocsService(filesService: TFilesService): TDocsService {
   async function get({ name }: TLoadDocPayload): Promise<TLegalDoc> {

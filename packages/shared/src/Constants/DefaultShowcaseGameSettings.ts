@@ -1,5 +1,5 @@
-import { InitialLocale } from '@Showcases/i18n';
-import type { TShowcasesGameSettings } from '@Showcases/Shared/Models';
+import { InitialLocale } from '@i18n';
+import type { TShowcasesGameSettings } from '@Shared/Models';
 
 export const DefaultShowcaseGameSettings: TShowcasesGameSettings = {
   graphics: {

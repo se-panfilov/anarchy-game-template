@@ -1,6 +1,6 @@
-import { AllowedAppFolders } from '@Showcases/Desktop/Constants';
-import type { TDesktopAppService, TDesktopServiceDependencies } from '@Showcases/Desktop/Models';
-import { hasJsonStructure } from '@Showcases/Shared';
+import { AllowedAppFolders } from '@Desktop/Constants';
+import type { TDesktopAppService, TDesktopServiceDependencies } from '@Desktop/Models';
+import { hasJsonStructure } from '@Shared';
 import type { App } from 'electron';
 import { BrowserWindow } from 'electron';
 

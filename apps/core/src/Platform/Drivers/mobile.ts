@@ -1,7 +1,7 @@
 import type { TLocaleId } from '@Anarchy/i18n';
 import type { TBrowserInfo } from '@Anarchy/Shared/Models';
-import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Showcases/Shared';
-import { makeDistName, makeReleaseName } from '@Showcases/Shared';
+import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Shared';
+import { makeDistName, makeReleaseName } from '@Shared';
 
 import type { TPlatformDriver } from '@/Models';
 

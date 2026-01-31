@@ -1,10 +1,10 @@
 import type { TOptional, TWriteable } from '@Anarchy/Shared/Utils';
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TShowcaseLocaleIds } from '@Showcases/i18n';
-import { menuPinia } from '@Showcases/Menu/stores/CreatePinia';
-import { useSettingsStore } from '@Showcases/Menu/stores/SettingsStore';
-import type { TLegalDoc } from '@Showcases/Shared';
-import { AllowedLegalDocNames } from '@Showcases/Shared';
+import type { TShowcaseLocaleIds } from '@i18n';
+import { menuPinia } from '@Menu/stores/CreatePinia';
+import { useSettingsStore } from '@Menu/stores/SettingsStore';
+import type { TLegalDoc } from '@Shared';
+import { AllowedLegalDocNames } from '@Shared';
 import { defineStore } from 'pinia';
 import type { ComputedRef } from 'vue';
 import { computed, reactive } from 'vue';

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ActionButton from '@Showcases/GUI/components/ActionButton.vue';
-import ValueBar from '@Showcases/GUI/components/ValueBar.vue';
-import type { TGuiButtonState } from '@Showcases/GUI/models';
-import { keyActionsService } from '@Showcases/GUI/services';
-import { useGuiButtonStore } from '@Showcases/GUI/stores/GuiButtonsStore';
+import ActionButton from '@GUI/components/ActionButton.vue';
+import ValueBar from '@GUI/components/ValueBar.vue';
+import type { TGuiButtonState } from '@GUI/models';
+import { keyActionsService } from '@GUI/services';
+import { useGuiButtonStore } from '@GUI/stores/GuiButtonsStore';
 import { Heart, Zap } from 'lucide-vue-next';
 
 const buttons = useGuiButtonStore().buttonsList.filter((button) => button.isVisible);

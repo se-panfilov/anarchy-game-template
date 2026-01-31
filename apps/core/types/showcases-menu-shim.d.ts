@@ -1,4 +1,4 @@
-import type { TFromMenuEvent, TMenuOptions, TToMenuEvent } from '@Showcases/Shared';
+import type { TFromMenuEvent, TMenuOptions, TToMenuEvent } from '@Shared';
 import type { Observable, Subject } from 'rxjs';
 
 //Suppress TS check for menu app (assume it's always "any")

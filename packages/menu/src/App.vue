@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import './assets/style.scss';
 
-import { vueTranslationService } from '@Showcases/i18n';
-import RouterView from '@Showcases/Menu/components/RouterView.vue';
-import { eventsEmitterService, eventsListenerService } from '@Showcases/Menu/services';
-import { useSettingsStore } from '@Showcases/Menu/stores/SettingsStore';
+import { vueTranslationService } from '@i18n';
+import RouterView from '@Menu/components/RouterView.vue';
+import { eventsEmitterService, eventsListenerService } from '@Menu/services';
+import { useSettingsStore } from '@Menu/stores/SettingsStore';
 import type { Subscription } from 'rxjs';
 import { onMounted, onUnmounted } from 'vue';
 

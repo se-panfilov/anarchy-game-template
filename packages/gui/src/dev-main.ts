@@ -1,5 +1,5 @@
-import { initGuiApp } from '@Showcases/GUI/main';
-import type { TFromGuiEvent, TToGuiEvent } from '@Showcases/Shared';
+import { initGuiApp } from '@GUI/main';
+import type { TFromGuiEvent, TToGuiEvent } from '@Shared';
 import { Subject } from 'rxjs';
 
 const fromGuiBus$: Subject<TFromGuiEvent> = new Subject<TFromGuiEvent>();

@@ -1,5 +1,5 @@
 import type { TDeepPartial } from '@Anarchy/Shared/Utils';
-import type { TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TShowcasesGameSettings } from '@Shared';
 import type { Dexie, EntityTable } from 'dexie';
 
 export type TSettingsWebDbService = Readonly<{

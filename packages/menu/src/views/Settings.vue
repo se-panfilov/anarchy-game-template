@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Navigation from '@Showcases/Menu/components/Navigation/Navigation.vue';
-import PageTitle from '@Showcases/Menu/components/PageTitle.vue';
-import { Routes } from '@Showcases/Menu/constants';
-import type { TVueNavOption } from '@Showcases/Menu/models';
-import { useRouterStore } from '@Showcases/Menu/stores/RouterStore';
+import Navigation from '@Menu/components/Navigation/Navigation.vue';
+import PageTitle from '@Menu/components/PageTitle.vue';
+import { Routes } from '@Menu/constants';
+import type { TVueNavOption } from '@Menu/models';
+import { useRouterStore } from '@Menu/stores/RouterStore';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();

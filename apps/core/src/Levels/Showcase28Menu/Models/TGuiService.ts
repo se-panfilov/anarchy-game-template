@@ -1,5 +1,5 @@
-import type { TFromGuiActionEvent, TFromGuiActionPayload } from '@Showcases/GUI/models';
-import type { TFromGuiEvent } from '@Showcases/Shared';
+import type { TFromGuiActionEvent, TFromGuiActionPayload } from '@GUI/models';
+import type { TFromGuiEvent } from '@Shared';
 
 export type TGuiService = Readonly<{
   closeGui: () => void | never;

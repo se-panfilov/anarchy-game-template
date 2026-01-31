@@ -1,12 +1,12 @@
 import type { TLocale, TLocaleId } from '@Anarchy/i18n';
 import { getLocaleByLocaleId, getPreferLocaleId } from '@Anarchy/i18n';
 import { isDefined, patchObject } from '@Anarchy/Shared/Utils';
-import { AllowedSystemFolders } from '@Showcases/Desktop/Constants';
-import type { TSettingsService, TSettingsServiceDependencies } from '@Showcases/Desktop/Models';
-import { detectResolution } from '@Showcases/Desktop/Utils';
-import { ShowcasesFallbackLocale, ShowcasesLocales } from '@Showcases/i18n';
-import type { TResolution, TShowcasesGameSettings } from '@Showcases/Shared';
-import { DefaultShowcaseGameSettings, isSettings } from '@Showcases/Shared';
+import { AllowedSystemFolders } from '@Desktop/Constants';
+import type { TSettingsService, TSettingsServiceDependencies } from '@Desktop/Models';
+import { detectResolution } from '@Desktop/Utils';
+import { ShowcasesFallbackLocale, ShowcasesLocales } from '@i18n';
+import type { TResolution, TShowcasesGameSettings } from '@Shared';
+import { DefaultShowcaseGameSettings, isSettings } from '@Shared';
 import type { App } from 'electron';
 
 export function SettingsService(app: App, { filesService, windowService }: TSettingsServiceDependencies): TSettingsService {

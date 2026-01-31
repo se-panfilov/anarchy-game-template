@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import { NavDirection, NavStyle } from '@Showcases/Menu/components/Navigation/constants';
-import type { TVueNavOption } from '@Showcases/Menu/models';
-import { useRouterStore } from '@Showcases/Menu/stores/RouterStore';
+import { NavDirection, NavStyle } from '@Menu/components/Navigation/constants';
+import type { TVueNavOption } from '@Menu/models';
+import { useRouterStore } from '@Menu/stores/RouterStore';
 import type { ComputedRef } from 'vue';
 import { computed } from 'vue';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import { sanitizeMarkDown } from '@Showcases/Shared';
+import { sanitizeMarkDown } from '@Shared';
 import { reactive, watch } from 'vue';
 
 const props = defineProps<{

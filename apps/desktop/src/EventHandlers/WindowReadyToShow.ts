@@ -1,5 +1,5 @@
-import type { TWindowService } from '@Showcases/Desktop/Models';
-import type { TShowcasesGameSettings } from '@Showcases/Shared';
+import type { TWindowService } from '@Desktop/Models';
+import type { TShowcasesGameSettings } from '@Shared';
 import type { BrowserWindow } from 'electron';
 
 export function windowReadyToShow(win: BrowserWindow, settings: TShowcasesGameSettings, windowService: TWindowService): void {

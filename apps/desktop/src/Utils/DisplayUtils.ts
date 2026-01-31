@@ -1,5 +1,5 @@
 import { clamp } from '@Anarchy/Shared/Utils';
-import type { TResolution } from '@Showcases/Shared';
+import type { TResolution } from '@Shared';
 import type { Display, Size } from 'electron';
 import { screen } from 'electron';
 

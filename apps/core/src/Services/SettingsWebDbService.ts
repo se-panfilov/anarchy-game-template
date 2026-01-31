@@ -1,7 +1,7 @@
 import type { TDeepPartial } from '@Anarchy/Shared/Utils';
 import { isNotDefined, patchObject } from '@Anarchy/Shared/Utils';
-import type { TShowcasesGameSettings } from '@Showcases/Shared';
-import { isPartialSettings } from '@Showcases/Shared';
+import type { TShowcasesGameSettings } from '@Shared';
+import { isPartialSettings } from '@Shared';
 
 import { SettingsId, SettingsWebDbVersion } from '@/Constants';
 import type { TSettingsWebDb, TSettingsWebDbService, TWebDbService } from '@/Models';

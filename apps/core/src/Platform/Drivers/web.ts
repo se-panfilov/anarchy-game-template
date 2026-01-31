@@ -2,9 +2,9 @@ import type { TLocale, TLocaleId } from '@Anarchy/i18n';
 import { getLocaleByLocaleId, getPreferLocaleId, stringToLocaleId } from '@Anarchy/i18n';
 import { buildPublicUrl, isDefined } from '@Anarchy/Shared/Utils';
 import { getBrowserInfo } from '@Anarchy/Shared/Utils/DetectUtils';
-import { ShowcasesFallbackLocale, ShowcasesLocales } from '@Showcases/i18n';
-import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Showcases/Shared';
-import { DefaultShowcaseGameSettings, makeDistName, makeReleaseName, sanitizeMarkDown } from '@Showcases/Shared';
+import { ShowcasesFallbackLocale, ShowcasesLocales } from '@i18n';
+import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Shared';
+import { DefaultShowcaseGameSettings, makeDistName, makeReleaseName, sanitizeMarkDown } from '@Shared';
 
 import type { TPlatformDriver } from '@/Models';
 import { settingsWebDbService } from '@/Services/SettingsWebDbService';
