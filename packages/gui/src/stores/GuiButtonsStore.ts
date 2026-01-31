@@ -1,5 +1,5 @@
 import type { MouseButtonValue, TGameKey } from '@Anarchy/Engine';
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { BUTTON_KEYS, GuiActionType } from '@GUI/constants';
 import type { TGuiButtonState, TGuiButtonStoreState } from '@GUI/models';
 import { Backpack, Languages, Map as MapIcon, Settings as SettingsIcon, Shield, Sword } from 'lucide-vue-next';

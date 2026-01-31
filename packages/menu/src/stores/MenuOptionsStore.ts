@@ -1,4 +1,4 @@
-import type { TDeepWriteable } from '@Anarchy/Shared/Utils';
+import type { TDeepWriteable } from '@hellpig/anarchy-shared/Utils';
 import type { TMenuOptions } from '@Shared';
 import { defineStore } from 'pinia';
 import { computed, reactive } from 'vue';

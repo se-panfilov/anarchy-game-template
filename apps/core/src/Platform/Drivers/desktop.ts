@@ -1,4 +1,4 @@
-import type { TLocaleId } from '@Anarchy/i18n';
+import type { TLocaleId } from '@hellpig/anarchy-i18n';
 import type { TBrowserInfo } from '@Anarchy/Shared/Models';
 import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TGameSettings } from '@Shared';
 import { platformApiName } from '@Shared';

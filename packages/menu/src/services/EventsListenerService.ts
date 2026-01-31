@@ -1,4 +1,4 @@
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TEventsListenerService } from '@Menu/models';
 import { menuPinia } from '@Menu/stores/CreatePinia';
 import { useLegalDocsStore } from '@Menu/stores/LegalDocsStore';

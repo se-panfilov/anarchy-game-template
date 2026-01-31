@@ -1,4 +1,4 @@
-import { isDefined } from '@Anarchy/Shared/Utils';
+import { isDefined } from '@hellpig/anarchy-shared/Utils';
 import type { PlatformActions } from '@Desktop/Constants';
 import { appBeforeQuitHandler, appCrashHandler, appWindowAllClosedHandler, windowNavigateHandler, windowReadyToShow, windowSecondInstanceHandler } from '@Desktop/EventHandlers';
 import type { TDesktopAppConfig, TDesktopAppService, TDocsService, TFilesService, TSettingsService, TWindowService } from '@Desktop/Models';

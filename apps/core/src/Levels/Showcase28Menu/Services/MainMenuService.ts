@@ -1,4 +1,4 @@
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TLegalDoc, TLoadDocPayload, TGameSettings } from '@Shared';
 
 import type { TMainMenuService } from '@/Levels/Showcase28Menu/Models';

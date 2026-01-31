@@ -1,5 +1,5 @@
-import type { TOptional, TWriteable } from '@Anarchy/Shared/Utils';
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import type { TOptional, TWriteable } from '@hellpig/anarchy-shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TGameLocaleIds } from '@I18N';
 import { menuPinia } from '@Menu/stores/CreatePinia';
 import { useSettingsStore } from '@Menu/stores/SettingsStore';

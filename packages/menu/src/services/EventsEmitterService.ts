@@ -1,4 +1,4 @@
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TEventsEmitterService } from '@Menu/models';
 import type { TFromMenuEvent, TLoadDocPayload, TGameSettings } from '@Shared';
 import { FromMenuEvents } from '@Shared';

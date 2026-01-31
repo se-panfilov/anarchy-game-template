@@ -16,7 +16,7 @@ import type {
   TSpaceServices
 } from '@Anarchy/Engine';
 import { DebugAudioRenderer, isAudio3dWrapper, spaceService } from '@Anarchy/Engine';
-import { asRecord, isDefined, isNotDefined } from '@Anarchy/Shared/Utils';
+import { asRecord, isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import GUI from 'lil-gui';
 import { distinctUntilChanged } from 'rxjs';
 import type { AnimationAction, AudioListener } from 'three';

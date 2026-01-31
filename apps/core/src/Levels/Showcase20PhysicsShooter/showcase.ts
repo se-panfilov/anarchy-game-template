@@ -15,7 +15,7 @@ import type {
 } from '@Anarchy/Engine';
 import { KeyCode, metersPerSecond, milliseconds, onKey, spaceService } from '@Anarchy/Engine';
 import { radians } from '@Anarchy/Engine/Measurements/Utils';
-import { asRecord, isDefined, isNotDefined } from '@Anarchy/Shared/Utils';
+import { asRecord, isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { Intersection } from 'three';
 import { Vector3 } from 'three';
 import type { Line2 } from 'three/examples/jsm/lines/Line2';

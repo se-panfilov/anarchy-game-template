@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TGameLocaleIds } from '@I18N';
 import MdRenderer from '@Menu/components/MdRenderer.vue';
 import Navigation from '@Menu/components/Navigation/Navigation.vue';

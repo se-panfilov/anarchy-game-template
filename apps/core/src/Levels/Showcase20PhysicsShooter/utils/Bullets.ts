@@ -22,7 +22,7 @@ import type {
 } from '@Anarchy/Engine';
 import { getTags, LoopUpdatePriority, MaterialType, metersPerSecond, mpsSpeed, PrimitiveModel3dType, TransformAgent } from '@Anarchy/Engine';
 import { meters } from '@Anarchy/Engine/Measurements/Utils';
-import { isDefined, isNotDefined } from '@Anarchy/Shared/Utils';
+import { isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { RigidBody } from '@dimforge/rapier3d';
 import { nanoid } from 'nanoid';
 import type { Observable } from 'rxjs';

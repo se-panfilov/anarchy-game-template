@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { NavDirection, NavStyle } from '@Menu/components/Navigation/constants';
 import type { TVueNavOption } from '@Menu/models';
 import { useRouterStore } from '@Menu/stores/RouterStore';

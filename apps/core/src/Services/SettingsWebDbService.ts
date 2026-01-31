@@ -1,5 +1,5 @@
-import type { TDeepPartial } from '@Anarchy/Shared/Utils';
-import { isNotDefined, patchObject } from '@Anarchy/Shared/Utils';
+import type { TDeepPartial } from '@hellpig/anarchy-shared/Utils';
+import { isNotDefined, patchObject } from '@hellpig/anarchy-shared/Utils';
 import type { TGameSettings } from '@Shared';
 import { isPartialSettings } from '@Shared';
 

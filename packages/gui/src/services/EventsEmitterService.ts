@@ -1,4 +1,4 @@
-import { isNotDefined } from '@Anarchy/Shared/Utils';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { createFromGuiActionEvent } from '@GUI/events';
 import type { TEventsEmitterService } from '@GUI/models';
 import type { TFromGuiActionPayload } from '@GUI/models/TFromGuiActionEvent';

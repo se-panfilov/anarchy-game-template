@@ -1,5 +1,5 @@
-import type { TLocale, TLocaleId } from '@Anarchy/i18n';
-import type { TDeepWriteable } from '@Anarchy/Shared/Utils';
+import type { TLocale, TLocaleId } from '@hellpig/anarchy-i18n';
+import type { TDeepWriteable } from '@hellpig/anarchy-shared/Utils';
 import type { TGameLocaleIds } from '@I18N';
 import { GameLocales, vueTranslationService } from '@I18N';
 import type { TAudioSettings, TDebugSettings, TGraphicsSettings, TInternalSettings, TLocalizationSettings, TGameSettings } from '@Shared';

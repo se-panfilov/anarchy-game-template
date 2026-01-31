@@ -1,4 +1,4 @@
-import { isAllNotDefined, isDefined, isNotDefined, isObject, isString } from '@Anarchy/Shared/Utils';
+import { isAllNotDefined, isDefined, isNotDefined, isObject, isString } from '@hellpig/anarchy-shared/Utils';
 import { GameLocales } from '@I18N/Constants';
 import type { TLegalDoc, TLoadDocPayload, TGameSettings } from '@Shared/Models';
 

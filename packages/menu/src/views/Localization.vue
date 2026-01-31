@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TLocale } from '@Anarchy/i18n';
+import type { TLocale } from '@hellpig/anarchy-i18n';
 import type { TGameLocaleIds } from '@I18N';
 import { GameLocales } from '@I18N';
 import Dropdown from '@Menu/components/Dropdown.vue';
