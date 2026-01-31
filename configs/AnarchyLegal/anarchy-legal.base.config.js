@@ -48,7 +48,7 @@ export default {
       DPO_EMAIL: 'none',
       EU_REPRESENTATIVE_CONTACT: 'none',
       CHINA_REPRESENTATIVE_CONTACT: 'none',
-      ACCESSIBILITY_CONTACT: 'pnf036+anarchy@gmail.com',
+      ACCESSIBILITY_CONTACT: 'XXX_ACCESSIBILITY_EMAIL',
 
       //SECURITY
       HAS_OFFICIAL_CHANNELS_LIST: false,

@@ -18,6 +18,7 @@ Replace project's placeholders with your details.
 - `XXX_PRIVACY_EMAIL` - the email address for privacy-related contacts
 - `XXX_SECURITY_EMAIL` - the email address for security-related contacts
 - `XXX_SUPPORT_EMAIL` - the email address for support-related contacts
+- `XXX_ACCESSIBILITY_EMAIL` - the email address for accessibility-related contacts
 - `XXX_LEGAL_EMAIL` - the email address for legal-related contacts
 - `XXX_GOVERNING_LAW_COUNTRY` - the country whose laws govern the EULA
 - `XXX_GOVERNING_VENUE` - the venue (city, state/province) whose laws govern the EULA
