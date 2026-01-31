@@ -3,14 +3,6 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["apps/core/src/*"],
-      "@Anarchy/Engine": ["packages/anarchy-engine/src/index.ts"],
-      "@Anarchy/Engine/*": ["packages/anarchy-engine/src/*"],
-      "@Anarchy/Shared": ["packages/anarchy-shared/src/index.ts"],
-      "@Anarchy/Shared/*": ["packages/anarchy-shared/src/*"],
-      "@Anarchy/Tracking": ["packages/anarchy-tracking/src/index.ts"],
-      "@Anarchy/Tracking/*": ["packages/anarchy-tracking/src/*"],
-      "@Anarchy/i18n": ["packages/anarchy-i18n/src/index.ts"],
-      "@Anarchy/i18n/*": ["packages/anarchy-i18n/src/*"],
       "@Public/*": ["apps/core/public/*"],
       "@Showcases/E2E": ["apps/e2e/src/index.ts"],
       "@Showcases/E2E/*": ["apps/e2e/src/*"],
