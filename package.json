@@ -1,5 +1,5 @@
 {
-  "name": "anarchy-monorepo",
+  "name": "monorepo",
   "author": "XXX_AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
@@ -16,11 +16,9 @@
     "apps/*",
     "packages/*"
   ],
-  "description": "Anarchy Monorepo - an infrastructure around Anarchy-Engine.",
+  "description": "Monorepo of the 'XXX_GAME_NAME'",
   "keywords": [
-    "anarchy",
-    "hellpig",
-    "monorepo"
+    "XXX_GAME_NAME"
   ],
   "license": "MIT",
   "scripts": {

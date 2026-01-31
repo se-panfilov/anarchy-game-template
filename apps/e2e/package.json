@@ -14,7 +14,7 @@
     "url": "XXX_BUGS_URL"
   },
   "license": "MIT",
-  "description": "Anarchy Showcase-E2E  – end-to-end tests for Anarchy Showcases.",
+  "description": "E2E tests app for 'XXX_GAME_NAME'",
   "keywords": [
     "XXX_GAME_TECH_NAME",
     "XXX_GAME_TECH_NAME-e2e"
