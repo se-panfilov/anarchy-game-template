@@ -16,7 +16,7 @@ on:
       workspace:
         type: string
         required: false
-        description: 'Folder key if mode=one (e.g. anarchy-engine)'
+        description: 'Folder key if mode=one (e.g. core)'
       dryRun:
         type: boolean
         required: true
