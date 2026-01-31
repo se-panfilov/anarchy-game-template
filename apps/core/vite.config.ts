@@ -11,16 +11,16 @@ import vue from '@vitejs/plugin-vue';
 // @ts-expect-error: no type declarations
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { version } from './package.json';
-import { version as engineVersion } from '../../packages/anarchy-engine/package.json';
-import { version as anarchySharedVersion } from '../../packages/anarchy-shared/package.json';
-import { version as anarchyI18nVersion } from '../../packages/anarchy-i18n/package.json';
-import { version as anarchyLegalVersion } from '../../packages/anarchy-legal/package.json';
-import { version as anarchyTrackingVersion } from '../../packages/anarchy-tracking/package.json';
-import { version as showcasesI18nVersion } from '../../packages/i18n/package.json';
-import { version as showcasesMenuVersion } from '../../packages/menu/package.json';
-import { version as showcasesGuiVersion } from '../../packages/gui/package.json';
-import { version as showcasesSharedVersion } from '../../packages/shared/package.json';
-import { emitDefineJson } from '../../packages/anarchy-shared/src/Plugins/EmitDefineVitePlugin';
+import { version as i18nVersion } from '../../packages/i18n/package.json';
+import { version as menuVersion } from '../../packages/menu/package.json';
+import { version as guiVersion } from '../../packages/gui/package.json';
+import { version as sharedVersion } from '../../packages/shared/package.json';
+import { version as engineVersion } from '@hellpig/anarchy-engine/package.json';
+import { version as anarchySharedVersion } from '@hellpig/anarchy-shared/package.json';
+import { version as anarchyI18nVersion } from '@hellpig/anarchy-i18n/package.json';
+import { version as anarchyLegalVersion } from '@hellpig/anarchy-legal/package.json';
+import { version as anarchyTrackingVersion }  from '@hellpig/anarchy-tracking/package.json';
+import { emitDefineJson } from '@hellpig/anarchy-shared/Plugins/EmitDefineVitePlugin';
 import csp from 'vite-plugin-csp-guard';
 import { BASE_CSP, DESKTOP_CSP, TCspRulles } from '../../configs/Security/Csp/CspConfig';
 
@@ -44,10 +44,10 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
     'anarchy-i18n': anarchyI18nVersion,
     'anarchy-legal': anarchyLegalVersion,
     'anarchy-tracking': anarchyTrackingVersion,
-    i18n: showcasesI18nVersion,
-    menu: showcasesMenuVersion,
-    gui: showcasesGuiVersion,
-    shared: showcasesSharedVersion
+    i18n: i18nVersion,
+    menu: menuVersion,
+    gui: guiVersion,
+    shared: sharedVersion
   };
 
   function getCspRules(platform: string): TCspRulles {
@@ -98,6 +98,11 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
 
       wasm(),
       dts({
+        entryRoot: 'src',
+        outDir: 'dist',
+        tsconfigPath: path.resolve(__dirname, 'tsconfig.json'),
+        // Important: creates dist/index.d.ts automatically when you have src/index.ts
+        insertTypesEntry: true,
         exclude: ['**/*.spec.ts', '**/*.test.ts', 'vite.config.ts']
       }),
       //Compression is only for web builds (desktop and mobile cannot unpack .br/.gz files)
@@ -132,9 +137,12 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
         // external: (id: string): boolean => id.endsWith('.spec.ts') || id.endsWith('.test.ts'),
         //  external: ['three', 'rxjs', '@dimforge/rapier3d'], — If you want to exclude some dependencies from the bundle
         output: {
-          // manualChunks: {
-          // anarchy-engine: ['@hellpig/anarchy-engine']
-          // },
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+
+          entryFileNames: `[name].js`,
+          chunkFileNames: `chunks/[name]-[hash].js`,
+          assetFileNames: `assets/[name]-[hash][extname]`,
           inlineDynamicImports: false //extract workers to separate bundle
         },
         plugins: [visualizer({ open: false })]

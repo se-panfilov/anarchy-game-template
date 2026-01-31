@@ -54,9 +54,6 @@
     "unit:watch": "vitest"
   },
   "dependencies": {
-    "@hellpig/anarchy-engine": "*",
-    "@hellpig/anarchy-i18n": "*",
-    "@hellpig/anarchy-shared": "*",
     "marked": "17.0.1",
     "pinia": "3.0.4",
     "rxjs": "7.8.2",

@@ -7,7 +7,7 @@
       "@I18N": ["packages/i18n/src/index.ts"],
       "@I18N/*": ["packages/i18n/src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./node_modules", "../../node_modules/@types", "../../node_modules", "./src/Engine/Types", "./types"]
+    "typeRoots": ["./node_modules/@types", "./node_modules", "../../node_modules/@types", "../../node_modules", "./types"]
   },
   "include": ["src", "vite.config.ts", "types"]
 }

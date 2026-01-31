@@ -51,9 +51,6 @@
     "unit:watch": "vitest"
   },
   "dependencies": {
-    "@hellpig/anarchy-engine": "*",
-    "@hellpig/anarchy-i18n": "*",
-    "@hellpig/anarchy-shared": "*",
     "sort-json": "2.0.1",
     "vue-i18n": "11.2.7"
   }
