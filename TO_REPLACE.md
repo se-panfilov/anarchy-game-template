@@ -41,3 +41,5 @@ anarchy
 anarchy-monorepo
 VITE_RELEASE_NAME_PREFIX
 VITE_SENTRY_DSN
+"repo": "anarchy-engine",
+anarchy-engine

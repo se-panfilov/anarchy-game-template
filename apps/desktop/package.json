@@ -93,7 +93,6 @@
     "ts:check:watch": "tsc --watch --noEmit"
   },
   "dependencies": {
-    "@hellpig/anarchy-shared": "*",
     "core": "*",
     "shared": "*"
   },

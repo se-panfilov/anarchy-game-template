@@ -1,11 +1,11 @@
-export const ShowcasesSupportedPlatforms = {
+export const SupportedPlatforms = {
   Web: 'modern desktop/mobile browsers with **WebGL 2** support (Chromium-based, Firefox, Safari or equivalent)',
   Desktop:
     'Windows 10/11 (64-bit), macOS 12+ (Intel/Apple Silicon), and mainstream Linux x86_64 distributions (e.g., Ubuntu 20.04+), subject to GPU/driver support for WebGL 2 / hardware acceleration',
   Mobile: 'Android 8.0+ and iOS/iPadOS 14+ devices with system **WebGL 2** support in the WebView/runtime'
 };
 
-export const ShowcasesSystemRequirements = {
+export const SystemRequirements = {
   Web: {
     Minimum: `- **Browser:** current-generation browser with WebGL 2 enabled (JavaScript and hardware acceleration on)
 - **CPU:** 64-bit dual-core
@@ -52,7 +52,7 @@ export const ShowcasesSystemRequirements = {
   }
 };
 
-export const ShowcasesSoftwareFamilyName = 'XXX_GAME_TECH_NAME';
+export const SoftwareFamilyName = 'XXX_GAME_TECH_NAME';
 
 //The brand name of the product (usually registered trademark)
 export const GameDisplayName = 'XXX_GAME_NAME';
