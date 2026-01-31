@@ -6,7 +6,7 @@ E2E tests (for Showcases app of the Anarchy engine).
 
 MIT License
 
-Copyright (c) START_YEAR AUTHOR_FULL
+Copyright (c) XXX_START_YEAR XXX_AUTHOR_FULL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

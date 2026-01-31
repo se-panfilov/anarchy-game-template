@@ -38,7 +38,7 @@ export default {
       GOVERNING_VENUE: 'Amsterdam',
 
       // PERSONAL
-      LEGAL_ENTITY_NAME: 'AUTHOR_FULL',
+      LEGAL_ENTITY_NAME: 'XXX_AUTHOR_FULL',
 
       //CONTACTS
       SUPPORT_EMAIL: 'pnf036+anarchy@gmail.com',

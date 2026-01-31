@@ -1,6 +1,6 @@
 {
   "name": "anarchy-monorepo",
-  "author": "AUTHOR_SHORT",
+  "author": "XXX_AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git@github.com:se-panfilov/anarchy-engine.git"
   },
-  "homepage": "https://github.com/se-panfilov/anarchy-engine/tree/main#readme",
+  "homepage": "XXX_HOMEPAGE_URL/tree/main#readme",
   "bugs": {
     "url": "https://github.com/se-panfilov/anarchy-engine/issues"
   },

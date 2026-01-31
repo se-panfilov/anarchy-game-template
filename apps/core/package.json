@@ -1,6 +1,6 @@
 {
   "name": "core",
-  "author": "AUTHOR_SHORT",
+  "author": "XXX_AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "url": "git@github.com:se-panfilov/anarchy-engine.git",
     "directory": "apps/core"
   },
-  "homepage": "https://github.com/se-panfilov/anarchy-engine/tree/main/apps/core#readme",
+  "homepage": "XXX_HOMEPAGE_URL/tree/main/apps/core#readme",
   "bugs": {
     "url": "https://github.com/se-panfilov/anarchy-engine/issues"
   },
@@ -28,7 +28,7 @@
   "license": "MIT",
   "description": "Anarchy Showcases Core – an application with demos for Anarchy-Engine.",
   "keywords": [
-    "GAME_TECH_NAME"
+    "XXX_GAME_TECH_NAME"
   ],
   "files": [
     "./legal/**",
