@@ -12,7 +12,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "XXX_REPO_URL@",
+    "url": "XXX_REPO_URL",
     "directory": "apps/desktop"
   },
   "homepage": "XXX_HOMEPAGE_URL/tree/main/apps/desktop#readme",
