@@ -15,9 +15,9 @@ export default {
       SUPPORTED_PLATFORMS: ShowcasesSupportedPlatforms.Desktop,
       MIN_SYSTEM_REQUIREMENTS: ShowcasesSystemRequirements.Desktop.Minimum,
       REC_SYSTEM_REQUIREMENTS: ShowcasesSystemRequirements.Desktop.Recommended,
-      CONFORMITY_SERIES: '2.x.x (pre-market, no placement)', //A range of versions (major version) that matches of package.json, which were published commercially
-      BASELINE_VERSION: '2.12.6', //First CE-market release version
-      BASELINE_EFFECTIVE_DATE: 'TBD until market release' //The date of the first CE-market release
+      CONFORMITY_SERIES: 'XXX_CONFORMITY_SERIES_DESKTOP', //A range of versions (major version) that matches of package.json, which were published commercially
+      BASELINE_VERSION: 'XXX_BASELINE_VERSION_DESKTOP', //First CE-market release version
+      BASELINE_EFFECTIVE_DATE: 'XXX_BASELINE_EFFECTIVE_DATE_DESKTOP' //The date of the first CE-market release
     }
   }
 };

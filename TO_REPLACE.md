@@ -27,9 +27,14 @@ Replace project's placeholders with your details.
 - `XXX_SENTRY_ORG` - Sentry organization name
 - `XXX_SENTRY_PROJECT_CORE` - Sentry project name for the Core app
 - `XXX_SENTRY_PROJECT_DESKTOP` - Sentry project name for the Desktop app
+- `XXX_CONFORMITY_SERIES_CORE` - (Core app) A range of versions (major version) that matches of package.json, which were published commercially
+- `XXX_BASELINE_VERSION_CORE` - (Core app) First CE-market release version
+- `XXX_CONFORMITY_SERIES_DESKTOP` - (Desktop app) A range of versions (major version) that matches of package.json, which were published commercially
+- `XXX_BASELINE_VERSION_DESKTOP` - (Desktop app) First CE-market release version
+- `XXX_BASELINE_EFFECTIVE_DATE_CORE` - (Core app) The date of the first CE-market release
+- `XXX_BASELINE_EFFECTIVE_DATE_DESKTOP` - (Desktop app) The date of the first CE-market release
+- `XXX_INITIAL_RELEASE_DATE` - The date of the initial release of the game
 
-[//]: # 'hellpig'
-[//]: # 'anarchy-engine'
 [//]: # 'anarchy-'
 [//]: # 'anarchy'
 [//]: # 'TBD'
