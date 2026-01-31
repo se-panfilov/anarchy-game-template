@@ -7,13 +7,13 @@ import type { ShallowRef } from 'vue';
 import { onBeforeUnmount, onMounted, shallowRef } from 'vue';
 import type { I18n } from 'vue-i18n';
 
-import { showcasesTranslationService } from './ShowcasesTranslationService';
+import { gameTranslationService } from './GameTranslationService';
 
 export function VueTranslationService(): TVueTranslationService {
   let localeSub: Subscription;
 
   const isReadyPromise: Promise<void> = new Promise<void>((resolve, reject): void => {
-    const subscription$: Subscription = showcasesTranslationService.ready$.pipe(filter((isReady: boolean): boolean => isReady)).subscribe({
+    const subscription$: Subscription = gameTranslationService.ready$.pipe(filter((isReady: boolean): boolean => isReady)).subscribe({
       next: (): void => {
         subscription$.unsubscribe();
         return resolve();
@@ -43,25 +43,25 @@ export function VueTranslationService(): TVueTranslationService {
   }
 
   function connectVueI18n(i18n: I18n): void {
-    localeSub = showcasesTranslationService.locale$.subscribe(({ id: localeId }: TLocale): void => {
+    localeSub = gameTranslationService.locale$.subscribe(({ id: localeId }: TLocale): void => {
       // eslint-disable-next-line functional/immutable-data
       if (i18n.mode === 'legacy') i18n.global.locale = localeId;
       // eslint-disable-next-line functional/immutable-data
       else (i18n.global.locale as any).value = localeId;
 
-      const messages = showcasesTranslationService.getCurrentMessages();
+      const messages = gameTranslationService.getCurrentMessages();
       if (isDefined(messages)) i18n.global.setLocaleMessage(localeId, messages);
       if (isNotDefined(messages)) console.error(`[VueTranslationService]: Cannot load messages for vue-i18n for locale "${localeId}"`);
     });
   }
 
-  const destroySub$: Subscription = showcasesTranslationService.destroy$.subscribe(() => {
+  const destroySub$: Subscription = gameTranslationService.destroy$.subscribe(() => {
     destroySub$.unsubscribe();
     localeSub?.unsubscribe();
   });
 
   // eslint-disable-next-line functional/immutable-data
-  return Object.assign(showcasesTranslationService, { waitInitialReady, toRef, connectVueI18n });
+  return Object.assign(gameTranslationService, { waitInitialReady, toRef, connectVueI18n });
 }
 
 export const vueTranslationService: TVueTranslationService = VueTranslationService();

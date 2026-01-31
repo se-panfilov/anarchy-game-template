@@ -1,2 +1,2 @@
-export * from './ShowcasesTranslationService';
+export * from './GameTranslationService';
 export * from './VueTranslationService';

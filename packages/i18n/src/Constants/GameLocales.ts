@@ -145,4 +145,4 @@ export const GameLocales: TGameLocales = {
   // ===== Korean =====
   // 'ko-KR': { ...koKr, font: getFontFamily('Noto Sans KR') }
 };
-export const ShowcasesFallbackLocale: TLocaleWithFont = { ...enUs, font };
+export const GameFallbackLocale: TLocaleWithFont = { ...enUs, font };

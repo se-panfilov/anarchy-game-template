@@ -2,7 +2,7 @@ import type { TLocale, TLocaleId } from '@hellpig/anarchy-i18n';
 import { getLocaleByLocaleId, getPreferLocaleId, stringToLocaleId } from '@hellpig/anarchy-i18n';
 import { buildPublicUrl, isDefined } from '@hellpig/anarchy-shared/Utils';
 import { getBrowserInfo } from '@Anarchy/Shared/Utils/DetectUtils';
-import { ShowcasesFallbackLocale, GameLocales } from '@I18N';
+import { GameFallbackLocale, GameLocales } from '@I18N';
 import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TGameSettings } from '@Shared';
 import { DefaultGameSettings, makeDistName, makeReleaseName, sanitizeMarkDown } from '@Shared';
 
@@ -48,7 +48,7 @@ export function Driver(): TPlatformDriver {
   async function buildDefaultSettings(): Promise<TGameSettings> {
     const availableLocales: ReadonlyArray<TLocale> = Object.values(GameLocales);
     const availableLocalesIds: ReadonlyArray<TLocaleId> = availableLocales.map((locale: TLocale): TLocaleId => locale.id);
-    const locale: TLocale = getLocaleByLocaleId(getPreferLocaleId(await getPreferredLocales(), availableLocalesIds, ShowcasesFallbackLocale.id), availableLocales);
+    const locale: TLocale = getLocaleByLocaleId(getPreferLocaleId(await getPreferredLocales(), availableLocalesIds, GameFallbackLocale.id), availableLocales);
 
     const platformDetectedSettings: Partial<TGameSettings> = {
       localization: {

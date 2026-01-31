@@ -2,7 +2,7 @@ import type { TIntersectionEvent, TIntersectionsCameraWatcher, TModel3d, TModels
 import { spaceService } from '@Anarchy/Engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TFromGuiActionEvent } from '@GUI/models';
-import { showcasesTranslationService } from '@I18N';
+import { gameTranslationService } from '@I18N';
 import type { TFromGuiEvent } from '@Shared';
 import { filter, Subject } from 'rxjs';
 import { initGuiApp } from 'gui/src/main';
@@ -38,7 +38,7 @@ export function showcase(space: TSpace): void {
   const sceneW: TSceneWrapper = scenesService.getActive();
   const openMenu$: Subject<boolean> = new Subject<boolean>();
 
-  textService.setTextTranslationService(showcasesTranslationService);
+  textService.setTextTranslationService(gameTranslationService);
   addGizmo(space.services, space.container, space.loops, { placement: 'bottom-left' });
 
   const planeModel3d: TModel3d = models3dRegistry.getByName('surface_model');

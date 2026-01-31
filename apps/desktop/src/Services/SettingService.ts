@@ -4,7 +4,7 @@ import { isDefined, patchObject } from '@hellpig/anarchy-shared/Utils';
 import { AllowedSystemFolders } from '@Desktop/Constants';
 import type { TSettingsService, TSettingsServiceDependencies } from '@Desktop/Models';
 import { detectResolution } from '@Desktop/Utils';
-import { ShowcasesFallbackLocale, GameLocales } from '@I18N';
+import { GameFallbackLocale, GameLocales } from '@I18N';
 import type { TResolution, TGameSettings } from '@Shared';
 import { DefaultGameSettings, isSettings } from '@Shared';
 import type { App } from 'electron';
@@ -76,7 +76,7 @@ export function SettingsService(app: App, { filesService, windowService }: TSett
   function buildDefaultSettings(): TGameSettings {
     const availableLocales: ReadonlyArray<TLocale> = Object.values(GameLocales);
     const availableLocalesIds: ReadonlyArray<TLocaleId> = availableLocales.map((locale: TLocale): TLocaleId => locale.id);
-    const locale: TLocale = getLocaleByLocaleId(getPreferLocaleId(getPreferredLocales(), availableLocalesIds, ShowcasesFallbackLocale.id), availableLocales);
+    const locale: TLocale = getLocaleByLocaleId(getPreferLocaleId(getPreferredLocales(), availableLocalesIds, GameFallbackLocale.id), availableLocales);
 
     const platformDetectedSettings: Partial<TGameSettings> = {
       graphics: {
