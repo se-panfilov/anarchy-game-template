@@ -6,7 +6,7 @@ This is a monorepo for framework around three.js for game development.
 
 MIT License
 
-Copyright (c) 2025 Sergei Panfilov
+Copyright (c) THE_START_YEAR THE_AUTHOR_FULL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
