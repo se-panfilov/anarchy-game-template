@@ -21,8 +21,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     resolve: {
       alias: {
         ...sharedAliases,
-        '@Showcases/Desktop': path.resolve(__dirname, './src'),
-        '@Showcases/Shared': path.resolve(__dirname, '../../packages/shared/src')
+        '@Desktop': path.resolve(__dirname, './src'),
+        '@Shared': path.resolve(__dirname, '../../packages/shared/src')
       }
     },
     build: {

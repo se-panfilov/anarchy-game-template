@@ -6,11 +6,11 @@
     "types": ["vite/client", "node"],
     "baseUrl": "../../",
     "paths": {
-      "@Showcases/Desktop/*": ["apps/desktop/src/*"],
-      "@Showcases/Shared": ["packages/shared/src/index.ts"],
-      "@Showcases/Shared/*": ["packages/shared/src/*"],
-      "@Showcases/i18n": ["packages/i18n/src/index.ts"],
-      "@Showcases/i18n/*": ["packages/i18n/src/*"]
+      "@Desktop/*": ["apps/desktop/src/*"],
+      "@Shared": ["packages/shared/src/index.ts"],
+      "@Shared/*": ["packages/shared/src/*"],
+      "@i18n": ["packages/i18n/src/index.ts"],
+      "@i18n/*": ["packages/i18n/src/*"]
     }
   },
   "include": ["preload.ts", "types"],
