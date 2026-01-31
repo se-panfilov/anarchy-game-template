@@ -23,6 +23,9 @@ Replace project's placeholders with your details.
 - `XXX_GOVERNING_LAW_COUNTRY` - the country whose laws govern the EULA
 - `XXX_GOVERNING_VENUE` - the venue (city, state/province) whose laws govern the EULA
 - `XXX_DESKTOP_SYNOPSIS` - a short description of the desktop app (used in app stores)
+- `XXX_SENTRY_ORG` - Sentry organization name
+- `XXX_SENTRY_PROJECT_CORE` - Sentry project name for the Core app
+- `XXX_SENTRY_PROJECT_DESKTOP` - Sentry project name for the Desktop app
 
 [//]: # '"description": "Anarchy Showcases-Menu – a menu for Anarchy Engine Showcases.",'
 [//]: # 'hellpig'
