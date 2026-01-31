@@ -6,7 +6,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git@github.com:se-panfilov/anarchy-engine.git",
+    "url": "XXX_REPO_URL@github.com:se-panfilov/anarchy-engine.git",
     "directory": "apps/e2e"
   },
   "homepage": "XXX_HOMEPAGE_URL/tree/main/apps/e2e#readme",
