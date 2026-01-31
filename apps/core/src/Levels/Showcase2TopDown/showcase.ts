@@ -1,5 +1,5 @@
-import type { TActorParams, TAnyCameraWrapper, TAnyMaterialWrapper, TModel3d, TModels3dService, TSpace, TSpaceConfig, TSpatialGridWrapper } from '@Anarchy/Engine';
-import { CameraType, MaterialType, meters, PrimitiveModel3dType, spaceService } from '@Anarchy/Engine';
+import type { TActorParams, TAnyCameraWrapper, TAnyMaterialWrapper, TModel3d, TModels3dService, TSpace, TSpaceConfig, TSpatialGridWrapper } from '@hellpig/anarchy-engine';
+import { CameraType, MaterialType, meters, PrimitiveModel3dType, spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { combineLatest, distinctUntilChanged } from 'rxjs';
 import type { Vector2Like } from 'three';

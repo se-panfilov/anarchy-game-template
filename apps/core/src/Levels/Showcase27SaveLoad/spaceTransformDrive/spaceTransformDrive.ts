@@ -1,5 +1,5 @@
-import type { TActor, TCameraWrapper, TLightWrapper, TLoop, TSpace, TSpaceConfig, TText3dTextureWrapper, TText3dWrapper } from '@Anarchy/Engine';
-import { degrees, ForwardAxis, getPushCoordsFrom3dAzimuth, metersPerSecond, radians } from '@Anarchy/Engine';
+import type { TActor, TCameraWrapper, TLightWrapper, TLoop, TSpace, TSpaceConfig, TText3dTextureWrapper, TText3dWrapper } from '@hellpig/anarchy-engine';
+import { degrees, ForwardAxis, getPushCoordsFrom3dAzimuth, metersPerSecond, radians } from '@hellpig/anarchy-engine';
 import { getQueryParams, isDefined } from '@hellpig/anarchy-shared/Utils';
 import { BehaviorSubject } from 'rxjs';
 import { degToRad } from 'three/src/math/MathUtils';

@@ -1,4 +1,4 @@
-import type { TActor, TIntersectionEvent, TIntersectionsCameraWatcher, TIntersectionsDirectionWatcher, TSpace, TSpaceConfig } from '@Anarchy/Engine';
+import type { TActor, TIntersectionEvent, TIntersectionsCameraWatcher, TIntersectionsDirectionWatcher, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { BehaviorSubject, skip } from 'rxjs';
 import type { Mesh, MeshStandardMaterial } from 'three';

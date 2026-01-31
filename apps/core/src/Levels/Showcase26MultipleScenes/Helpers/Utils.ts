@@ -1,5 +1,5 @@
-import type { TActor, TActorRegistry, TParticlesWrapper, TSpace, TSpaceLoops, TSpaceServices } from '@Anarchy/Engine';
-import { ambientContext, createDomElement, KeyCode, metersPerSecond, mpsSpeed } from '@Anarchy/Engine';
+import type { TActor, TActorRegistry, TParticlesWrapper, TSpace, TSpaceLoops, TSpaceServices } from '@hellpig/anarchy-engine';
+import { ambientContext, createDomElement, KeyCode, metersPerSecond, mpsSpeed } from '@hellpig/anarchy-engine';
 import { hasKey } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import { withLatestFrom } from 'rxjs';
 

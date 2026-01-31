@@ -1,5 +1,5 @@
-import type { TKeyEvent, TModel3d, TModels3dRegistry, TModels3dResourceAsyncRegistry, TRegistryPack, TSceneWrapper, TSpace, TSpaceAnyEvent, TSpaceConfig, TSpaceServices } from '@Anarchy/Engine';
-import { isKeyInEvent, isPressEvent, KeyCode, SpaceEvents, spaceService } from '@Anarchy/Engine';
+import type { TKeyEvent, TModel3d, TModels3dRegistry, TModels3dResourceAsyncRegistry, TRegistryPack, TSceneWrapper, TSpace, TSpaceAnyEvent, TSpaceConfig, TSpaceServices } from '@hellpig/anarchy-engine';
+import { isKeyInEvent, isPressEvent, KeyCode, SpaceEvents, spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { AnimationAction } from 'three';
 import { Euler, Vector3 } from 'three';

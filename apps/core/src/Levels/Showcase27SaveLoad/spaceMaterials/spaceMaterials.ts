@@ -1,4 +1,4 @@
-import type { TMaterialConfigOptions, TPhysicalMaterialWrapper, TSpace, TSpaceConfig } from '@Anarchy/Engine';
+import type { TMaterialConfigOptions, TPhysicalMaterialWrapper, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { BehaviorSubject } from 'rxjs';
 

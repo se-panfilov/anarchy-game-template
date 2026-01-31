@@ -1,4 +1,4 @@
-import type { TSpace, TSpaceConfig } from '@Anarchy/Engine';
+import type { TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
 import type { RigidBody, Vector, World } from '@dimforge/rapier3d';
 import { BehaviorSubject } from 'rxjs';
 import { Vector3 } from 'three/src/math/Vector3';

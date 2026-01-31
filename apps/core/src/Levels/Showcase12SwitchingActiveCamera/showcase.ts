@@ -1,5 +1,5 @@
-import type { TActor, TActorRegistry, TAnyCameraWrapper, TCameraRegistry, TMilliseconds, TSpace, TSpaceConfig } from '@Anarchy/Engine';
-import { spaceService } from '@Anarchy/Engine';
+import type { TActor, TActorRegistry, TAnyCameraWrapper, TCameraRegistry, TMilliseconds, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
+import { spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import GUI from 'lil-gui';
 import { Clock } from 'three';

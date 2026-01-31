@@ -1,5 +1,5 @@
-import type { TFsmStates, TFsmWrapper, TKeyEvent, TModels3dResourceAsyncRegistry, TRegistryPack, TSpace, TSpaceAnyEvent, TSpaceConfig, TSpaceServices } from '@Anarchy/Engine';
-import { KeyCode, SpaceEvents, spaceService } from '@Anarchy/Engine';
+import type { TFsmStates, TFsmWrapper, TKeyEvent, TModels3dResourceAsyncRegistry, TRegistryPack, TSpace, TSpaceAnyEvent, TSpaceConfig, TSpaceServices } from '@hellpig/anarchy-engine';
+import { KeyCode, SpaceEvents, spaceService } from '@hellpig/anarchy-engine';
 import { hasKey } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { distinctUntilChanged } from 'rxjs';

@@ -1,4 +1,4 @@
-import type { MouseButtonValue, TGameKey } from '@Anarchy/Engine';
+import type { MouseButtonValue, TGameKey } from '@hellpig/anarchy-engine';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { BUTTON_KEYS, GuiActionType } from '@GUI/constants';
 import type { TGuiButtonState, TGuiButtonStoreState } from '@GUI/models';

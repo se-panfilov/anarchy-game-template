@@ -1,5 +1,5 @@
-import type { TActor, TMilliseconds, TSpace, TSpaceConfig } from '@Anarchy/Engine';
-import { KeyCode, onKey, onKeyReleased, spaceService } from '@Anarchy/Engine';
+import type { TActor, TMilliseconds, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
+import { KeyCode, onKey, onKeyReleased, spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { Clock } from 'three';
 

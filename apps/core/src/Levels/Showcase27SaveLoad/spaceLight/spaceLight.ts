@@ -1,4 +1,4 @@
-import type { THemisphereLightWrapper, TPointLightWrapper, TSpace, TSpaceConfig, TSpotLightWrapper } from '@Anarchy/Engine';
+import type { THemisphereLightWrapper, TPointLightWrapper, TSpace, TSpaceConfig, TSpotLightWrapper } from '@hellpig/anarchy-engine';
 import type { TWriteable } from '@hellpig/anarchy-shared/Utils';
 import { BehaviorSubject } from 'rxjs';
 import type { HemisphereLight, PointLight, SpotLight } from 'three';

@@ -1,5 +1,5 @@
-import type { TAnyCameraWrapper, TModel3d, TModels3dRegistry, TMouseService, TSceneWrapper, TSpace, TSpaceConfig } from '@Anarchy/Engine';
-import { getRotationByCos, getRotationBySin, spaceService } from '@Anarchy/Engine';
+import type { TAnyCameraWrapper, TModel3d, TModels3dRegistry, TMouseService, TSceneWrapper, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
+import { getRotationByCos, getRotationBySin, spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { combineLatest, distinctUntilChanged, tap } from 'rxjs';
 import type { Vector2Like, Vector3 } from 'three';

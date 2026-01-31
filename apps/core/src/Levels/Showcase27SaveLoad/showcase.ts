@@ -1,8 +1,8 @@
 import '@Public/resources/fonts.css';
 import './style.css';
 
-import type { TSpace, TSpaceConfig, TSpaceRegistry } from '@Anarchy/Engine';
-import { spaceService } from '@Anarchy/Engine';
+import type { TSpace, TSpaceConfig, TSpaceRegistry } from '@hellpig/anarchy-engine';
+import { spaceService } from '@hellpig/anarchy-engine';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { Subscription } from 'rxjs';
 

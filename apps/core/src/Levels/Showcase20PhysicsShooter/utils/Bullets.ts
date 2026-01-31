@@ -19,8 +19,8 @@ import type {
   TSceneWrapper,
   TSpatialGridService,
   TSpatialGridWrapper
-} from '@Anarchy/Engine';
-import { getTags, LoopUpdatePriority, MaterialType, metersPerSecond, mpsSpeed, PrimitiveModel3dType, TransformAgent } from '@Anarchy/Engine';
+} from '@hellpig/anarchy-engine';
+import { getTags, LoopUpdatePriority, MaterialType, metersPerSecond, mpsSpeed, PrimitiveModel3dType, TransformAgent } from '@hellpig/anarchy-engine';
 import { meters } from '@Anarchy/Engine/Measurements/Utils';
 import { isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { RigidBody } from '@dimforge/rapier3d';

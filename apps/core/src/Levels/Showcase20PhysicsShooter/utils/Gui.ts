@@ -1,4 +1,4 @@
-import type { TActor, TActorService, TIntersectionEvent, TIntersectionsCameraWatcher, TSpatialGridService, TSpatialGridWrapper } from '@Anarchy/Engine';
+import type { TActor, TActorService, TIntersectionEvent, TIntersectionsCameraWatcher, TSpatialGridService, TSpatialGridWrapper } from '@hellpig/anarchy-engine';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import GUI from 'lil-gui';
 

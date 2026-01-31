@@ -1,5 +1,5 @@
-import type { TKeyboardService, TKeyEvent, TMouseService } from '@Anarchy/Engine';
-import { hasKey, isPressEvent, KeyCode } from '@Anarchy/Engine';
+import type { TKeyboardService, TKeyEvent, TMouseService } from '@hellpig/anarchy-engine';
+import { hasKey, isPressEvent, KeyCode } from '@hellpig/anarchy-engine';
 import { isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import type { TToGuiEvent } from '@Shared';
 import type { Subject } from 'rxjs';

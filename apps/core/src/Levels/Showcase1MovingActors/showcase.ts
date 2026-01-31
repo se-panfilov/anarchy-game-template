@@ -1,5 +1,5 @@
-import type { TActor, TActorRegistry, TMilliseconds, TModel3d, TModels3dRegistry, TSceneWrapper, TSpace, TSpaceConfig } from '@Anarchy/Engine';
-import { spaceService } from '@Anarchy/Engine';
+import type { TActor, TActorRegistry, TMilliseconds, TModel3d, TModels3dRegistry, TSceneWrapper, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
+import { spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { Clock } from 'three';
 
