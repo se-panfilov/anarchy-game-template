@@ -37,4 +37,3 @@ Replace project's placeholders with your details.
 
 [//]: # 'anarchy-'
 [//]: # 'anarchy'
-[//]: # 'TBD'

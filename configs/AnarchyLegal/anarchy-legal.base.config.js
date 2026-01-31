@@ -56,7 +56,6 @@ export default {
       //GDPR
       SUPPORT_EMAILS_RETAIN_PERIOD_MONTH: 24,
 
-      // TBD
       EFFECTIVE_DATE: 'XXX_START_DATE'
     }
   }
