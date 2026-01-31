@@ -1,6 +1,6 @@
 import type { TOptional, TWriteable } from '@Anarchy/Shared/Utils';
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TShowcaseLocaleIds } from '@i18n';
+import type { TShowcaseLocaleIds } from '@I18N';
 import { menuPinia } from '@Menu/stores/CreatePinia';
 import { useSettingsStore } from '@Menu/stores/SettingsStore';
 import type { TLegalDoc } from '@Shared';

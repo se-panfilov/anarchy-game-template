@@ -2,7 +2,7 @@ import type { TIntersectionEvent, TIntersectionsCameraWatcher, TModel3d, TModels
 import { spaceService } from '@Anarchy/Engine';
 import { asRecord, isNotDefined } from '@Anarchy/Shared/Utils';
 import type { TFromGuiActionEvent } from '@GUI/models';
-import { showcasesTranslationService } from '@i18n';
+import { showcasesTranslationService } from '@I18N';
 import type { TFromGuiEvent } from '@Shared';
 import { filter, Subject } from 'rxjs';
 import { initGuiApp } from 'gui/src/main';

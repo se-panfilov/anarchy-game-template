@@ -1,5 +1,5 @@
 import { isAllNotDefined, isDefined, isNotDefined, isObject, isString } from '@Anarchy/Shared/Utils';
-import { ShowcasesLocales } from '@i18n/Constants';
+import { ShowcasesLocales } from '@I18N/Constants';
 import type { TLegalDoc, TLoadDocPayload, TShowcasesGameSettings } from '@Shared/Models';
 
 export function isSettings(settings: TShowcasesGameSettings | unknown): settings is TShowcasesGameSettings {

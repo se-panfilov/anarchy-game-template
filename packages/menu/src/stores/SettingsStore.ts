@@ -1,7 +1,7 @@
 import type { TLocale, TLocaleId } from '@Anarchy/i18n';
 import type { TDeepWriteable } from '@Anarchy/Shared/Utils';
-import type { TShowcaseLocaleIds } from '@i18n';
-import { ShowcasesLocales, vueTranslationService } from '@i18n';
+import type { TShowcaseLocaleIds } from '@I18N';
+import { ShowcasesLocales, vueTranslationService } from '@I18N';
 import type { TAudioSettings, TDebugSettings, TGraphicsSettings, TInternalSettings, TLocalizationSettings, TShowcasesGameSettings } from '@Shared';
 import { DefaultShowcaseGameSettings } from '@Shared';
 import { defineStore } from 'pinia';

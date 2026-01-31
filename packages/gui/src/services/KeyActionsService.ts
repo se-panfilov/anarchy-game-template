@@ -4,7 +4,7 @@ import type { TGuiActionPayload, TKeyActionsService } from '@GUI/models';
 import { eventsEmitterService } from '@GUI/services/EventsEmitterService';
 import { guiPinia } from '@GUI/stores/CreatePinia';
 import { useGuiButtonStore } from '@GUI/stores/GuiButtonsStore';
-import { ShowcasesLocales, vueTranslationService } from '@i18n';
+import { ShowcasesLocales, vueTranslationService } from '@I18N';
 import { FromGuiActionEvents, ToGuiEvents } from '@Shared';
 
 const { Attack, Defense, MiniMap, Settings, Inventory, Language } = GuiActionType;

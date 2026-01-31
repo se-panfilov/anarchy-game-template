@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TShowcaseLocaleIds } from '@i18n';
+import type { TShowcaseLocaleIds } from '@I18N';
 import MdRenderer from '@Menu/components/MdRenderer.vue';
 import Navigation from '@Menu/components/Navigation/Navigation.vue';
 import View from '@Menu/components/View.vue';

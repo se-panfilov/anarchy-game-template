@@ -2,7 +2,7 @@ import type { TLocale, TLocaleId } from '@Anarchy/i18n';
 import { getLocaleByLocaleId, getPreferLocaleId, stringToLocaleId } from '@Anarchy/i18n';
 import { buildPublicUrl, isDefined } from '@Anarchy/Shared/Utils';
 import { getBrowserInfo } from '@Anarchy/Shared/Utils/DetectUtils';
-import { ShowcasesFallbackLocale, ShowcasesLocales } from '@i18n';
+import { ShowcasesFallbackLocale, ShowcasesLocales } from '@I18N';
 import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Shared';
 import { DefaultShowcaseGameSettings, makeDistName, makeReleaseName, sanitizeMarkDown } from '@Shared';
 

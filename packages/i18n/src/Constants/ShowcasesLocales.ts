@@ -1,7 +1,7 @@
 /* eslint-disable spellcheck/spell-checker */
 import { enUs, nlNl } from '@Anarchy/i18n';
 import { FallBackFonts } from '@Anarchy/Shared/Constants';
-import type { TLocaleWithFont, TShowcaseLocales } from '@i18n/Models';
+import type { TLocaleWithFont, TShowcaseLocales } from '@I18N/Models';
 
 const getFontFamily = (font: string): string => `"${font}", ${FallBackFonts}`;
 

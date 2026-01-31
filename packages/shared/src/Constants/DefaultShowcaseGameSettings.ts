@@ -1,4 +1,4 @@
-import { InitialLocale } from '@i18n';
+import { InitialLocale } from '@I18N';
 import type { TShowcasesGameSettings } from '@Shared/Models';
 
 export const DefaultShowcaseGameSettings: TShowcasesGameSettings = {

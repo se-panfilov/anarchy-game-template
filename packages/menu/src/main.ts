@@ -1,5 +1,5 @@
 import { isDefined } from '@Anarchy/Shared/Utils';
-import { initVueI18n, vueTranslationService } from '@i18n';
+import { initVueI18n, vueTranslationService } from '@I18N';
 import { eventsEmitterService, eventsListenerService } from '@Menu/services';
 import { menuPinia } from '@Menu/stores/CreatePinia';
 import { useMenuOptionsStore } from '@Menu/stores/MenuOptionsStore';

@@ -4,7 +4,7 @@ import { isDefined, patchObject } from '@Anarchy/Shared/Utils';
 import { AllowedSystemFolders } from '@Desktop/Constants';
 import type { TSettingsService, TSettingsServiceDependencies } from '@Desktop/Models';
 import { detectResolution } from '@Desktop/Utils';
-import { ShowcasesFallbackLocale, ShowcasesLocales } from '@i18n';
+import { ShowcasesFallbackLocale, ShowcasesLocales } from '@I18N';
 import type { TResolution, TShowcasesGameSettings } from '@Shared';
 import { DefaultShowcaseGameSettings, isSettings } from '@Shared';
 import type { App } from 'electron';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TLocale } from '@Anarchy/i18n';
-import type { TShowcaseLocaleIds } from '@i18n';
-import { ShowcasesLocales } from '@i18n';
+import type { TShowcaseLocaleIds } from '@I18N';
+import { ShowcasesLocales } from '@I18N';
 import Dropdown from '@Menu/components/Dropdown.vue';
 import Navigation from '@Menu/components/Navigation/Navigation.vue';
 import SettingsGroup from '@Menu/components/SettingsGroup.vue';

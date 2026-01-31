@@ -9,8 +9,8 @@
       "@GUI/*": ["packages/gui/src/*"],
       "@Shared": ["packages/shared/src/index.ts"],
       "@Shared/*": ["packages/shared/src/*"],
-      "@i18n": ["packages/i18n/src/index.ts"],
-      "@i18n/*": ["packages/i18n/src/*"]
+      "@I18N": ["packages/i18n/src/index.ts"],
+      "@I18N/*": ["packages/i18n/src/*"]
     },
     "typeRoots": ["./node_modules/@types", "./node_modules", "../../node_modules/@types", "../../node_modules", "./src/Engine/Types", "./types"]
   },
