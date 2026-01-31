@@ -8,8 +8,8 @@ import type {
   TAnonymizedLocalizationSettings,
   TDistName,
   TReleaseName,
-  TShowcaseAnonymizedGameSettings,
-  TShowcasesGameSettings
+  TGameAnonymizedGameSettings,
+  TGameSettings
 } from '@Shared/Models';
 
 export const makeReleaseName = (prefix: string, version: string): TReleaseName => `${prefix}@${version}`;
@@ -21,7 +21,7 @@ export function getBucketedValue(value: number, step: number): string {
   return `${bucket}-${bucket + step - 1}`;
 }
 
-export function getAnonymizedSettings(settings: TShowcasesGameSettings): TShowcaseAnonymizedGameSettings {
+export function getAnonymizedSettings(settings: TGameSettings): TGameAnonymizedGameSettings {
   const { graphics: originGraphics, internal: originInternal, audio: originAudio, debug: originDebug, localization: originLocalization } = settings;
 
   const graphics: TAnonymizedGraphicsSettings = {

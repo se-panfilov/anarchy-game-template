@@ -4,7 +4,7 @@ import type { TGuiActionPayload, TKeyActionsService } from '@GUI/models';
 import { eventsEmitterService } from '@GUI/services/EventsEmitterService';
 import { guiPinia } from '@GUI/stores/CreatePinia';
 import { useGuiButtonStore } from '@GUI/stores/GuiButtonsStore';
-import { ShowcasesLocales, vueTranslationService } from '@I18N';
+import { GameLocales, vueTranslationService } from '@I18N';
 import { FromGuiActionEvents, ToGuiEvents } from '@Shared';
 
 const { Attack, Defense, MiniMap, Settings, Inventory, Language } = GuiActionType;
@@ -23,7 +23,7 @@ export function KeyActionsService(): TKeyActionsService {
   }
 
   function toggleLocale(): void {
-    const newLocale = vueTranslationService.getCurrentLocale().id === ShowcasesLocales['en-US'].id ? ShowcasesLocales['nl-NL'] : ShowcasesLocales['en-US'];
+    const newLocale = vueTranslationService.getCurrentLocale().id === GameLocales['en-US'].id ? GameLocales['nl-NL'] : GameLocales['en-US'];
     vueTranslationService.setLocale(newLocale);
   }
 

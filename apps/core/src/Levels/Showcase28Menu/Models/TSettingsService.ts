@@ -1,7 +1,7 @@
-import type { TShowcasesGameSettings } from '@Shared';
+import type { TGameSettings } from '@Shared';
 
 export type TSettingsService = Readonly<{
-  applyAppSettings: (appSettings: TShowcasesGameSettings) => boolean;
+  applyAppSettings: (appSettings: TGameSettings) => boolean;
   isFirstRun: () => Promise<boolean>;
   setFirstRun: (isFirstRun: boolean) => Promise<void>;
 }>;

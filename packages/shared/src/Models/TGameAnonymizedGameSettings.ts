@@ -1,4 +1,4 @@
-export type TShowcaseAnonymizedGameSettings = Readonly<{
+export type TGameAnonymizedGameSettings = Readonly<{
   graphics?: TAnonymizedGraphicsSettings;
   audio?: TAnonymizedAudioSettings;
   localization?: TAnonymizedLocalizationSettings;

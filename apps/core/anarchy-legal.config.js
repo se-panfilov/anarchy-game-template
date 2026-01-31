@@ -1,5 +1,5 @@
 import commercialBase from '../../configs/AnarchyLegal/anarchy-legal.base.commercial.config.js';
-import { GameDisplayName, ShowcasesSoftwareFamilyName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/ShowcasesLegalConstants.js';
+import { GameDisplayName, ShowcasesSoftwareFamilyName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/LegalConstants.js';
 
 //Commercial configuration for legal docs
 export default {

@@ -1,5 +1,5 @@
 import gameConfig from '../core/anarchy-legal.config.js';
-import { GameDisplayName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '../../packages/shared/src/Legal/ShowcasesLegalConstants.js';
+import { GameDisplayName, ShowcasesSupportedPlatforms, ShowcasesSystemRequirements } from '@Shared/Legal/LegalConstants.js';
 
 //Commercial configuration for legal docs
 export default {

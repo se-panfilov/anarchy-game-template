@@ -1,4 +1,4 @@
-export type * from './TShowcaseLocaleIds';
-export type * from './TShowcaseLocales';
-export type * from './TShowcasesLocaleNames';
+export type * from './TGameLocaleIds';
+export type * from './TGameLocales';
+export type * from './TGameLocaleNames';
 export type * from './TVueTranslationService';

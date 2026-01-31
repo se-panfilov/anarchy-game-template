@@ -4,7 +4,7 @@ import { appBeforeQuitHandler, appCrashHandler, appWindowAllClosedHandler, windo
 import type { TDesktopAppConfig, TDesktopAppService, TDocsService, TFilesService, TSettingsService, TWindowService } from '@Desktop/Models';
 import { DesktopAppService, DocsService, ElectronErrorTrackingService, FilesService, handleAppRequest, SettingsService, WindowService } from '@Desktop/Services';
 import { getWindowSizeSafe, hideMenuBar, noZoom, turnOffMenuBarAndHotkeys } from '@Desktop/Utils';
-import type { TResolution, TShowcasesGameSettings } from '@Shared';
+import type { TResolution, TGameSettings } from '@Shared';
 import { platformApiChannel } from '@Shared';
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron';
 import { app, ipcMain } from 'electron';
@@ -47,7 +47,7 @@ app.whenReady().then(async (): Promise<void> => {
   const win: BrowserWindow = windowService.createWindow(initialWindowSize.width, initialWindowSize.height, desktopAppSettings);
 
   //Note: Do not "await" before window creation (cause problems in production – invisible window)
-  const settings: TShowcasesGameSettings = await settingsService.getAppSettings();
+  const settings: TGameSettings = await settingsService.getAppSettings();
   if (isDefined(settings.graphics.resolution)) windowService.setWindowSize(settings.graphics.resolution);
 
   windowReadyToShow(win, settings, windowService);

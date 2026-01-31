@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isNotDefined } from '@Anarchy/Shared/Utils';
-import type { TShowcaseLocaleIds } from '@I18N';
+import type { TGameLocaleIds } from '@I18N';
 import MdRenderer from '@Menu/components/MdRenderer.vue';
 import Navigation from '@Menu/components/Navigation/Navigation.vue';
 import View from '@Menu/components/View.vue';
@@ -17,7 +17,7 @@ const settingsStore = useSettingsStore();
 
 // TODO LEGAL: change legal folders to /legal/{locale} (also public/legal/{locale}, assets/legal/{locale})
 onMounted(() => {
-  const locale = settingsStore.localization.locale.id as TShowcaseLocaleIds;
+  const locale = settingsStore.localization.locale.id as TGameLocaleIds;
 
   if (isNotDefined(legalDocsStore.translatedDisclaimer)) eventsEmitterService.emitGetLegalDocs({ name: DISCLAIMER, locale });
   if (isNotDefined(legalDocsStore.translatedEula)) eventsEmitterService.emitGetLegalDocs({ name: EULA, locale });

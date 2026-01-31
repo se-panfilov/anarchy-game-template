@@ -4,30 +4,30 @@ import { isDefined, patchObject } from '@Anarchy/Shared/Utils';
 import { AllowedSystemFolders } from '@Desktop/Constants';
 import type { TSettingsService, TSettingsServiceDependencies } from '@Desktop/Models';
 import { detectResolution } from '@Desktop/Utils';
-import { ShowcasesFallbackLocale, ShowcasesLocales } from '@I18N';
-import type { TResolution, TShowcasesGameSettings } from '@Shared';
-import { DefaultShowcaseGameSettings, isSettings } from '@Shared';
+import { ShowcasesFallbackLocale, GameLocales } from '@I18N';
+import type { TResolution, TGameSettings } from '@Shared';
+import { DefaultGameSettings, isSettings } from '@Shared';
 import type { App } from 'electron';
 
 export function SettingsService(app: App, { filesService, windowService }: TSettingsServiceDependencies): TSettingsService {
   const userDataFolder: AllowedSystemFolders = AllowedSystemFolders.UserData;
   const appSettingsFileName: string = 'app-settings.json';
 
-  const getAppSettings = async (): Promise<TShowcasesGameSettings> => {
+  const getAppSettings = async (): Promise<TGameSettings> => {
     const isE2E: boolean = import.meta.env.VITE_IS_E2E === 'true' || false;
     if (isE2E) return setDefaultSettings({ message: '[DESKTOP][E2E] Forced default desktop app settings (VITE_IS_E2E)' } as Error);
 
     try {
-      const settings: TShowcasesGameSettings = await filesService.readFileAsJson(appSettingsFileName, userDataFolder, isSettings);
+      const settings: TGameSettings = await filesService.readFileAsJson(appSettingsFileName, userDataFolder, isSettings);
       return mergeCliSettingsWithDetected(settings);
     } catch (e) {
       return setDefaultSettings(e as Error);
     }
   };
 
-  async function setDefaultSettings(e: Error): Promise<TShowcasesGameSettings> {
+  async function setDefaultSettings(e: Error): Promise<TGameSettings> {
     console.warn(`[DESKTOP] Cannot read settings file ("${appSettingsFileName}") from : ${userDataFolder}. Damaged or not existed. Applying default settings. Error: ${e.message}`);
-    const settings: TShowcasesGameSettings = buildDefaultSettings();
+    const settings: TGameSettings = buildDefaultSettings();
     await setAppSettings(settings);
     return settings;
   }
@@ -65,7 +65,7 @@ export function SettingsService(app: App, { filesService, windowService }: TSett
     };
   }
 
-  function mergeCliSettingsWithDetected(settings: TShowcasesGameSettings): TShowcasesGameSettings {
+  function mergeCliSettingsWithDetected(settings: TGameSettings): TGameSettings {
     const { resolution, isFullScreen } = getCommandLineSettings();
     let result = { ...settings };
     if (isDefined(resolution)) result = patchObject(result, { graphics: { resolution } });
@@ -73,47 +73,47 @@ export function SettingsService(app: App, { filesService, windowService }: TSett
     return result;
   }
 
-  function buildDefaultSettings(): TShowcasesGameSettings {
-    const availableLocales: ReadonlyArray<TLocale> = Object.values(ShowcasesLocales);
+  function buildDefaultSettings(): TGameSettings {
+    const availableLocales: ReadonlyArray<TLocale> = Object.values(GameLocales);
     const availableLocalesIds: ReadonlyArray<TLocaleId> = availableLocales.map((locale: TLocale): TLocaleId => locale.id);
     const locale: TLocale = getLocaleByLocaleId(getPreferLocaleId(getPreferredLocales(), availableLocalesIds, ShowcasesFallbackLocale.id), availableLocales);
 
-    const platformDetectedSettings: Partial<TShowcasesGameSettings> = {
+    const platformDetectedSettings: Partial<TGameSettings> = {
       graphics: {
-        ...DefaultShowcaseGameSettings.graphics,
+        ...DefaultGameSettings.graphics,
         resolution: detectResolution(),
         isFullScreen: true
       },
       localization: {
-        ...DefaultShowcaseGameSettings.localization,
+        ...DefaultGameSettings.localization,
         locale
       }
     };
 
     return mergeCliSettingsWithDetected({
-      ...DefaultShowcaseGameSettings,
+      ...DefaultGameSettings,
       ...platformDetectedSettings
     });
   }
 
   const getPreferredLocales = (): ReadonlyArray<TLocaleId> => Array.from(new Set([...app.getPreferredSystemLanguages(), app.getLocale()] as ReadonlyArray<TLocaleId>));
 
-  async function updateAppSettings(partialSettings: Partial<TShowcasesGameSettings>): Promise<TShowcasesGameSettings> {
-    const currentSettings: TShowcasesGameSettings = await getAppSettings();
-    const newSettings: TShowcasesGameSettings = patchObject(currentSettings, partialSettings);
+  async function updateAppSettings(partialSettings: Partial<TGameSettings>): Promise<TGameSettings> {
+    const currentSettings: TGameSettings = await getAppSettings();
+    const newSettings: TGameSettings = patchObject(currentSettings, partialSettings);
     await setAppSettings(newSettings);
     console.log('[DESKTOP] Updated app settings');
     return newSettings;
   }
 
-  async function setAppSettings(settings: TShowcasesGameSettings): Promise<void> {
+  async function setAppSettings(settings: TGameSettings): Promise<void> {
     if (!isSettings(settings)) throw new Error('[DESKTOP] Attempted to save invalid app settings');
     await filesService.writeFile(appSettingsFileName, userDataFolder, JSON.stringify(settings, null, 2));
     console.log(`[DESKTOP] Saved settings file ("${appSettingsFileName}") in : ${userDataFolder}`);
   }
 
   //Return true if app restart is needed
-  function applyPlatformSettings(settings: TShowcasesGameSettings): boolean {
+  function applyPlatformSettings(settings: TGameSettings): boolean {
     console.log('[DESKTOP] Applying platform settings');
 
     const isFullScreenNow: boolean = windowService.isFullScreen();

@@ -1,7 +1,7 @@
 import { InitialLocale } from '@I18N';
-import type { TShowcasesGameSettings } from '@Shared/Models';
+import type { TGameSettings } from '@Shared/Models';
 
-export const DefaultShowcaseGameSettings: TShowcasesGameSettings = {
+export const DefaultGameSettings: TGameSettings = {
   graphics: {
     // isFullScreen: false,
     // resolution: { width: 800, height: 600 }

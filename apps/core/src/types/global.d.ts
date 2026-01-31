@@ -1,9 +1,9 @@
-import type { TPlatformApiName, TShowcasesDesktopApi } from '@Shared';
+import type { TPlatformApiName, TGameDesktopApi } from '@Shared';
 
 // Keep this line. Otherwise, the file will not be recognized as a script, not as a declaration file
 export {};
 
-export type TPlatformApiOnWindow = { [K in TPlatformApiName]: TShowcasesDesktopApi };
+export type TPlatformApiOnWindow = { [K in TPlatformApiName]: TGameDesktopApi };
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type

@@ -1,2 +1,2 @@
 export * from './InitialLocale';
-export * from './ShowcasesLocales';
+export * from './GameLocales';

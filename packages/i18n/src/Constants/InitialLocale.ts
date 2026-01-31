@@ -1,5 +1,5 @@
 import type { TLocaleWithFont } from '@I18N/Models';
 
-import { ShowcasesLocales } from './ShowcasesLocales';
+import { GameLocales } from './GameLocales';
 
-export const InitialLocale: TLocaleWithFont = ShowcasesLocales['en-US'];
+export const InitialLocale: TLocaleWithFont = GameLocales['en-US'];

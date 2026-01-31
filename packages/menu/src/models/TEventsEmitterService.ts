@@ -1,4 +1,4 @@
-import type { TFromMenuEvent, TLoadDocPayload, TShowcasesGameSettings } from '@Shared';
+import type { TFromMenuEvent, TLoadDocPayload, TGameSettings } from '@Shared';
 import type { Subject } from 'rxjs';
 
 export type TEventsEmitterService = Readonly<{
@@ -8,7 +8,7 @@ export type TEventsEmitterService = Readonly<{
   emitGetLegalDocs: (payload: TLoadDocPayload) => void | never;
   emitGetMenuSettings: () => void | never;
   emitLoadGame: () => void | never;
-  emitSetMenuSettings: (settings: TShowcasesGameSettings) => void | never;
+  emitSetMenuSettings: (settings: TGameSettings) => void | never;
   emitStartNewGame: () => void | never;
   setFromMenuBus: (fromMenuBus$: Subject<TFromMenuEvent>) => void;
 }>;

@@ -5,13 +5,13 @@ import type { TDistName } from './TDistName';
 import type { TLegalDoc } from './TLegalDoc';
 import type { TLoadDocPayload } from './TLoadDocPayload';
 import type { TReleaseName } from './TReleaseName';
-import type { TShowcasesGameSettings } from './TShowcasesGameSettings';
+import type { TGameSettings } from './TGameSettings';
 
-export type TShowcasesDesktopApi = Readonly<{
+export type TGameDesktopApi = Readonly<{
   closeApp: () => void;
   desktopAppVersion: () => Promise<string>;
   electron: () => string;
-  getAppSettings: () => Promise<TShowcasesGameSettings>;
+  getAppSettings: () => Promise<TGameSettings>;
   getBrowserInfo: () => TBrowserInfo;
   getDistName: () => Promise<TDistName>;
   getLegalDocs: (options: TLoadDocPayload) => Promise<TLegalDoc>;
@@ -20,6 +20,6 @@ export type TShowcasesDesktopApi = Readonly<{
   getReleaseName: () => Promise<TReleaseName>;
   node: () => string;
   restartApp: () => void;
-  setAppSettings: (settings: TShowcasesGameSettings) => Promise<void>;
+  setAppSettings: (settings: TGameSettings) => Promise<void>;
   setFirstRun: (isFirstRun: boolean) => Promise<void>;
 }>;

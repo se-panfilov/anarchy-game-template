@@ -1,16 +1,16 @@
 import type { TLocale, TLocaleId } from '@Anarchy/i18n';
 import type { TDeepWriteable } from '@Anarchy/Shared/Utils';
-import type { TShowcaseLocaleIds } from '@I18N';
-import { ShowcasesLocales, vueTranslationService } from '@I18N';
-import type { TAudioSettings, TDebugSettings, TGraphicsSettings, TInternalSettings, TLocalizationSettings, TShowcasesGameSettings } from '@Shared';
-import { DefaultShowcaseGameSettings } from '@Shared';
+import type { TGameLocaleIds } from '@I18N';
+import { GameLocales, vueTranslationService } from '@I18N';
+import type { TAudioSettings, TDebugSettings, TGraphicsSettings, TInternalSettings, TLocalizationSettings, TGameSettings } from '@Shared';
+import { DefaultGameSettings } from '@Shared';
 import { defineStore } from 'pinia';
 import type { ComputedRef } from 'vue';
 import { computed, reactive, watch } from 'vue';
 
 export const useSettingsStore = defineStore('settingsStore', () => {
-  const state: TDeepWriteable<TShowcasesGameSettings> = reactive({
-    ...DefaultShowcaseGameSettings
+  const state: TDeepWriteable<TGameSettings> = reactive({
+    ...DefaultGameSettings
   });
 
   const onLocaleChanged = (nextLocale: TLocale): Promise<void> => vueTranslationService.setLocale(nextLocale);
@@ -35,16 +35,16 @@ export const useSettingsStore = defineStore('settingsStore', () => {
   const setGraphics = (newGraphics: Partial<TGraphicsSettings>): void => void Object.assign(state.graphics, { ...newGraphics });
   const setAudio = (newAudio: Partial<TAudioSettings>): void => void Object.assign(state.audio, { ...newAudio });
   const setLocalization = (newLocalization: Partial<TLocalizationSettings>): void => void Object.assign(state.localization, { ...newLocalization });
-  function setLocaleById(id: TShowcaseLocaleIds): void | never {
-    const newLocale = ShowcasesLocales[id];
+  function setLocaleById(id: TGameLocaleIds): void | never {
+    const newLocale = GameLocales[id];
     if (!newLocale) throw new Error(`[Settings store] Locale with id "${id}" not found in ShowcasesLocales`);
     setLocalization({ locale: newLocale });
   }
   const setDebug = (newDebug: Partial<TDebugSettings>): void => void Object.assign(state.debug, { ...newDebug });
   const setInternal = (newInternal: Partial<TInternalSettings>): void => void Object.assign(state.internal, { ...newInternal });
-  const setState = (newState: Partial<TShowcasesGameSettings>): void => void Object.assign(state, { ...newState });
+  const setState = (newState: Partial<TGameSettings>): void => void Object.assign(state, { ...newState });
 
-  const getLocaleId: ComputedRef<TShowcaseLocaleIds> = computed(() => state.localization.locale.id as TShowcaseLocaleIds);
+  const getLocaleId: ComputedRef<TGameLocaleIds> = computed(() => state.localization.locale.id as TGameLocaleIds);
 
   return {
     state: computed(() => state),

@@ -1,6 +1,6 @@
 import type { TLocale } from '@Anarchy/i18n';
 
-export type TShowcasesGameSettings = Readonly<{
+export type TGameSettings = Readonly<{
   graphics: TGraphicsSettings;
   audio: TAudioSettings;
   localization: TLocalizationSettings;

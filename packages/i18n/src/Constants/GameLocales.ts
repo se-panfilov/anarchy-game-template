@@ -1,7 +1,7 @@
 /* eslint-disable spellcheck/spell-checker */
 import { enUs, nlNl } from '@Anarchy/i18n';
 import { FallBackFonts } from '@Anarchy/Shared/Constants';
-import type { TLocaleWithFont, TShowcaseLocales } from '@I18N/Models';
+import type { TLocaleWithFont, TGameLocales } from '@I18N/Models';
 
 const getFontFamily = (font: string): string => `"${font}", ${FallBackFonts}`;
 
@@ -9,7 +9,7 @@ const getFontFamily = (font: string): string => `"${font}", ${FallBackFonts}`;
 const font: string = getFontFamily('Noto Sans');
 
 // Full list of locales is based on packages/anarchy-i18n/src/Constants/Locales.gen.ts
-export const ShowcasesLocales: TShowcaseLocales = {
+export const GameLocales: TGameLocales = {
   // IMPORTANT!!!: NL uses a special font only for dev purposes.
   // Remove it in production and clean up the code packages/i18n/src/assets/_fonts.scss
   'nl-NL': { ...nlNl, font: getFontFamily('LongCang') },

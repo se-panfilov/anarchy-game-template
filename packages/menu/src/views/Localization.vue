@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TLocale } from '@Anarchy/i18n';
-import type { TShowcaseLocaleIds } from '@I18N';
-import { ShowcasesLocales } from '@I18N';
+import type { TGameLocaleIds } from '@I18N';
+import { GameLocales } from '@I18N';
 import Dropdown from '@Menu/components/Dropdown.vue';
 import Navigation from '@Menu/components/Navigation/Navigation.vue';
 import SettingsGroup from '@Menu/components/SettingsGroup.vue';
@@ -17,13 +17,13 @@ const emit = defineEmits(['reset', 'save']);
 
 const settingsStore = useSettingsStore();
 
-type TLocalizationState = { locale: TShowcaseLocaleIds };
+type TLocalizationState = { locale: TGameLocaleIds };
 const state: TLocalizationState = reactive({
-  locale: settingsStore.localization.locale.id as TShowcaseLocaleIds
+  locale: settingsStore.localization.locale.id as TGameLocaleIds
 });
 
 function reset(): void {
-  state.locale = settingsStore.localization.locale.id as TShowcaseLocaleIds;
+  state.locale = settingsStore.localization.locale.id as TGameLocaleIds;
   emit('reset');
 }
 
@@ -32,10 +32,10 @@ function save({ locale }: TLocalizationState): void {
   emit('save');
 }
 
-const options: ComputedRef<ReadonlyArray<TDropdownOption<TShowcaseLocaleIds>>> = computed((): ReadonlyArray<TDropdownOption<TShowcaseLocaleIds>> => {
-  return Object.values(ShowcasesLocales).map((locale: TLocale) => {
+const options: ComputedRef<ReadonlyArray<TDropdownOption<TGameLocaleIds>>> = computed((): ReadonlyArray<TDropdownOption<TGameLocaleIds>> => {
+  return Object.values(GameLocales).map((locale: TLocale) => {
     const label: string = `${locale.nativeName} (${locale.englishName}, ${locale.id})`;
-    return { value: locale.id as TShowcaseLocaleIds, label };
+    return { value: locale.id as TGameLocaleIds, label };
   });
 });
 </script>

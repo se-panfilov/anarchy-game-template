@@ -1,12 +1,12 @@
 import type { TLocaleId } from '@Anarchy/i18n';
 import type { TBrowserInfo } from '@Anarchy/Shared/Models';
-import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Shared';
+import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TGameSettings } from '@Shared';
 
 export type TPlatformDriver = Readonly<{
   closeApp: () => void;
-  getAppSettings: () => Promise<TShowcasesGameSettings>;
+  getAppSettings: () => Promise<TGameSettings>;
   getBrowserInfo: () => TBrowserInfo;
-  getCachedAppSettings: () => TShowcasesGameSettings | undefined;
+  getCachedAppSettings: () => TGameSettings | undefined;
   getDistName: () => Promise<TDistName>; //DistName is something like "darwin-arm64" (`${process.platform}-${process.arch}`)
   getLegalDocs: (options: TLoadDocPayload) => Promise<TLegalDoc>;
   getNodeVersion: () => string;
@@ -16,6 +16,6 @@ export type TPlatformDriver = Readonly<{
   getReleaseName: () => Promise<TReleaseName>; //Release name is something like "desktop@1.0.0" (`{name}@{version}`)
   getWrappedAppVersion: () => Promise<string>;
   restartApp: (args?: ReadonlyArray<string>) => void;
-  setAppSettings: (settings: TShowcasesGameSettings) => Promise<void>;
+  setAppSettings: (settings: TGameSettings) => Promise<void>;
   setFirstRun: (isFirstRun: boolean) => Promise<void>;
 }>;

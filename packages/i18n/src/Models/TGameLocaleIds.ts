@@ -1,4 +1,4 @@
-export type TShowcaseLocaleIds = 'en-US' | 'nl-NL';
+export type TGameLocaleIds = 'en-US' | 'nl-NL';
 
 // Full list is based on packages/anarchy-i18n/src/Constants/Locales.gen.ts
 export type TFullLocaleIds =

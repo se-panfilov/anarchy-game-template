@@ -1,6 +1,6 @@
 import type { TLocaleId } from '@Anarchy/i18n';
 import type { TBrowserInfo } from '@Anarchy/Shared/Models';
-import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TShowcasesGameSettings } from '@Shared';
+import type { TDistName, TLegalDoc, TLoadDocPayload, TReleaseName, TGameSettings } from '@Shared';
 import { makeDistName, makeReleaseName } from '@Shared';
 
 import type { TPlatformDriver } from '@/Models';
@@ -8,7 +8,7 @@ import type { TPlatformDriver } from '@/Models';
 // TODO MOBILE: Make sure ALL these methods are working correctly
 // TODO MOBILE: Implement the mobile driver
 export function Driver(): TPlatformDriver {
-  let cachedAppSettings: TShowcasesGameSettings | undefined;
+  let cachedAppSettings: TGameSettings | undefined;
 
   function closeApp(): void {
     throw new Error('[MOBILE] closeApp is not supported on this platform');
@@ -19,7 +19,7 @@ export function Driver(): TPlatformDriver {
     return {} as TBrowserInfo;
   }
 
-  const getCachedAppSettings = (): TShowcasesGameSettings | undefined => cachedAppSettings;
+  const getCachedAppSettings = (): TGameSettings | undefined => cachedAppSettings;
 
   function getDistName(): Promise<TDistName> {
     console.log('TODO [MOBILE]', 'getDistName');
@@ -41,7 +41,7 @@ export function Driver(): TPlatformDriver {
     return Promise.resolve('TODO [MOBILE] mocked wrapped app version');
   }
 
-  function getAppSettings(): Promise<TShowcasesGameSettings> {
+  function getAppSettings(): Promise<TGameSettings> {
     // TODO UPDATE cachedAppSettings
     console.log('TODO [MOBILE]', 'getAppSettings');
     return Promise.resolve({} as any);
@@ -62,7 +62,7 @@ export function Driver(): TPlatformDriver {
     return Promise.resolve();
   }
 
-  function setAppSettings(settings: TShowcasesGameSettings): Promise<void> {
+  function setAppSettings(settings: TGameSettings): Promise<void> {
     // TODO UPDATE cachedAppSettings
     console.log('TODO [MOBILE]', 'setAppSettings', settings);
     return Promise.resolve();
