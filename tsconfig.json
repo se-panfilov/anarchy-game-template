@@ -23,12 +23,12 @@
       "@Anarchy/i18n/*": ["packages/anarchy-i18n/src/*"],
       "@Anarchy/Tracking": ["packages/anarchy-tracking/src/index.ts"],
       "@Anarchy/Tracking/*": ["packages/anarchy-tracking/src/*"],
-      "@Showcases/E2E": ["apps/showcases-e2e/src/index.ts"],
-      "@Showcases/E2E/*": ["apps/showcases-e2e/src/*"],
-      "@Showcases/Menu": ["packages/showcases-menu/src/index.ts"],
-      "@Showcases/Menu/*": ["packages/showcases-menu/src/*"],
-      "@Showcases/GUI": ["packages/showcases-gui/src/index.ts"],
-      "@Showcases/GUI/*": ["packages/showcases-gui/src/*"]
+      "@Showcases/E2E": ["apps/e2e/src/index.ts"],
+      "@Showcases/E2E/*": ["apps/e2e/src/*"],
+      "@Showcases/Menu": ["packages/menu/src/index.ts"],
+      "@Showcases/Menu/*": ["packages/menu/src/*"],
+      "@Showcases/GUI": ["packages/gui/src/index.ts"],
+      "@Showcases/GUI/*": ["packages/gui/src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

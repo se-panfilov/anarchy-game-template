@@ -12,10 +12,10 @@ on:
       app:
         type: choice
         required: true
-        default: showcases-desktop
+        default: desktop
         options:
-          - showcases-core
-          - showcases-desktop
+          - core
+          - desktop
         description: "App to build"
       mode:
         type: choice
@@ -98,7 +98,7 @@ jobs:
 
       # ---- Optional caches for big Electron-related downloads (huge win in CI) ----
       - name: Cache Electron / electron-builder downloads (Linux)
-        if: ${{ inputs.app == 'showcases-desktop' && runner.os == 'Linux' }}
+        if: ${{ inputs.app == 'desktop' && runner.os == 'Linux' }}
         uses: actions/cache@v4
         with:
           path: |
@@ -110,7 +110,7 @@ jobs:
             ${{ runner.os }}-electron-cache-
 
       - name: Cache Electron / electron-builder downloads (macOS)
-        if: ${{ inputs.app == 'showcases-desktop' && runner.os == 'macOS' }}
+        if: ${{ inputs.app == 'desktop' && runner.os == 'macOS' }}
         uses: actions/cache@v4
         with:
           path: |
@@ -122,7 +122,7 @@ jobs:
             ${{ runner.os }}-electron-cache-
 
       - name: Cache Electron / electron-builder downloads (Windows)
-        if: ${{ inputs.app == 'showcases-desktop' && runner.os == 'Windows' }}
+        if: ${{ inputs.app == 'desktop' && runner.os == 'Windows' }}
         uses: actions/cache@v4
         with:
           path: |
@@ -210,45 +210,45 @@ jobs:
 
       # ---- Showcases-core build caches ----
       # Split caches so we don't accidentally skip web build due to a desktop cache hit (and vice versa).
-      - name: Restore showcases-core build cache (web)
+      - name: Restore core build cache (web)
         id: corecache_web
-        if: ${{ inputs.app == 'showcases-core' }}
+        if: ${{ inputs.app == 'core' }}
         uses: actions/cache@v4
         with:
-          path: apps/showcases-core/dist-web
-          key: ${{ runner.os }}-core-web-${{ inputs.mode }}-${{ hashFiles('package-lock.json', 'apps/showcases-core/**/*', 'packages/**/*', 'tsconfig*.json', 'vite.config.*', 'apps/showcases-core/vite.config.*') }}
+          path: apps/core/dist-web
+          key: ${{ runner.os }}-core-web-${{ inputs.mode }}-${{ hashFiles('package-lock.json', 'apps/core/**/*', 'packages/**/*', 'tsconfig*.json', 'vite.config.*', 'apps/core/vite.config.*') }}
           restore-keys: |
             ${{ runner.os }}-core-web-${{ inputs.mode }}-
             ${{ runner.os }}-core-web-
 
-      - name: Restore showcases-core build cache (desktop)
+      - name: Restore core build cache (desktop)
         id: corecache_desktop
-        if: ${{ inputs.app == 'showcases-desktop' }}
+        if: ${{ inputs.app == 'desktop' }}
         uses: actions/cache@v4
         with:
-          path: apps/showcases-core/dist-desktop
-          key: ${{ runner.os }}-core-desktop-${{ inputs.mode }}-${{ hashFiles('package-lock.json', 'apps/showcases-core/**/*', 'packages/**/*', 'tsconfig*.json', 'vite.config.*', 'apps/showcases-core/vite.config.*') }}
+          path: apps/core/dist-desktop
+          key: ${{ runner.os }}-core-desktop-${{ inputs.mode }}-${{ hashFiles('package-lock.json', 'apps/core/**/*', 'packages/**/*', 'tsconfig*.json', 'vite.config.*', 'apps/core/vite.config.*') }}
           restore-keys: |
             ${{ runner.os }}-core-desktop-${{ inputs.mode }}-
             ${{ runner.os }}-core-desktop-
 
-      # ---- Build showcases-core (web) ----
-      - name: Build showcases-core (web)
-        if: ${{ inputs.app == 'showcases-core' && steps.corecache_web.outputs.cache-hit != 'true' }}
+      # ---- Build core (web) ----
+      - name: Build core (web)
+        if: ${{ inputs.app == 'core' && steps.corecache_web.outputs.cache-hit != 'true' }}
         shell: bash
         run: |
           set -euo pipefail
 
           # e2e.web mode exists for start, but build uses dev.web pipeline.
           if [ "${MODE}" = "prod" ]; then
-            npm run --workspace apps/showcases-core build:prod:web
+            npm run --workspace apps/core build:prod:web
           else
-            npm run --workspace apps/showcases-core build:dev:web
+            npm run --workspace apps/core build:dev:web
           fi
 
-      # ---- Build showcases-core (desktop variant) before desktop packaging ----
-      - name: Build showcases-core (desktop)
-        if: ${{ inputs.app == 'showcases-desktop' && steps.corecache_desktop.outputs.cache-hit != 'true' }}
+      # ---- Build core (desktop variant) before desktop packaging ----
+      - name: Build core (desktop)
+        if: ${{ inputs.app == 'desktop' && steps.corecache_desktop.outputs.cache-hit != 'true' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -258,13 +258,13 @@ jobs:
           # - e2e -> build:dev:desktop
           # - prod -> build:prod:desktop
           if [ "${MODE}" = "prod" ]; then
-            npm run --workspace apps/showcases-core build:prod:desktop
+            npm run --workspace apps/core build:prod:desktop
           else
-            npm run --workspace apps/showcases-core build:dev:desktop
+            npm run --workspace apps/core build:dev:desktop
           fi
 
       - name: Linux prerequisites (AppImage)
-        if: ${{ inputs.app == 'showcases-desktop' && steps.t.outputs.platform == 'linux' && steps.t.outputs.artifact == 'appimage' }}
+        if: ${{ inputs.app == 'desktop' && steps.t.outputs.platform == 'linux' && steps.t.outputs.artifact == 'appimage' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -272,64 +272,64 @@ jobs:
           # AppImage tooling typically requires FUSE 2 on ubuntu-latest.
           sudo apt-get install -y libfuse2
 
-      # ---- Build showcases-desktop artifact ----
-      - name: Build showcases-desktop (${{ inputs.mode }} / ${{ inputs.target }})
-        if: ${{ inputs.app == 'showcases-desktop' }}
+      # ---- Build desktop artifact ----
+      - name: Build desktop (${{ inputs.mode }} / ${{ inputs.target }})
+        if: ${{ inputs.app == 'desktop' }}
         shell: bash
         run: |
           set -euo pipefail
           PLATFORM="${{ steps.t.outputs.platform }}"
           ARTIFACT="${{ steps.t.outputs.artifact }}"
           ARCH="${{ steps.t.outputs.arch }}"
-          npm run --workspace apps/showcases-desktop "build:${MODE}:${PLATFORM}:${ARTIFACT}:${ARCH}"
+          npm run --workspace apps/desktop "build:${MODE}:${PLATFORM}:${ARTIFACT}:${ARCH}"
 
       # ---- Reduce artifact size (keep only final installers) ----
-      - name: Prepare artifacts (showcases-desktop)
-        if: ${{ inputs.app == 'showcases-desktop' }}
+      - name: Prepare artifacts (desktop)
+        if: ${{ inputs.app == 'desktop' }}
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p apps/showcases-desktop/dist-artifacts
+          mkdir -p apps/desktop/dist-artifacts
 
           shopt -s nullglob
 
           # Keep only final installer archives; drop huge unpacked dirs.
           for ext in dmg exe AppImage zip tar.gz deb rpm; do
-            for f in apps/showcases-desktop/dist/*.${ext}; do
-              cp -v "$f" apps/showcases-desktop/dist-artifacts/
+            for f in apps/desktop/dist/*.${ext}; do
+              cp -v "$f" apps/desktop/dist-artifacts/
             done
           done
 
           # If nothing matched (e.g., "app/dir" target), keep the whole dist folder.
-          if [ "$(ls -A apps/showcases-desktop/dist-artifacts 2>/dev/null | wc -l | tr -d ' ')" = "0" ]; then
+          if [ "$(ls -A apps/desktop/dist-artifacts 2>/dev/null | wc -l | tr -d ' ')" = "0" ]; then
             echo "No installer files found in dist/; falling back to upload dist/** (dir target?)"
-            rm -rf apps/showcases-desktop/dist-artifacts
-            mkdir -p apps/showcases-desktop/dist-artifacts
-            cp -R apps/showcases-desktop/dist/* apps/showcases-desktop/dist-artifacts/ || true
+            rm -rf apps/desktop/dist-artifacts
+            mkdir -p apps/desktop/dist-artifacts
+            cp -R apps/desktop/dist/* apps/desktop/dist-artifacts/ || true
           fi
 
           echo "Prepared artifacts:"
-          (cd apps/showcases-desktop/dist-artifacts && ls -lah) || true
+          (cd apps/desktop/dist-artifacts && ls -lah) || true
 
       # ---- Upload artifacts ----
       # Keep retention low because artifacts are huge.
-      - name: Upload artifact (showcases-core)
-        if: ${{ inputs.app == 'showcases-core' }}
+      - name: Upload artifact (core)
+        if: ${{ inputs.app == 'core' }}
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ inputs.app }}-${{ inputs.mode }}-${{ steps.safe.outputs.target }}-${{ github.run_id }}
           path: |
-            apps/showcases-core/dist-web/**
+            apps/core/dist-web/**
           if-no-files-found: error
           retention-days: 3
 
-      - name: Upload artifact (showcases-desktop)
-        if: ${{ inputs.app == 'showcases-desktop' }}
+      - name: Upload artifact (desktop)
+        if: ${{ inputs.app == 'desktop' }}
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ inputs.app }}-${{ inputs.mode }}-${{ steps.safe.outputs.target }}-${{ github.run_id }}
           path: |
-            apps/showcases-desktop/dist-artifacts/**
+            apps/desktop/dist-artifacts/**
           if-no-files-found: error
           retention-days: 3
 
@@ -371,21 +371,21 @@ jobs:
             echo "- Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             echo ""
 
-            if [ "${APP}" = "showcases-core" ]; then
+            if [ "${APP}" = "core" ]; then
               echo "### Output"
-              echo "- apps/showcases-core/dist-web"
+              echo "- apps/core/dist-web"
               echo ""
               echo "### Cache"
-              echo "- showcases-core web cache hit: **${{ steps.corecache_web.outputs.cache-hit }}**"
+              echo "- core web cache hit: **${{ steps.corecache_web.outputs.cache-hit }}**"
               echo ""
               echo "### Files"
-              (cd apps/showcases-core/dist-web && ls -lah) || true
+              (cd apps/core/dist-web && ls -lah) || true
             else
               echo "### Cache"
-              echo "- showcases-core desktop cache hit: **${{ steps.corecache_desktop.outputs.cache-hit }}**"
+              echo "- core desktop cache hit: **${{ steps.corecache_desktop.outputs.cache-hit }}**"
               echo ""
               echo "### Files"
-              (cd apps/showcases-desktop/dist-artifacts && ls -lah) || true
+              (cd apps/desktop/dist-artifacts && ls -lah) || true
             fi
 
             echo ""

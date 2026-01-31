@@ -148,13 +148,13 @@ jobs:
         with:
           # Cache browsers under a repo-local path so it works consistently across OSes.
           path: .playwright-browsers
-          key: ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-${{ hashFiles('package-lock.json', 'apps/showcases-e2e/playwright.config.ts') }}
+          key: ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-${{ hashFiles('package-lock.json', 'apps/e2e/playwright.config.ts') }}
           restore-keys: |
             ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-
             ${{ runner.os }}-node24-pw-
 
       - name: Install Playwright browsers (chromium only)
-        working-directory: apps/showcases-e2e
+        working-directory: apps/e2e
         env:
           PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
         run: |
@@ -165,8 +165,8 @@ jobs:
             npx playwright install chromium
           fi
 
-      - name: Build showcases-core (web)
-        run: npm run --workspace apps/showcases-core build:prod:web
+      - name: Build core (web)
+        run: npm run --workspace apps/core build:prod:web
 
       - name: Run E2E web
         shell: bash
@@ -187,9 +187,9 @@ jobs:
           fi
 
           if [ "${{ github.event.inputs.updateSnapshots }}" = "true" ]; then
-            npm run --workspace apps/showcases-e2e e2e:web -- --update-snapshots "${EXTRA_ARGS[@]}"
+            npm run --workspace apps/e2e e2e:web -- --update-snapshots "${EXTRA_ARGS[@]}"
           else
-            npm run --workspace apps/showcases-e2e e2e:web -- "${EXTRA_ARGS[@]}"
+            npm run --workspace apps/e2e e2e:web -- "${EXTRA_ARGS[@]}"
           fi
 
       - name: Create PR with updated snapshots (web)
@@ -211,7 +211,7 @@ jobs:
 
           git switch -c "$BRANCH"
 
-          git add apps/showcases-e2e/src/web
+          git add apps/e2e/src/web
 
           if git diff --cached --quiet; then
             echo "No snapshot changes detected. Skipping PR."
@@ -239,7 +239,7 @@ jobs:
         with:
           name: playwright-report-web-${{ github.run_id }}-${{ github.event.inputs.runnerOs }}
           path: |
-            apps/showcases-e2e/reports/e2e/playwright-report/**
-            apps/showcases-e2e/reports/e2e/test-results/**
+            apps/e2e/reports/e2e/playwright-report/**
+            apps/e2e/reports/e2e/test-results/**
           if-no-files-found: ignore
           retention-days: 14

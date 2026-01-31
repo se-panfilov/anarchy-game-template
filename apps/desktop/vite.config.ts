@@ -1,0 +1,70 @@
+import type { ConfigEnv, UserConfig } from 'vite';
+import { defineConfig } from 'vite';
+import path from 'node:path';
+import { sharedAliases } from '../../vite.alias';
+import { version } from './package.json';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+const toPosix = (p: string) => p.split(path.sep).join('/');
+
+const CORE_DIST_DIR: string = path.resolve(__dirname, '../core/dist-desktop');
+const DRACO_DIR: string = path.resolve(__dirname, '../../node_modules/three/examples/jsm/libs/draco');
+
+// Frankly, we can build desktop-main.ts without Vite (just with tsc).
+// But imports are such a pain, so it's easier to use a bundler.
+export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
+  return {
+    define: {
+      __DESKTOP_APP_VERSION__: JSON.stringify(version),
+      __PLATFORM_MODE__: JSON.stringify(mode)
+    },
+    resolve: {
+      alias: {
+        ...sharedAliases,
+        '@Showcases/Desktop': path.resolve(__dirname, './src'),
+        '@Showcases/Shared': path.resolve(__dirname, '../../packages/shared/src')
+      }
+    },
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          // Copy all files from core build, preserving structure
+          {
+            src: toPosix(path.resolve(CORE_DIST_DIR, '**/*')),
+            dest: 'dist-desktop'
+          },
+          //Electron cannot recognize three/examples/jsm/libs/draco import, so we copy files manually
+          {
+            src: toPosix(path.resolve(DRACO_DIR, 'draco_decoder.js')),
+            dest: 'dist-desktop/three/examples/jsm/libs/draco'
+          },
+          {
+            src: toPosix(path.resolve(DRACO_DIR, 'draco_wasm_wrapper.js')),
+            dest: 'dist-desktop/three/examples/jsm/libs/draco'
+          },
+          {
+            src: toPosix(path.resolve(DRACO_DIR, 'draco_decoder.wasm')),
+            dest: 'dist-desktop/three/examples/jsm/libs/draco'
+          }
+        ]
+      })
+    ],
+    build: {
+      emptyOutDir: false, // Do not empty outDir, we build app there first
+      lib: {
+        entry: './src/desktop-main.ts',
+        formats: ['es'],
+        fileName: (): string => 'desktop-main.js'
+      },
+      minify: false,
+      outDir: 'dist',
+      rollupOptions: {
+        external: ['electron', 'path', 'fs'], // Prevent bundling electron and node modules
+        plugins: []
+      },
+      sourcemap: true,
+      ssr: true, // This is a build for node, not for browser
+      target: 'esnext'
+    }
+  };
+});

@@ -197,7 +197,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .playwright-browsers
-          key: ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-${{ hashFiles('package-lock.json', 'apps/showcases-e2e/playwright.config.ts') }}
+          key: ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-${{ hashFiles('package-lock.json', 'apps/e2e/playwright.config.ts') }}
           restore-keys: |
             ${{ runner.os }}-node24-pw-${{ steps.pw.outputs.version }}-
             ${{ runner.os }}-node24-pw-
@@ -208,7 +208,7 @@ jobs:
       # uncomment this block.
       #
       # - name: Install Playwright browsers (chromium only) [OPTIONAL]
-      #   working-directory: apps/showcases-e2e
+      #   working-directory: apps/e2e
       #   shell: bash
       #   env:
       #     PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
@@ -220,18 +220,18 @@ jobs:
       #       npx playwright install chromium
       #     fi
 
-      - name: Build showcases-core (desktop)
+      - name: Build core (desktop)
         shell: bash
-        run: npm run --workspace apps/showcases-core build:prod:desktop
+        run: npm run --workspace apps/core build:prod:desktop
 
-      - name: Build showcases-desktop (E2E build)
+      - name: Build desktop (E2E build)
         shell: bash
         run: |
           set -euo pipefail
           PLATFORM="${{ matrix.target.platform }}"
           ARTIFACT="${{ matrix.target.artifact }}"
           ARCH="${{ matrix.target.arch }}"
-          npm run --workspace apps/showcases-desktop "build:e2e:${PLATFORM}:${ARTIFACT}:${ARCH}"
+          npm run --workspace apps/desktop "build:e2e:${PLATFORM}:${ARTIFACT}:${ARCH}"
 
       - name: Run E2E desktop
         shell: bash
@@ -253,9 +253,9 @@ jobs:
           fi
 
           if [ "${{ github.event.inputs.updateSnapshots }}" = "true" ]; then
-            npm run --workspace apps/showcases-e2e e2e:desktop -- --update-snapshots "${EXTRA_ARGS[@]}"
+            npm run --workspace apps/e2e e2e:desktop -- --update-snapshots "${EXTRA_ARGS[@]}"
           else
-            npm run --workspace apps/showcases-e2e e2e:desktop -- "${EXTRA_ARGS[@]}"
+            npm run --workspace apps/e2e e2e:desktop -- "${EXTRA_ARGS[@]}"
           fi
 
       - name: Create PR with updated snapshots (desktop)
@@ -280,7 +280,7 @@ jobs:
           git switch -c "$BRANCH"
 
           # Add only desktop snapshot area
-          git add apps/showcases-e2e/src/desktop
+          git add apps/e2e/src/desktop
 
           if git diff --cached --quiet; then
             echo "No snapshot changes detected. Skipping PR."
@@ -308,7 +308,7 @@ jobs:
         with:
           name: playwright-report-desktop-${{ matrix.target.platform }}-${{ matrix.target.arch }}-${{ github.run_id }}
           path: |
-            apps/showcases-e2e/reports/e2e/playwright-report/**
-            apps/showcases-e2e/reports/e2e/test-results/**
+            apps/e2e/reports/e2e/playwright-report/**
+            apps/e2e/reports/e2e/test-results/**
           if-no-files-found: ignore
           retention-days: 14

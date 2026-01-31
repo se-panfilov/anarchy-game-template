@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@Anarchy/Shared": ["packages/anarchy-shared/src/index.ts"],
+      "@Anarchy/Shared/*": ["packages/anarchy-shared/src/*"],
+      "@Anarchy/i18n": ["packages/anarchy-i18n/src/index.ts"],
+      "@Anarchy/i18n/*": ["packages/anarchy-i18n/src/*"],
+      "@Anarchy/Tracking": ["packages/anarchy-tracking/src/index.ts"],
+      "@Anarchy/Tracking/*": ["packages/anarchy-tracking/src/*"],
+      "@Showcases/Desktop/*": ["apps/desktop/src/*"],
+      "@Showcases/Shared": ["packages/shared/src/index.ts"],
+      "@Showcases/Shared/*": ["packages/shared/src/*"],
+      "@Showcases/i18n": ["packages/i18n/src/index.ts"],
+      "@Showcases/i18n/*": ["packages/i18n/src/*"]
+    },
+    "sourceMap": false,
+    "noEmit": false
+  },
+  "include": ["src/desktop-main.ts", "preload.ts", "types"],
+  "exclude": ["dist", "node_modules"]
+}

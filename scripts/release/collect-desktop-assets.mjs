@@ -2,11 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = process.cwd();
-const distDir = path.join(repoRoot, 'apps', 'showcases-desktop', 'dist');
+const distDir = path.join(repoRoot, 'apps', 'desktop', 'dist');
 
 const allowedExt = new Set(['.dmg', '.zip', '.7z', '.tar', '.gz', '.exe', '.msi', '.appimage', '.deb', '.rpm', '.yml', '.yaml', '.blockmap', '.sig']);
 
-//Builds "distributable" assets from apps/showcases-desktop/dist/** recursively (without knowing exact paths).
+//Builds "distributable" assets from apps/desktop/dist/** recursively (without knowing exact paths).
 
 function walk(dir, out) {
   const entries = fs.existsSync(dir) ? fs.readdirSync(dir, { withFileTypes: true }) : [];

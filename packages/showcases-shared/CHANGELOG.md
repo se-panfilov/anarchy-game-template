@@ -1,8 +1,0 @@
-- 1.0.0 Initial
-- 1.1.0 Allow change fonts on locale change
-- 1.2.0 Added fonts and font-faces presets
-- 1.3.0 Extracted i18n to a separate package
-- 1.4.0 Sanitize utils
-- 1.5.0 Error tracking and anonymization utils
-- 1.6.0 Added EventsShieldService
-- 1.7.0 Removed EventsShieldService

@@ -7,7 +7,7 @@ const repoRoot = process.cwd();
 
 // Calculates "what to release" based on tags name@x.y.z and current package.json.
 // Applies ONLY for packages/anarchy-*.
-// (showcases-* and other apps/packages are ignored completely)
+// (* and other apps/packages are ignored completely)
 
 function runCapture(cmd, args) {
   const r = spawnSync(cmd, args, { encoding: 'utf8', cwd: repoRoot });
