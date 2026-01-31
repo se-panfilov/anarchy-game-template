@@ -10,6 +10,7 @@ Replace project's placeholders with your details.
 - `XXX_START_YEAR` - the year when the development of the game started
 - `XXX_HOMEPAGE_URL` - home page URL (default targets readme.md)
 - `XXX_REPO_URL` - repository URL
+- `XXX_BUGS_URL` - bugs/issues URL
 
 [//]: # '"provider": "github",'
 [//]: # '"owner": "se-panfilov",'

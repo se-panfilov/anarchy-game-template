@@ -10,7 +10,7 @@
   },
   "homepage": "XXX_HOMEPAGE_URL/tree/main#readme",
   "bugs": {
-    "url": "https://github.com/se-panfilov/anarchy-engine/issues"
+    "url": "XXX_BUGS_URL//github.com/se-panfilov/anarchy-engine/issues"
   },
   "workspaces": [
     "apps/*",
