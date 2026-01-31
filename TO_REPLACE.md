@@ -1,10 +1,10 @@
 Replace following lines with yours
-THE_GAME_NAME - the brand name of the game (usually registered trademark)
-THE_GAME_APP_NAME - technical name used in app stores
-THE_COMPANY_NAME - the name of the company that developed the game (usually it's your studio name)
-THE_AUTHOR_SHORT - the short name of the author
-THE_AUTHOR_FULL - the full name of the author
-THE_START_YEAR - the year when the development of the game started
+GAME_NAME - the brand name of the game (usually registered trademark)
+GAME_TECH_NAME - technical name used in app stores
+COMPANY_NAME - the name of the company that developed the game (usually it's your studio name)
+AUTHOR_SHORT - the short name of the author
+AUTHOR_FULL - the full name of the author
+START_YEAR - the year when the development of the game started
 
 [//]: # '"provider": "github",'
 [//]: # '"owner": "se-panfilov",'

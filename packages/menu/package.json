@@ -1,6 +1,6 @@
 {
   "name": "menu",
-  "author": "THE_AUTHOR_SHORT",
+  "author": "AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -16,8 +16,8 @@
   "license": "MIT",
   "description": "Anarchy Showcases-Menu – a menu for Anarchy Engine Showcases.",
   "keywords": [
-    "THE_GAME_APP_NAME",
-    "THE_GAME_APP_NAME-menu"
+    "GAME_TECH_NAME",
+    "GAME_TECH_NAME-menu"
   ],
   "files": [
     "./legal/**",

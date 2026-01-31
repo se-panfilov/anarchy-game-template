@@ -1,6 +1,6 @@
 {
   "name": "e2e",
-  "author": "THE_AUTHOR_SHORT",
+  "author": "AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -16,8 +16,8 @@
   "license": "MIT",
   "description": "Anarchy Showcase-E2E  – end-to-end tests for Anarchy Showcases.",
   "keywords": [
-    "THE_GAME_APP_NAME",
-    "THE_GAME_APP_NAME-e2e"
+    "GAME_TECH_NAME",
+    "GAME_TECH_NAME-e2e"
   ],
   "files": [
     "./legal/**",

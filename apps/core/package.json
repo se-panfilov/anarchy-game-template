@@ -1,6 +1,6 @@
 {
   "name": "core",
-  "author": "THE_AUTHOR_SHORT",
+  "author": "AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -28,7 +28,7 @@
   "license": "MIT",
   "description": "Anarchy Showcases Core – an application with demos for Anarchy-Engine.",
   "keywords": [
-    "THE_GAME_APP_NAME"
+    "GAME_TECH_NAME"
   ],
   "files": [
     "./legal/**",

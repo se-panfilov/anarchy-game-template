@@ -1,10 +1,10 @@
-# UI menu for "THE_GAME_NAME".
+# UI menu for "GAME_NAME".
 
 ## License
 
 MIT License
 
-Copyright (c) THE_START_YEAR THE_AUTHOR_FULL
+Copyright (c) START_YEAR AUTHOR_FULL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

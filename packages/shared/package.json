@@ -1,6 +1,6 @@
 {
   "name": "shared",
-  "author": "THE_AUTHOR_SHORT",
+  "author": "AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -17,8 +17,8 @@
   "license": "MIT",
   "description": "Anarchy Showcases Shared – a shared library for Anarchy Engine Showcases.",
   "keywords": [
-    "THE_GAME_APP_NAME",
-    "THE_GAME_APP_NAME-shared"
+    "GAME_TECH_NAME",
+    "GAME_TECH_NAME-shared"
   ],
   "files": [
     "./legal/**",

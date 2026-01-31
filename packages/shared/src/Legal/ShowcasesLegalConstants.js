@@ -52,7 +52,7 @@ export const ShowcasesSystemRequirements = {
   }
 };
 
-export const ShowcasesSoftwareFamilyName = 'THE_GAME_APP_NAME';
+export const ShowcasesSoftwareFamilyName = 'GAME_TECH_NAME';
 
 //The brand name of the product (usually registered trademark)
-export const ShowcasesDisplayName = 'THE_GAME_NAME';
+export const ShowcasesDisplayName = 'GAME_NAME';

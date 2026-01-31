@@ -1,12 +1,12 @@
 {
   "name": "desktop",
-  "author": "THE_AUTHOR_SHORT",
+  "author": "AUTHOR_SHORT",
   "private": true,
   "version": "1.0.0",
   "description": "Anarchy Desktop Showcases  – a desktop wrapper-application for core.",
   "keywords": [
-    "THE_GAME_APP_NAME",
-    "THE_GAME_APP_NAME-desktop"
+    "GAME_TECH_NAME",
+    "GAME_TECH_NAME-desktop"
   ],
   "main": "dist/desktop-main.js",
   "type": "module",
@@ -107,8 +107,8 @@
     "vite-tsconfig-paths": "6.0.3"
   },
   "build": {
-    "appId": "com.THE_COMPANY_NAME.THE_GAME_APP_NAME.desktop",
-    "productName": "THE_GAME_NAME",
+    "appId": "com.COMPANY_NAME.GAME_TECH_NAME.desktop",
+    "productName": "GAME_NAME",
     "publish": [
       {
         "provider": "github",
@@ -170,7 +170,7 @@
         "tar.gz"
       ],
       "icon": "assets/icon.png",
-      "maintainer": "THE_AUTHOR_FULL <pnf036+anarchy@gmail.com>",
+      "maintainer": "AUTHOR_FULL <pnf036+anarchy@gmail.com>",
       "synopsis": "ADD YOUR GAME SYNOPSIS",
       "description": "ADD YOUR GAME DESCRIPTION",
       "category": "Game",
