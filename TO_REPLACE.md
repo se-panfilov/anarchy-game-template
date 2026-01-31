@@ -7,19 +7,23 @@ Replace project's placeholders with your details.
 - `XXX_COMPANY_NAME` - the name of the company that developed the game (usually it's your studio name)
 - `XXX_AUTHOR_SHORT` - the short name of the author
 - `XXX_AUTHOR_FULL` - the full name of the author
+- `XXX_AUTHOR_EMAIL` - the email address of the author
 - `XXX_START_YEAR` - the year when the development of the game started
+- `XXX_START_DATE` - the same as XXX_START_YEAR, but in dd.mm.yyyy format
 - `XXX_HOMEPAGE_URL` - home page URL (default targets readme.md)
 - `XXX_REPO_URL` - repository URL
 - `XXX_BUGS_URL` - bugs/issues URL
+- `XXX_DESKTOP_REPO_OWNERL` - the owner of the repository (for desktop app), i.g. GitHub user or organization name
+- `XXX_DESKTOP_REPO_NAME` - the repository name (for desktop app), e.g. GitHub repository name
+- `XXX_PRIVACY_EMAIL` - the email address for privacy-related contacts
+- `XXX_SECURITY_EMAIL` - the email address for security-related contacts
+- `XXX_SUPPORT_EMAIL` - the email address for support-related contacts
+- `XXX_LEGAL_EMAIL` - the email address for legal-related contacts
+- `XXX_GOVERNING_LAW_COUNTRY` - the country whose laws govern the EULA
+- `XXX_GOVERNING_VENUE` - the venue (city, state/province) whose laws govern the EULA
 
-[//]: # '"provider": "github",'
-[//]: # '"owner": "se-panfilov",'
-[//]: # '"repo": "anarchy-engine",'
-[//]: # '"bugs": {'
-[//]: # '"url": "https://github.com/se-panfilov/anarchy-engine/issues"'
-[//]: # '},'
 [//]: # '"description": "Anarchy Showcases-Menu – a menu for Anarchy Engine Showcases.",'
-[//]: # 'Contacts — Privacy: pnf036+anarchy@gmail.com'
-[//]: # 'Security: pnf036+anarchy_security@gmail.com.'
-[//]: # '"license": "MIT",'
 [//]: # 'hellpig'
+[//]: # 'anarchy-engine'
+[//]: # 'anarchy-'
+[//]: # 'anarchy'

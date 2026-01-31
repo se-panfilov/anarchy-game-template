@@ -112,7 +112,7 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "se-panfilov",
+        "owner": "XXX_DESKTOP_REPO_OWNERL",
         "repo": "anarchy-engine",
         "private": false
       }
@@ -170,7 +170,7 @@
         "tar.gz"
       ],
       "icon": "assets/icon.png",
-      "maintainer": "XXX_AUTHOR_FULL <pnf036+anarchy@gmail.com>",
+      "maintainer": "XXX_AUTHOR_FULL <XXX_AUTHOR_EMAIL>",
       "synopsis": "ADD YOUR GAME SYNOPSIS",
       "description": "ADD YOUR GAME DESCRIPTION",
       "category": "Game",

@@ -34,17 +34,17 @@ export default {
       EU_CHILD_CONSENT_AGE: 16,
       US_CHILD_AGE: 13,
       CN_CHILD_AGE: 14,
-      GOVERNING_LAW_COUNTRY: 'The Netherlands',
-      GOVERNING_VENUE: 'Amsterdam',
+      GOVERNING_LAW_COUNTRY: 'XXX_GOVERNING_LAW_COUNTRY',
+      GOVERNING_VENUE: 'XXX_GOVERNING_VENUE',
 
       // PERSONAL
       LEGAL_ENTITY_NAME: 'XXX_AUTHOR_FULL',
 
       //CONTACTS
-      SUPPORT_EMAIL: 'pnf036+anarchy@gmail.com',
-      LEGAL_EMAIL: 'pnf036+anarchy@gmail.com',
-      PRIVACY_EMAIL: 'pnf036+anarchy@gmail.com',
-      SECURITY_EMAIL: 'pnf036+anarchy_security@gmail.com',
+      SUPPORT_EMAIL: 'XXX_SUPPORT_EMAIL',
+      LEGAL_EMAIL: 'XXX_LEGAL_EMAIL',
+      PRIVACY_EMAIL: 'XXX_PRIVACY_EMAIL',
+      SECURITY_EMAIL: 'XXX_SECURITY_EMAIL',
       DPO_EMAIL: 'none',
       EU_REPRESENTATIVE_CONTACT: 'none',
       CHINA_REPRESENTATIVE_CONTACT: 'none',
@@ -57,7 +57,7 @@ export default {
       SUPPORT_EMAILS_RETAIN_PERIOD_MONTH: 24,
 
       // TBD
-      EFFECTIVE_DATE: '11 January 2026'
+      EFFECTIVE_DATE: 'XXX_START_DATE'
     }
   }
 };
