@@ -26,7 +26,7 @@
     "./legal/*": "./legal/*"
   },
   "license": "MIT",
-  "description": "Anarchy Showcases Core – an application with demos for Anarchy-Engine.",
+  "description": "Core app for 'XXX_GAME_NAME'",
   "keywords": [
     "XXX_GAME_TECH_NAME"
   ],

@@ -22,6 +22,7 @@ Replace project's placeholders with your details.
 - `XXX_LEGAL_EMAIL` - the email address for legal-related contacts
 - `XXX_GOVERNING_LAW_COUNTRY` - the country whose laws govern the EULA
 - `XXX_GOVERNING_VENUE` - the venue (city, state/province) whose laws govern the EULA
+- `XXX_DESKTOP_SYNOPSIS` - a short description of the desktop app (used in app stores)
 
 [//]: # '"description": "Anarchy Showcases-Menu – a menu for Anarchy Engine Showcases.",'
 [//]: # 'hellpig'
