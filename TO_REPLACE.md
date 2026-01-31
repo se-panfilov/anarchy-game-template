@@ -28,7 +28,6 @@ Replace project's placeholders with your details.
 - `XXX_SENTRY_PROJECT_CORE` - Sentry project name for the Core app
 - `XXX_SENTRY_PROJECT_DESKTOP` - Sentry project name for the Desktop app
 
-[//]: # '"description": "Anarchy Showcases-Menu – a menu for Anarchy Engine Showcases.",'
 [//]: # 'hellpig'
 [//]: # 'anarchy-engine'
 [//]: # 'anarchy-'

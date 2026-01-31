@@ -1,4 +1,4 @@
-# Do release of Anarchy packages based on git tags
+# Do release of  packages based on git tags
 # Important!!!: for Trusted Publishing: on npm in trusted publisher you will need to specify workflow filename = release.yml.
 
 name: Release (manual run). Only "anarchy-*" packages.
