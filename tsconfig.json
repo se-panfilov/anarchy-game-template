@@ -6,7 +6,7 @@
     "isolatedModules": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"],
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noEmit": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -26,7 +26,7 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ESNext",
-    "types": ["node", "vite/client", "three", "vitest/importMeta", "vitest/globals"],
+    "types": ["node", "vite/client", "vitest/importMeta", "vitest/globals"],
     "useDefineForClassFields": true
   },
   "include": ["vite.config.ts"]

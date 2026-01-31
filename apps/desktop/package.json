@@ -6,7 +6,8 @@
   "description": "Desktop app for 'XXX_GAME_NAME'",
   "keywords": [
     "XXX_GAME_TECH_NAME",
-    "XXX_GAME_TECH_NAME-desktop"
+    "XXX_GAME_TECH_NAME-desktop",
+    "XXX_COMPANY_NAME"
   ],
   "main": "dist/desktop-main.js",
   "type": "module",

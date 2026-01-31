@@ -1,1 +1,1 @@
-- 1.0.x Initial
+- 1.0.0 Initial
