@@ -19,7 +19,7 @@ import { version as engineVersion } from '@hellpig/anarchy-engine/package.json';
 import { version as anarchySharedVersion } from '@hellpig/anarchy-shared/package.json';
 import { version as anarchyI18nVersion } from '@hellpig/anarchy-i18n/package.json';
 import { version as anarchyLegalVersion } from '@hellpig/anarchy-legal/package.json';
-import { version as anarchyTrackingVersion }  from '@hellpig/anarchy-tracking/package.json';
+import { version as anarchyTrackingVersion } from '@hellpig/anarchy-tracking/package.json';
 import { emitDefineJson } from '@hellpig/anarchy-shared/Plugins/EmitDefineVitePlugin';
 import csp from 'vite-plugin-csp-guard';
 import { BASE_CSP, DESKTOP_CSP, TCspRulles } from '../../configs/Security/Csp/CspConfig';
