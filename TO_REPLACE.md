@@ -3,7 +3,8 @@ Replace project's placeholders with your details.
 (please use case-sensitive search and replace).
 
 - `XXX_GAME_NAME` - the brand name of the game (usually registered trademark)
-- `XXX_GAME_TECH_NAME` - technical name used in app stores
+- `XXX_GAME_TECH_NAME` - technical name used in app stores (snake_case, lowercase, no spaces)
+- `XXX_GAME_TECH_NAME_FOR_RELEASE_PREFIX` - technical name used in release package names (kebab-case, lowercase, no spaces)
 - `XXX_COMPANY_NAME` - the name of the company that developed the game (usually it's your studio name)
 - `XXX_AUTHOR_SHORT` - the short name of the author
 - `XXX_AUTHOR_FULL` - the full name of the author
@@ -27,6 +28,9 @@ Replace project's placeholders with your details.
 - `XXX_SENTRY_ORG` - Sentry organization name
 - `XXX_SENTRY_PROJECT_CORE` - Sentry project name for the Core app
 - `XXX_SENTRY_PROJECT_DESKTOP` - Sentry project name for the Desktop app
+- `XXX_SENTRY_DSN_MOBILE` - Sentry DSN for the Mobile app
+- `XXX_SENTRY_DSN_CORE` - Sentry DSN for the Core app
+- `XXX_SENTRY_DSN_DESKTOP` - Sentry DSN for the Desktop app
 - `XXX_CONFORMITY_SERIES_CORE` - (Core app) A range of versions (major version) that matches of package.json, which were published commercially
 - `XXX_BASELINE_VERSION_CORE` - (Core app) First CE-market release version
 - `XXX_CONFORMITY_SERIES_DESKTOP` - (Desktop app) A range of versions (major version) that matches of package.json, which were published commercially
@@ -36,10 +40,6 @@ Replace project's placeholders with your details.
 - `XXX_INITIAL_RELEASE_DATE` - The date of the initial release of the game
 
 TODO:
-anarchy-
-anarchy
-anarchy-monorepo
-VITE_RELEASE_NAME_PREFIX
-VITE_SENTRY_DSN
-"repo": "anarchy-engine",
-anarchy-engine
+
+- fix: npm run -w @hellpig/anarchy-legal
+- fix: releases script (only works with anarchy-\* packages)
