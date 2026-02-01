@@ -50,10 +50,12 @@
     "sanitize:all": "npm run --workspaces --if-present sanitize-assets"
   },
   "dependencies": {
+    "@dimforge/rapier3d": "0.19.3",
     "@hellpig/anarchy-engine": "22.0.0",
     "@hellpig/anarchy-i18n": "1.4.2",
     "@hellpig/anarchy-shared": "1.6.2",
-    "@hellpig/anarchy-tracking": "1.7.1"
+    "@hellpig/anarchy-tracking": "1.7.1",
+    "three": "0.182.0"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",
