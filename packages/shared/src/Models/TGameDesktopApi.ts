@@ -2,10 +2,10 @@ import type { TLocaleId } from '@hellpig/anarchy-i18n';
 import type { TBrowserInfo } from '@hellpig/anarchy-shared/Models';
 
 import type { TDistName } from './TDistName';
+import type { TGameSettings } from './TGameSettings';
 import type { TLegalDoc } from './TLegalDoc';
 import type { TLoadDocPayload } from './TLoadDocPayload';
 import type { TReleaseName } from './TReleaseName';
-import type { TGameSettings } from './TGameSettings';
 
 export type TGameDesktopApi = Readonly<{
   closeApp: () => void;

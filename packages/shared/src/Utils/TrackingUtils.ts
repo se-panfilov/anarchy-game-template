@@ -7,9 +7,9 @@ import type {
   TAnonymizedInternalSettings,
   TAnonymizedLocalizationSettings,
   TDistName,
-  TReleaseName,
   TGameAnonymizedGameSettings,
-  TGameSettings
+  TGameSettings,
+  TReleaseName
 } from '@Shared/Models';
 
 export const makeReleaseName = (prefix: string, version: string): TReleaseName => `${prefix}@${version}`;

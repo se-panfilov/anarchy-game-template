@@ -1,7 +1,7 @@
-import type { MouseButtonValue, TGameKey } from '@hellpig/anarchy-engine';
-import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { BUTTON_KEYS, GuiActionType } from '@GUI/constants';
 import type { TGuiButtonState, TGuiButtonStoreState } from '@GUI/models';
+import type { MouseButtonValue, TGameKey } from '@hellpig/anarchy-engine';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { Backpack, Languages, Map as MapIcon, Settings as SettingsIcon, Shield, Sword } from 'lucide-vue-next';
 import { defineStore } from 'pinia';
 import { computed, reactive } from 'vue';

@@ -1,10 +1,10 @@
+import { isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import type { TKeyboardService, TKeyEvent, TMouseService } from '@hellpig/anarchy-engine';
 import { hasKey, isPressEvent, KeyCode } from '@hellpig/anarchy-engine';
-import { isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import type { TToGuiEvent } from '@Shared';
-import type { Subject } from 'rxjs';
 import { GuiActionType } from 'gui/src/constants';
 import { createToGuiActionEvent } from 'gui/src/events';
+import type { Subject } from 'rxjs';
 
 export function initGuiEvents(keyboardService: TKeyboardService, mouseService: TMouseService, toGuiEventsBus$: Subject<TToGuiEvent>): void {
   const { clickLeftRelease$, clickLeftPress$, clickRightPress$, clickRightRelease$ } = mouseService;

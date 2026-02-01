@@ -1,12 +1,12 @@
+import type { TFromGuiActionEvent } from '@GUI/models';
 import type { TIntersectionEvent, TIntersectionsCameraWatcher, TModel3d, TModels3dRegistry, TSceneWrapper, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
 import { spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
-import type { TFromGuiActionEvent } from '@GUI/models';
 import { gameTranslationService } from '@I18N';
 import type { TFromGuiEvent } from '@Shared';
-import { filter, Subject } from 'rxjs';
 import { initGuiApp } from 'gui/src/main';
 import { initMenuApp } from 'menu/src/main';
+import { filter, Subject } from 'rxjs';
 
 import { runtimeEnv } from '@/env';
 import { fromGuiEventsBus$, fromMenuEventsBus$, toGuiEventsBus$, toMenuEventsBus$ } from '@/Levels/Showcase28Menu/EventsBus';

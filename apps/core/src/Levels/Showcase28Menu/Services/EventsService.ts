@@ -1,5 +1,5 @@
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
-import type { TFromMenuEvent, TLegalDoc, TLoadDocPayload, TGameSettings, TToMenuEvent } from '@Shared';
+import type { TFromMenuEvent, TGameSettings, TLegalDoc, TLoadDocPayload, TToMenuEvent } from '@Shared';
 import { FromMenuEvents, isLoadDocPayload, isSettings, ToMenuEvents } from '@Shared';
 import type { Observable, Subject } from 'rxjs';
 

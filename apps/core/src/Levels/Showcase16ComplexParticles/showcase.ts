@@ -1,6 +1,6 @@
+import { configToParams as materialConfigToParams } from '@Anarchy/Engine/Material/Adapters';
 import type { TMaterialConfig, TMaterialParams, TMilliseconds, TParticlesConfig, TParticlesWrapper, TSpace, TSpaceConfig, TSpaceConfigEntities } from '@hellpig/anarchy-engine';
 import { spaceService } from '@hellpig/anarchy-engine';
-import { configToParams as materialConfigToParams } from '@Anarchy/Engine/Material/Adapters';
 import { asRecord, isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import GUI from 'lil-gui';
 import { BufferGeometry, Color, PointsMaterial } from 'three';

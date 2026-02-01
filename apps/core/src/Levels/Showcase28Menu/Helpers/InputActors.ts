@@ -1,3 +1,5 @@
+import type { TKeyEvent } from '@Anarchy/Engine/Keyboard/Models';
+import { hasKey, isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils';
 import type {
   TActor,
   TActorService,
@@ -10,8 +12,6 @@ import type {
   TMouseWatcherEvent
 } from '@hellpig/anarchy-engine';
 import { isPressEvent, KeyCode, LookUpStrategy, metersPerSecond, mpsSpeed } from '@hellpig/anarchy-engine';
-import type { TKeyEvent } from '@Anarchy/Engine/Keyboard/Models';
-import { hasKey, isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { withLatestFrom } from 'rxjs';
 import { Vector3 } from 'three';

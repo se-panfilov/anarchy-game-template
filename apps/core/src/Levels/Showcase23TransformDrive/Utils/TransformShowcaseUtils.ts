@@ -1,3 +1,4 @@
+import { meters } from '@Anarchy/Engine/Measurements/Utils';
 import type {
   KeyCode,
   TActor,
@@ -18,7 +19,6 @@ import type {
   TWithTransformDrive
 } from '@hellpig/anarchy-engine';
 import { ForwardAxis, MaterialType, metersPerSecond, onKey, TransformAgent } from '@hellpig/anarchy-engine';
-import { meters } from '@Anarchy/Engine/Measurements/Utils';
 import { isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type GUI from 'lil-gui';
 import type { Subscription } from 'rxjs';

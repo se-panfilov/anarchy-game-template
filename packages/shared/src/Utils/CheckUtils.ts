@@ -1,6 +1,6 @@
 import { isAllNotDefined, isDefined, isNotDefined, isObject, isString } from '@hellpig/anarchy-shared/Utils';
 import { GameLocales } from '@I18N/Constants';
-import type { TLegalDoc, TLoadDocPayload, TGameSettings } from '@Shared/Models';
+import type { TGameSettings, TLegalDoc, TLoadDocPayload } from '@Shared/Models';
 
 export function isSettings(settings: TGameSettings | unknown): settings is TGameSettings {
   if (isNotDefined(settings)) return false;

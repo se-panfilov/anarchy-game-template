@@ -1,6 +1,6 @@
+import { hasKey } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import type { TFsmStates, TFsmWrapper, TKeyEvent, TSpace } from '@hellpig/anarchy-engine';
 import { KeyCode } from '@hellpig/anarchy-engine';
-import { hasKey } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import { distinctUntilChanged } from 'rxjs';
 import { Clock } from 'three';
 

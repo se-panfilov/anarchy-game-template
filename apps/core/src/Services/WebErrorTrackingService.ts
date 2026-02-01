@@ -1,8 +1,8 @@
+import { BrowserTrackingService } from '@Anarchy/Tracking/Services/BrowserTrackingService';
 import type { TLocaleId } from '@hellpig/anarchy-i18n';
 import { getLangFromLocaleId } from '@hellpig/anarchy-i18n';
 import { isDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TMetaData, TTrackingService } from '@hellpig/anarchy-tracking';
-import { BrowserTrackingService } from '@Anarchy/Tracking/Services/BrowserTrackingService';
 import type { BrowserOptions } from '@sentry/browser';
 import type { TGameSettings } from '@Shared';
 import { getAnonymizedSettings } from '@Shared';

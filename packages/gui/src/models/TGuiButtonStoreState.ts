@@ -1,5 +1,5 @@
-import type { MouseButtonValue, TGameKey } from '@hellpig/anarchy-engine';
 import type { GuiActionType } from '@GUI/constants';
+import type { MouseButtonValue, TGameKey } from '@hellpig/anarchy-engine';
 import type { FunctionalComponent } from 'vue';
 
 export type TGuiButtonStoreState = Readonly<{
