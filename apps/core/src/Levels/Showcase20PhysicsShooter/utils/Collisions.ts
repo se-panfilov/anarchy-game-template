@@ -1,5 +1,4 @@
-import type { TSpatialGridWrapper } from '@Anarchy/Engine/Spatial';
-import type { TActor, TIntersectionsCameraWatcher, TSceneWrapper, TSpaceServices } from '@hellpig/anarchy-engine';
+import type { TActor, TIntersectionsCameraWatcher, TSceneWrapper, TSpaceServices, TSpatialGridWrapper } from '@hellpig/anarchy-engine';
 
 export function enableCollisions(mouseLineIntersectionsWatcher: TIntersectionsCameraWatcher, { actorService, spatialGridService, collisionsService }: TSpaceServices): void {
   const sceneW: TSceneWrapper = actorService.getScene();

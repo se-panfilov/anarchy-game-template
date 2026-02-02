@@ -1,6 +1,5 @@
-import { isKeyInEvent } from '@Anarchy/Engine/Keyboard/Utils/KeysUtils';
 import type { TKeyboardService, TKeyEvent, TMouseService } from '@hellpig/anarchy-engine';
-import { hasKey, isPressEvent, KeyCode } from '@hellpig/anarchy-engine';
+import { hasKey, isKeyInEvent, isPressEvent, KeyCode } from '@hellpig/anarchy-engine';
 import type { TToGuiEvent } from '@Shared';
 import { GuiActionType } from 'gui/src/constants';
 import { createToGuiActionEvent } from 'gui/src/events';
