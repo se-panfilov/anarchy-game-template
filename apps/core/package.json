@@ -87,7 +87,6 @@
     "menu": "*",
     "shared": "*",
     "stats.js": "0.17.0",
-    "three": "0.182.0",
     "three-viewport-gizmo": "2.2.0"
   },
   "devDependencies": {
