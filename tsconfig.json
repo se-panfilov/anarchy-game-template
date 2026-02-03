@@ -18,7 +18,10 @@
       "@Menu": ["packages/menu/src/index.ts"],
       "@Menu/*": ["packages/menu/src/*"],
       "@GUI": ["packages/gui/src/index.ts"],
-      "@GUI/*": ["packages/gui/src/*"]
+      "@GUI/*": ["packages/gui/src/*"],
+      "three/examples/jsm/*": ["node_modules/@types/three/examples/jsm/*"],
+      "three/addons/*": ["node_modules/@types/three/examples/jsm/*"],
+      "three/src/*": ["node_modules/@types/three/src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
