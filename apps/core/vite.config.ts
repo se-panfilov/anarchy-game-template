@@ -6,9 +6,7 @@ import path from 'node:path';
 import { sharedAliases } from '../../vite.alias';
 import { visualizer } from 'rollup-plugin-visualizer';
 import wasm from 'vite-plugin-wasm';
-// @ts-expect-error: no type declarations
 import vue from '@vitejs/plugin-vue';
-// @ts-expect-error: no type declarations
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { version } from './package.json';
 import { version as i18nVersion } from '../../packages/i18n/package.json';
@@ -20,7 +18,7 @@ import { version as anarchySharedVersion } from '@hellpig/anarchy-shared/package
 import { version as anarchyI18nVersion } from '@hellpig/anarchy-i18n/package.json';
 import { version as anarchyLegalVersion } from '@hellpig/anarchy-legal/package.json';
 import { version as anarchyTrackingVersion } from '@hellpig/anarchy-tracking/package.json';
-import { emitDefineJson } from '@hellpig/anarchy-shared/Plugins/EmitDefineVitePlugin';
+import { emitDefineJson } from '@hellpig/anarchy-shared/Plugins';
 import csp from 'vite-plugin-csp-guard';
 import { BASE_CSP, DESKTOP_CSP, TCspRulles } from '../../configs/Security/Csp/CspConfig';
 
