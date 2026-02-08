@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.bundler.json",
   "compilerOptions": {
     "paths": {
       "@Public/*": ["packages/gui/public/*"],
@@ -10,7 +10,12 @@
       "@Shared": ["packages/shared/src/index.ts"],
       "@Shared/*": ["packages/shared/src/*"],
       "@I18N": ["packages/i18n/src/index.ts"],
-      "@I18N/*": ["packages/i18n/src/*"]
+      "@I18N/*": ["packages/i18n/src/*"],
+
+      "three/examples/jsm/*": ["node_modules/@types/three/examples/jsm/*"],
+      "three/src/*": ["node_modules/@types/three/src/*"],
+      "date-fns/locale/types": ["node_modules/date-fns/locale/types.d.ts"],
+      "@formatjs/intl/src/types": ["node_modules/@formatjs/intl/src/types.d.ts"]
     },
     "typeRoots": ["./node_modules/@types", "./node_modules", "../../node_modules/@types", "../../node_modules", "./src/Engine/Types", "./types"]
   },

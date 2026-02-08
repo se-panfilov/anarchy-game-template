@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.bundler.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["apps/core/src/*"],
@@ -17,9 +17,12 @@
       "platform:api": ["apps/core/src/Platform/Drivers/web"],
       "gui/src/main": ["apps/core/types/gui-shim"],
       "menu/src/main": ["apps/core/types/menu-shim"],
+
       "three/examples/jsm/*": ["node_modules/@types/three/examples/jsm/*"],
       "three/addons/*": ["node_modules/@types/three/examples/jsm/*"],
-      "three/src/*": ["node_modules/@types/three/src/*"]
+      "three/src/*": ["node_modules/@types/three/src/*"],
+      "date-fns/locale/types": ["node_modules/date-fns/locale/types.d.ts"],
+      "@formatjs/intl/src/types": ["node_modules/@formatjs/intl/src/types.d.ts"]
     }
   },
   "include": ["src", "vite.config.ts", "types", "dist-desktop", "dist-web", "dist-mobile", "dist"]

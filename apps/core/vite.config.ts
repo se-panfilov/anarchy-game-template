@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import compression from 'vite-plugin-compression';
-import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite';
+import type { ConfigEnv, UserConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import dts from 'vite-plugin-dts';
 import path from 'node:path';
 import { sharedAliases } from '../../vite.alias';
@@ -20,7 +21,8 @@ import { version as anarchyLegalVersion } from '@hellpig/anarchy-legal/package.j
 import { version as anarchyTrackingVersion } from '@hellpig/anarchy-tracking/package.json';
 import { emitDefineJson } from '@hellpig/anarchy-shared/Plugins';
 import csp from 'vite-plugin-csp-guard';
-import { BASE_CSP, DESKTOP_CSP, TCspRulles } from '../../configs/Security/Csp/CspConfig';
+import type { TCspRulles } from '../../configs/Security/Csp/CspConfig';
+import { BASE_CSP, DESKTOP_CSP } from '../../configs/Security/Csp/CspConfig';
 
 export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
   const root: string = process.cwd();
