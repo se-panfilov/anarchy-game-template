@@ -2,7 +2,9 @@ import type { TActor, TIntersectionEvent, TIntersectionsCameraWatcher, TKeyboard
 import { getMouseAzimuthAndElevation, isKeyInEvent, isPressEvent, KeyCode, metersPerSecond, radians } from '@hellpig/anarchy-engine';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { BehaviorSubject, combineLatest, map, Subject } from 'rxjs';
-import { degToRad } from 'three/src/math/MathUtils';
+import { MathUtils } from 'three';
+
+const { degToRad } = MathUtils;
 
 type TMoveKeysState = { Forward: boolean; Left: boolean; Right: boolean; Backward: boolean };
 type TIntersectionDirection = Readonly<{ azimuth: TRadians; elevation: TRadians }>;
