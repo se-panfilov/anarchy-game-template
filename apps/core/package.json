@@ -74,10 +74,6 @@
   },
   "dependencies": {
     "@dimforge/rapier3d": "0.19.3",
-    "@hellpig/anarchy-engine": "*",
-    "@hellpig/anarchy-i18n": "*",
-    "@hellpig/anarchy-shared": "*",
-    "@hellpig/anarchy-tracking": "*",
     "dexie": "4.2.1",
     "lil-gui": "0.21.0",
     "rxjs": "7.8.2",

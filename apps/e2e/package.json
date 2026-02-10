@@ -60,8 +60,6 @@
     "ts:check:watch": "tsc --watch --noEmit"
   },
   "dependencies": {
-    "@hellpig/anarchy-engine": "*",
-    "@hellpig/anarchy-shared": "*",
     "playwright": "1.57.0"
   },
   "devDependencies": {
