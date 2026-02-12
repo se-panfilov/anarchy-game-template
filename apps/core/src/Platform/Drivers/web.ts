@@ -1,7 +1,6 @@
 import type { TLocale, TLocaleId } from '@hellpig/anarchy-i18n';
 import { getLocaleByLocaleId, getPreferLocaleId, stringToLocaleId } from '@hellpig/anarchy-i18n';
-import { buildPublicUrl, isDefined } from '@hellpig/anarchy-shared/Utils';
-import { getBrowserInfo } from '@hellpig/anarchy-shared/Utils/DetectUtils';
+import { buildPublicUrl, getBrowserInfo, isDefined } from '@hellpig/anarchy-shared/Utils';
 import { GameFallbackLocale, GameLocales } from '@I18N';
 import type { TDistName, TGameSettings, TLegalDoc, TLoadDocPayload, TReleaseName } from '@Shared';
 import { DefaultGameSettings, makeDistName, makeReleaseName, sanitizeMarkDown } from '@Shared';
@@ -11,6 +10,7 @@ import { settingsWebDbService } from '@/Services/SettingsWebDbService';
 
 export function Driver(): TPlatformDriver {
   let cachedAppSettings: TGameSettings | undefined;
+
   function closeApp(): void {
     throw new Error('[WEB] closeApp is not supported on this platform');
   }
