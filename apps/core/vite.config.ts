@@ -9,20 +9,24 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import wasm from 'vite-plugin-wasm';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { readFileSync } from 'node:fs';
 import { version } from './package.json';
 import { version as i18nVersion } from '../../packages/i18n/package.json';
 import { version as menuVersion } from '../../packages/menu/package.json';
 import { version as guiVersion } from '../../packages/gui/package.json';
 import { version as sharedVersion } from '../../packages/shared/package.json';
-import { version as engineVersion } from '@hellpig/anarchy-engine/package.json';
-import { version as anarchySharedVersion } from '@hellpig/anarchy-shared/package.json';
-import { version as anarchyI18nVersion } from '@hellpig/anarchy-i18n/package.json';
-import { version as anarchyLegalVersion } from '@hellpig/anarchy-legal/package.json';
-import { version as anarchyTrackingVersion } from '@hellpig/anarchy-tracking/package.json';
 import { emitDefineJson } from '@hellpig/anarchy-shared/Plugins';
 import csp from 'vite-plugin-csp-guard';
 import type { TCspRulles } from '../../configs/Security/Csp/CspConfig';
 import { BASE_CSP, DESKTOP_CSP } from '../../configs/Security/Csp/CspConfig';
+
+const readPkgVersion = (pkg: string): string => JSON.parse(readFileSync(new URL(import.meta.resolve(`${pkg}/package.json`)), 'utf-8')).version;
+
+const engineVersion: string = readPkgVersion('@hellpig/anarchy-engine');
+const anarchySharedVersion: string = readPkgVersion('@hellpig/anarchy-shared');
+const anarchyI18nVersion: string = readPkgVersion('@hellpig/anarchy-i18n');
+const anarchyLegalVersion: string = readPkgVersion('@hellpig/anarchy-legal');
+const anarchyTrackingVersion: string = readPkgVersion('@hellpig/anarchy-tracking');
 
 export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
   const root: string = process.cwd();
