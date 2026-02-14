@@ -103,7 +103,7 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
       wasm(),
       dts({
         entryRoot: 'src',
-        outDir: 'dist',
+        outDir: `dist-${VITE_BUILD_PLATFORM}`,
         tsconfigPath: path.resolve(__dirname, 'tsconfig.json'),
         // Important: creates dist/index.d.ts automatically when you have src/index.ts
         insertTypesEntry: true,
