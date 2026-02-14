@@ -1,10 +1,10 @@
-import { isDefined } from '@hellpig/anarchy-shared/Utils';
 import type { PlatformActions } from '@Desktop/Constants';
 import { appBeforeQuitHandler, appCrashHandler, appWindowAllClosedHandler, windowNavigateHandler, windowReadyToShow, windowSecondInstanceHandler } from '@Desktop/EventHandlers';
 import type { TDesktopAppConfig, TDesktopAppService, TDocsService, TFilesService, TSettingsService, TWindowService } from '@Desktop/Models';
 import { DesktopAppService, DocsService, ElectronErrorTrackingService, FilesService, handleAppRequest, SettingsService, WindowService } from '@Desktop/Services';
 import { getWindowSizeSafe, hideMenuBar, noZoom, turnOffMenuBarAndHotkeys } from '@Desktop/Utils';
-import type { TResolution, TGameSettings } from '@Shared';
+import { isDefined } from '@hellpig/anarchy-shared/Utils';
+import type { TGameSettings, TResolution } from '@Shared';
 import { platformApiChannel } from '@Shared';
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron';
 import { app, ipcMain } from 'electron';

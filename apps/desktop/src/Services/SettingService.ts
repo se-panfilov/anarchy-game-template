@@ -1,11 +1,11 @@
-import type { TLocale, TLocaleId } from '@hellpig/anarchy-i18n';
-import { getLocaleByLocaleId, getPreferLocaleId } from '@hellpig/anarchy-i18n';
-import { isDefined, patchObject } from '@hellpig/anarchy-shared/Utils';
 import { AllowedSystemFolders } from '@Desktop/Constants';
 import type { TSettingsService, TSettingsServiceDependencies } from '@Desktop/Models';
 import { detectResolution } from '@Desktop/Utils';
+import type { TLocale, TLocaleId } from '@hellpig/anarchy-i18n';
+import { getLocaleByLocaleId, getPreferLocaleId } from '@hellpig/anarchy-i18n';
+import { isDefined, patchObject } from '@hellpig/anarchy-shared/Utils';
 import { GameFallbackLocale, GameLocales } from '@I18N';
-import type { TResolution, TGameSettings } from '@Shared';
+import type { TGameSettings, TResolution } from '@Shared';
 import { DefaultGameSettings, isSettings } from '@Shared';
 import type { App } from 'electron';
 
