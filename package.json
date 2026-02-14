@@ -54,7 +54,7 @@
     "@hellpig/anarchy-engine": "22.0.8",
     "@hellpig/anarchy-i18n": "1.4.8",
     "@hellpig/anarchy-shared": "1.6.8",
-    "@hellpig/anarchy-tracking": "1.7.7",
+    "@hellpig/anarchy-tracking": "1.7.9",
     "pinia": "3.0.4",
     "three": "0.182.0",
     "vue": "3.5.26",
