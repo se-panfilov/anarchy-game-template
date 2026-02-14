@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs';
 
-import { isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { FullScreenMode } from '@Desktop/Constants/FullScreenModes';
 import type { TDesktopAppConfig, TWindowService } from '@Desktop/Models';
+import { isDefined, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TResolution } from '@Shared';
 import { app, BrowserWindow, dialog } from 'electron';
 import { dirname, join } from 'path';

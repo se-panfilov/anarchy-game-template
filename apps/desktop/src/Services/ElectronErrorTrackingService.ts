@@ -1,6 +1,6 @@
+import type { TElectronErrorTrackingService } from '@Desktop/Models';
 import type { TTrackingService } from '@hellpig/anarchy-tracking';
 import { DesktopTrackingService } from '@hellpig/anarchy-tracking/Services/DesktopTrackingService';
-import type { TElectronErrorTrackingService } from '@Desktop/Models';
 import { makeDistName } from '@Shared';
 
 export function ElectronErrorTrackingService(): TElectronErrorTrackingService {

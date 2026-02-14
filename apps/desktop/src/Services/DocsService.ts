@@ -1,6 +1,6 @@
-import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { AllowedAppFolders } from '@Desktop/Constants';
 import type { TDocsService, TFilesService } from '@Desktop/Models';
+import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TLegalDoc, TLoadDocPayload } from '@Shared';
 import { AllowedLegalDocNames, sanitizeMarkDown } from '@Shared';
 

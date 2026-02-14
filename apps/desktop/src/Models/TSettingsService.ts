@@ -1,5 +1,5 @@
 import type { TLocaleId } from '@hellpig/anarchy-i18n';
-import type { TResolution, TGameSettings } from '@Shared';
+import type { TGameSettings, TResolution } from '@Shared';
 
 export type TSettingsService = Readonly<{
   applyPlatformSettings: (platformSettings: TGameSettings) => boolean;
