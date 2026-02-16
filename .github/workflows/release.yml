@@ -1,7 +1,7 @@
 # Do release of packages based on git tags
 # Important!!!: for Trusted Publishing: on npm in trusted publisher you will need to specify workflow filename = release.yml.
 
-name: Release (manual run). Only "anarchy-*" packages.
+name: Release.
 run-name: Release (mode=${{ inputs.mode }}, workspace=${{ inputs.mode == 'one' && (inputs.workspace || 'missing-workspace') || 'all' }}, dryRun=${{ inputs.dryRun }})
 
 on:
@@ -30,7 +30,7 @@ permissions:
 concurrency:
   # Allow parallel releases in mode=one for different workspaces.
   # Keep mode=all serialized.
-  group: release-anarchy-${{ inputs.mode }}-${{ inputs.mode == 'one' && (inputs.workspace || 'missing-workspace') || 'all' }}
+  group: release-${{ inputs.mode }}-${{ inputs.mode == 'one' && (inputs.workspace || 'missing-workspace') || 'all' }}
   cancel-in-progress: false
 
 jobs:
@@ -91,7 +91,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Build release plan (anarchy-* only)
+      - name: Build release plan
         id: plan
         shell: bash
         run: |
