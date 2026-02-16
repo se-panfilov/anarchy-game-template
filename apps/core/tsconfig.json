@@ -4,24 +4,26 @@
     "paths": {
       "@/*": ["apps/core/src/*"],
       "@Public/*": ["apps/core/public/*"],
+
       "@E2E": ["apps/e2e/src/index.ts"],
       "@E2E/*": ["apps/e2e/src/*"],
       "@GUI": ["packages/gui/src/index.ts"],
       "@GUI/*": ["packages/gui/src/*"],
+      "@I18N": ["packages/i18n/src/index.ts"],
+      "@I18N/*": ["packages/i18n/src/*"],
       "@Menu": ["packages/menu/src/index.ts"],
       "@Menu/*": ["packages/menu/src/*"],
       "@Shared": ["packages/shared/src/index.ts"],
       "@Shared/*": ["packages/shared/src/*"],
-      "@I18N": ["packages/i18n/src/index.ts"],
-      "@I18N/*": ["packages/i18n/src/*"],
+
       "platform:api": ["apps/core/src/Platform/Drivers/web"],
       "gui/src/main": ["apps/core/types/gui-shim"],
       "menu/src/main": ["apps/core/types/menu-shim"],
 
+      "date-fns/locale/types": ["node_modules/date-fns/locale/types.d.ts"],
       "three/examples/jsm/*": ["node_modules/@types/three/examples/jsm/*"],
       "three/addons/*": ["node_modules/@types/three/examples/jsm/*"],
       "three/src/*": ["node_modules/@types/three/src/*"],
-      "date-fns/locale/types": ["node_modules/date-fns/locale/types.d.ts"],
       "@formatjs/intl/src/types": ["node_modules/@formatjs/intl/src/types.d.ts"]
     }
   },
