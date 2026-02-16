@@ -30,7 +30,7 @@
     "clean:reinstall": "npm run clean:all && npm install && npm run clean:all:restore",
     "generate:legal": "npm run generate:legal:files && npm run generate:legal:sbom",
     "generate:legal:all": "npm run generate:legal && npm run && npm run generate:legal:core && npm run generate:legal:desktop && npm run generate:legal:e2e && npm run generate:legal:i18n && npm run generate:legal:menu && npm run generate:legal:gui && npm run generate:legal:shared",
-    "generate:legal:files": "npm run -w @hellpig/anarchy-legal generate:files -- --workspace . --out ../../",
+    "generate:legal:files": "anarchy-legal-generate-files --workspace . --out ../../",
     "generate:legal:sbom": "npm sbom --sbom-format=cyclonedx --package-lock-only --omit=dev > ./compliance/sbom/sbom.cdx.json",
     "generate:legal:core": "npm run --workspace core generate:legal",
     "generate:legal:desktop": "npm run --workspace desktop generate:legal",
