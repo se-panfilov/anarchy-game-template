@@ -10,4 +10,4 @@ Full attributions and license texts are provided **offline** at:
 
 Nothing in this pointer modifies third-party licenses. If there is any conflict between this note and a third-party license, the third-party license controls.
 
-Questions: XXX_QUESTIONS_EMAIL
+Questions: XXX_LEGAL_EMAIL
