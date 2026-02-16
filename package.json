@@ -24,13 +24,14 @@
   "license": "MIT",
   "scripts": {
     "before:release": "npm run generate:legal:all && npm run prettier:changed",
+    "check:dts-exports:all": "npm run --workspaces --if-present check:dts-exports",
     "clean:all": "rimraf packages/**/package-lock.json -g packages/**/node_modules -g packages/**/dist -g apps/**/package-lock.json -g apps/**/node_modules -g  ./node_modules  ./package-lock.json ",
     "clean:all-metadate": "npm run e2e:clean-metadate --workspace=apps/e2e && npm run sanitize-assets --workspace=apps/desktop ** npm run sanitize-assets --workspace=apps/core && npm run sanitize-assets --workspace=packages/ && npm run sanitize-assets --workspace=packages/gui",
     "clean:all:restore": "git add ./package-lock.json && find packages -type d -name node_modules -prune -false -o -type f -name package-lock.json -exec git add {} +\n",
     "clean:reinstall": "npm run clean:all && npm install && npm run clean:all:restore",
-    "generate:legal": "npm run generate:legal:files && npm run generate:legal:sbom",
     "generate:legal:all": "npm run generate:legal && npm run && npm run generate:legal:core && npm run generate:legal:desktop && npm run generate:legal:e2e && npm run generate:legal:i18n && npm run generate:legal:menu && npm run generate:legal:gui && npm run generate:legal:shared",
     "generate:legal:files": "anarchy-legal-generate-files --workspace . --out ../../",
+    "generate:legal:root": "npm run generate:legal:files && npm run generate:legal:sbom",
     "generate:legal:sbom": "npm sbom --sbom-format=cyclonedx --package-lock-only --omit=dev > ./compliance/sbom/sbom.cdx.json",
     "generate:legal:core": "npm run --workspace core generate:legal",
     "generate:legal:desktop": "npm run --workspace desktop generate:legal",
@@ -42,12 +43,14 @@
     "gitleaks:ci": "gitleaks detect --config=.gitleaks.toml --source=. --no-git --redact --report-format=json --report-path=reports/gitleaks-ci.json --verbose",
     "gitleaks:scan:files": "gitleaks detect --config=.gitleaks.toml --no-git --verbose --source=.",
     "gitleaks:scan:history": "gitleaks detect --config=.gitleaks.toml --report-format=table --verbose --source=.",
-    "pr:guard:ci": "npm run prettier:check && npm run --workspaces --if-present pr:guard:ci",
+    "lint:fix:all": "npm run --workspaces --if-present lint:fix",
+    "pr:guard:ci": "npm run prettier:check && npm run --workspaces --if-present pr:guard:ci && npm run check:dts-exports:all",
     "prettier": "prettier --write .",
     "prettier:changed": "git diff --name-only --diff-filter=ACMRTUXB HEAD | grep -E '\\.(ts|tsx|js|json|css|scss|md)$' | xargs prettier --write",
     "prettier:check": "prettier --check .",
     "pretty-quick": "pretty-quick --staged",
-    "sanitize:all": "npm run --workspaces --if-present sanitize-assets"
+    "sanitize:all": "npm run --workspaces --if-present sanitize-assets",
+    "ts:check:all": "npm run --workspaces --if-present ts:check"
   },
   "dependencies": {
     "@dimforge/rapier3d": "0.19.3",
