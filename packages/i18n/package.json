@@ -41,7 +41,7 @@
     "pr:guard:ci": "npm run ts:check && npm run check:circular-dependencies && npm run lint",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
-    "sanitize-assets": "node ../../packages/anarchy-shared/ScriptUtils/SanitizeAssets.js ./src/assets",
+    "sanitize-assets": "anarchy-shared-sanitize-assets ./src/assets",
     "sort:i18n": "sort-json src/i18n/locales/*.json",
     "ts:check": "tsc --noEmit",
     "ts:check:watch": "tsc --watch --noEmit",

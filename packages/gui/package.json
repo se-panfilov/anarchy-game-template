@@ -45,7 +45,7 @@
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
     "preview": "vite preview",
-    "sanitize-assets": "node ../anarchy-shared/ScriptUtils/SanitizeAssets.js ./public",
+    "sanitize-assets": "anarchy-shared-sanitize-assets ./public",
     "start:dev": "vite --mode dev --port 5083",
     "ts:check": "vue-tsc --noEmit",
     "unit": "vitest run",

@@ -76,7 +76,7 @@
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
     "preview": "vite preview --outDir dist-web",
-    "sanitize-assets": "node ../../packages/anarchy-shared/ScriptUtils/SanitizeAssets.js ./assets",
+    "sanitize-assets": "anarchy-shared-sanitize-assets ./assets",
     "start:dev": "node ./scripts/start.js --mode=dev",
     "start:dev:linux": "node ./scripts/start.js --mode=dev.linux",
     "start:dev:mac": "node ./scripts/start.js --mode=dev.mac",
