@@ -66,9 +66,9 @@
     "sanitize-assets": "anarchy-shared-sanitize-assets ./public",
     "start:dev": "vite --mode dev.web --host",
     "start:e2e": "vite --mode e2e.web --port 5073 --logLevel error",
-    "tracking:sourcemaps:web:dev": "node ../../packages/anarchy-tracking/ScriptUtils/UploadSourcemaps.js --dist ./dist-web --mode dev.web --no-dev-guard",
-    "tracking:sourcemaps:web:prod": "node ../../packages/anarchy-tracking/ScriptUtils/UploadSourcemaps.js --dist ./dist-web --mode production.web",
-    "tracking:sourcemaps:web:prod:dry": "node ../../packages/anarchy-tracking/ScriptUtils/UploadSourcemaps.js --dist ./dist-web --mode production.web --dry-run",
+    "tracking:sourcemaps:web:dev": "anarchy-tracking-upload-sourcemaps --dist ./dist-web --mode dev.web --no-dev-guard",
+    "tracking:sourcemaps:web:prod": "anarchy-tracking-upload-sourcemaps --dist ./dist-web --mode production.web",
+    "tracking:sourcemaps:web:prod:dry": "anarchy-tracking-upload-sourcemaps --dist ./dist-web --mode production.web --dry-run",
     "ts:check": "tsc --noEmit",
     "ts:check:watch": "tsc --watch --noEmit"
   },
