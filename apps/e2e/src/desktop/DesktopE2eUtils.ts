@@ -1,11 +1,11 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { Architectures, DesktopAppPaths, Platforms } from '@E2E/Constants';
+import type { TDesktopAppLaunchResult } from '@E2E/Models';
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { ElectronApplication, Page } from '@playwright/test';
 import { _electron as electron } from '@playwright/test';
-import { Architectures, DesktopAppPaths, Platforms } from '@E2E/Constants';
-import type { TDesktopAppLaunchResult } from '@E2E/Models';
 import fs from 'fs';
 
 const VIEWPORT = { width: 800, height: 600 };

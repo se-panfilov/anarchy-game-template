@@ -1,6 +1,6 @@
+import type { TLaunchContext } from '@E2E/Models/TLaunchContext';
 import type { Locator, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
-import type { TLaunchContext } from '@E2E/Models/TLaunchContext';
 
 import { launchPackagedElectronApp, waitActiveRendererReady, waitFontsReady, waitResourcesReady } from './DesktopE2eUtils';
 

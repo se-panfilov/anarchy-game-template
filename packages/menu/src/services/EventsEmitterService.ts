@@ -1,6 +1,6 @@
 import { isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import type { TEventsEmitterService } from '@Menu/models';
-import type { TFromMenuEvent, TLoadDocPayload, TGameSettings } from '@Shared';
+import type { TFromMenuEvent, TGameSettings, TLoadDocPayload } from '@Shared';
 import { FromMenuEvents } from '@Shared';
 import type { Subject } from 'rxjs';
 import { toRaw } from 'vue';

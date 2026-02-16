@@ -2,7 +2,7 @@ import type { TLocale, TLocaleId } from '@hellpig/anarchy-i18n';
 import type { TDeepWriteable } from '@hellpig/anarchy-shared/Utils';
 import type { TGameLocaleIds } from '@I18N';
 import { GameLocales, vueTranslationService } from '@I18N';
-import type { TAudioSettings, TDebugSettings, TGraphicsSettings, TInternalSettings, TLocalizationSettings, TGameSettings } from '@Shared';
+import type { TAudioSettings, TDebugSettings, TGameSettings, TGraphicsSettings, TInternalSettings, TLocalizationSettings } from '@Shared';
 import { DefaultGameSettings } from '@Shared';
 import { defineStore } from 'pinia';
 import type { ComputedRef } from 'vue';

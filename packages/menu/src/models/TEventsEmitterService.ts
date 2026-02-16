@@ -1,4 +1,4 @@
-import type { TFromMenuEvent, TLoadDocPayload, TGameSettings } from '@Shared';
+import type { TFromMenuEvent, TGameSettings, TLoadDocPayload } from '@Shared';
 import type { Subject } from 'rxjs';
 
 export type TEventsEmitterService = Readonly<{
