@@ -1,4 +1,4 @@
-name: Build App (manual run)
+name: Build (manual run)
 run-name: Build (ref=${{ inputs.ref }}, app=${{ inputs.app }}, mode=${{ inputs.mode }}, target=${{ inputs.target }})
 
 on:
@@ -208,7 +208,7 @@ jobs:
           echo "target=${safe_target}" >> "$GITHUB_OUTPUT"
           echo "ref=${safe_ref}" >> "$GITHUB_OUTPUT"
 
-      # ---- Showcases-core build caches ----
+      # ---- core build caches ----
       # Split caches so we don't accidentally skip web build due to a desktop cache hit (and vice versa).
       - name: Restore core build cache (web)
         id: corecache_web

@@ -1,6 +1,6 @@
-# Anarchy-Showcases
+# XXX_GAME_NAME
 
-Showcases for the Anarchy engine.
+A game, based on the Anarchy Engine.
 
 ## License
 

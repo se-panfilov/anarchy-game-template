@@ -37,7 +37,7 @@ export const useSettingsStore = defineStore('settingsStore', () => {
   const setLocalization = (newLocalization: Partial<TLocalizationSettings>): void => void Object.assign(state.localization, { ...newLocalization });
   function setLocaleById(id: TGameLocaleIds): void | never {
     const newLocale = GameLocales[id];
-    if (!newLocale) throw new Error(`[Settings store] Locale with id "${id}" not found in ShowcasesLocales`);
+    if (!newLocale) throw new Error(`[Settings store] Locale with id "${id}" not found in GameLocales.`);
     setLocalization({ locale: newLocale });
   }
   const setDebug = (newDebug: Partial<TDebugSettings>): void => void Object.assign(state.debug, { ...newDebug });

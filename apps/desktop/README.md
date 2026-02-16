@@ -1,6 +1,6 @@
-# Anarchy-Showcases (desktop wrapper)
+# XXX_GAME_NAME(desktop wrapper)
 
-Showcases for the Anarchy engine (desktop app).
+A game, based on the Anarchy Engine. (desktop app).
 
 ## License
 

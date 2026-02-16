@@ -1,6 +1,6 @@
-# Anarchy-Showcases E2E
+# XXX_GAME_NAME E2E
 
-E2E tests (for Showcases app of the Anarchy engine).
+XXX_GAME_NAME (E2E tests).
 
 ## License
 
