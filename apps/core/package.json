@@ -51,7 +51,7 @@
     "build:prod:mobile": "rimraf dist-mobile && vite build --mode production.mobile",
     "build:prod:web": "rimraf dist-web && vite build --mode production.web",
     "check:circular-dependencies": "npx dpdm -T --no-warning --no-tree --exit-code circular:1 ./src/index.ts",
-    "copy:legal-to-public": "node ../../packages/anarchy-shared/ScriptUtils/CopyDir.js from=./legal to=./public/legal",
+    "copy:legal-to-public": "anarchy-shared-copy-dir from=./legal to=./public/legal",
     "generate:legal": "npm run generate:legal:3rd-party-licenses && npm run generate:legal:notice && npm run generate:legal:files && npm run generate:legal:sbom && npm run prettier && npm run copy:legal-to-public",
     "generate:legal:3rd-party-licenses": "npm run -w @hellpig/anarchy-legal generate:licenses -- --workspace apps/core --out /legal/THIRD_PARTY_LICENSES.md",
     "generate:legal:files": "npm run -w @hellpig/anarchy-legal generate:files -- --workspace apps/core --out ",

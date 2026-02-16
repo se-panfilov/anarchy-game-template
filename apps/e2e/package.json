@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "e2e": "playwright test",
-    "e2e:clean-metadate": "node ../../packages/anarchy-shared/ScriptUtils/PostprocessScreenshots.js",
+    "e2e:clean-metadate": "anarchy-shared-postprocess-screenshots",
     "e2e:desktop": "playwright test --project=desktop --workers=1",
     "e2e:desktop:debug": "PWDEBUG=1 npx playwright test --project=desktop",
     "e2e:desktop:debug:ui": "npx playwright test --ui --project=desktop",
