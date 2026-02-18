@@ -6,8 +6,7 @@ import semver from 'semver';
 const repoRoot = process.cwd();
 
 // Calculates "what to release" based on tags name@x.y.z and current package.json.
-// Applies ONLY for packages/anarchy-*.
-// (* and other apps/packages are ignored completely)
+// Applies ONLY for apps/core and apps/desktop.
 
 function runCapture(cmd, args) {
   const r = spawnSync(cmd, args, { encoding: 'utf8', cwd: repoRoot });
@@ -19,36 +18,31 @@ function readJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
-function listAnarchyWorkspaces() {
-  const base = 'packages';
-  const baseDir = path.join(repoRoot, base);
-  if (!fs.existsSync(baseDir)) return [];
+/** Known app workspaces (add future apps like "mobile" here). */
+const APP_DIRS = ['apps/core', 'apps/desktop'];
 
+function listAppWorkspaces() {
   const out = [];
-  for (const ent of fs.readdirSync(baseDir, { withFileTypes: true })) {
-    if (!ent.isDirectory()) continue;
-
-    const wsKey = ent.name; // folder name, e.g. anarchy-engine
-    if (!wsKey.startsWith('anarchy-')) continue;
-
-    const wsPath = path.join(base, ent.name);
-    const pkgPath = path.join(wsPath, 'package.json');
+  for (const wsPath of APP_DIRS) {
+    const absPath = path.join(repoRoot, wsPath);
+    const pkgPath = path.join(absPath, 'package.json');
     if (!fs.existsSync(pkgPath)) continue;
 
     const pkg = readJson(pkgPath);
     if (!pkg?.version) continue;
 
+    // key = folder name (e.g. "core", "desktop")
+    const key = path.basename(wsPath);
+
     out.push({
-      key: wsKey,
+      key,
       path: wsPath.replaceAll('\\', '/'),
-      npmName: String(pkg.name ?? wsKey),
-      version: String(pkg.version),
-      private: pkg.private === true
+      name: String(pkg.name ?? key),
+      version: String(pkg.version)
     });
   }
 
-  // Never release private packages
-  return out.filter((w) => !w.private);
+  return out;
 }
 
 function latestTagVersionFor(wsKey) {
@@ -67,21 +61,18 @@ function latestTagVersionFor(wsKey) {
 }
 
 function main() {
-  const mode = (process.env.RELEASE_MODE ?? 'all').trim(); // all | one
-  const targetKey = (process.env.RELEASE_WORKSPACE ?? '').trim();
+  const app = (process.env.RELEASE_APP ?? 'all').trim(); // all | core | desktop
 
-  if (mode !== 'all' && mode !== 'one') throw new Error(`Invalid RELEASE_MODE: ${mode}`);
-  if (mode === 'one' && !targetKey) throw new Error(`mode=one requires RELEASE_WORKSPACE (workspace key)`);
-  if (mode === 'one' && !targetKey.startsWith('anarchy-')) {
-    throw new Error(`mode=one requires an anarchy-* workspace key. Got: "${targetKey}"`);
+  if (!['all', 'core', 'desktop'].includes(app)) {
+    throw new Error(`Invalid RELEASE_APP: "${app}". Expected: all, core, or desktop`);
   }
 
-  const workspaces = listAnarchyWorkspaces();
-  const selected = mode === 'one' ? workspaces.filter((w) => w.key === targetKey) : workspaces;
+  const workspaces = listAppWorkspaces();
+  const selected = app === 'all' ? workspaces : workspaces.filter((w) => w.key === app);
 
-  if (mode === 'one' && selected.length === 0) {
+  if (selected.length === 0) {
     const keys = workspaces.map((w) => w.key).sort();
-    throw new Error(`Workspace key not found: "${targetKey}". Available:\n- ${keys.join('\n- ')}`);
+    throw new Error(`App not found: "${app}". Available:\n- ${keys.join('\n- ')}`);
   }
 
   const releases = [];
@@ -92,7 +83,7 @@ function main() {
 
     releases.push({
       key: w.key,
-      npmName: w.npmName,
+      name: w.name,
       path: w.path,
       version: w.version,
       prev: last ?? null
