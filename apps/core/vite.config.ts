@@ -142,12 +142,6 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
         // external: (id: string): boolean => id.endsWith('.spec.ts') || id.endsWith('.test.ts'),
         //  external: ['three', 'rxjs', '@dimforge/rapier3d'], — If you want to exclude some dependencies from the bundle
         output: {
-          preserveModules: true,
-          preserveModulesRoot: 'src',
-
-          entryFileNames: `[name].js`,
-          chunkFileNames: `chunks/[name]-[hash].js`,
-          assetFileNames: `assets/[name]-[hash][extname]`,
           inlineDynamicImports: false //extract workers to separate bundle
         },
         plugins: [visualizer({ open: false })]
