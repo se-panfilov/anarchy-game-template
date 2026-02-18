@@ -1,6 +1,6 @@
 # Create GitHub releases for apps based on git tags.
 
-name: Release.
+name: Release
 run-name: Release (app=${{ inputs.app }}, dryRun=${{ inputs.dryRun }})
 
 on:
@@ -16,7 +16,7 @@ on:
         type: boolean
         required: true
         default: false
-        description: 'Do not publish, just simulate'
+        description: 'Dry run (just simulate)'
 
 permissions:
   contents: write
