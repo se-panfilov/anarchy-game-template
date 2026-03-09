@@ -1,0 +1,198 @@
+# Build desktop artifacts for selected platforms, then publish to Steam.
+# Builds are delegated to build.yml (reusable workflow).
+
+name: Publish
+run-name: Publish (ref=${{ inputs.ref }}, steam=${{ inputs.steamBranch }}, win=${{ inputs.buildWindows }}, mac=${{ inputs.buildMac }}, linux=${{ inputs.buildLinux }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        type: string
+        required: true
+        default: main
+        description: "Branch / tag to build from"
+      mode:
+        type: choice
+        required: true
+        default: prod
+        options:
+          - prod
+          - dev
+        description: "Build mode"
+
+      # ---- Steam ----
+      steamBranch:
+        type: choice
+        required: true
+        default: "DO NOT PUBLISH"
+        options:
+          - "DO NOT PUBLISH"
+          - beta
+          - prerelease
+        description: "Steam branch (DO NOT PUBLISH = build only, skip Steam upload)"
+
+      # ---- Platform toggles ----
+      buildWindows:
+        type: boolean
+        required: true
+        default: true
+        description: "Windows x64 (nsis)"
+      buildMac:
+        type: boolean
+        required: true
+        default: true
+        description: "macOS universal (dmg)"
+      buildLinux:
+        type: boolean
+        required: true
+        default: true
+        description: "Linux x64 (AppImage)"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-${{ inputs.ref }}
+  cancel-in-progress: false
+
+# ---------------------------------------------------------------------------
+# Build jobs — one per platform, each calls the reusable build.yml.
+# ---------------------------------------------------------------------------
+
+jobs:
+  build-windows:
+    if: ${{ inputs.buildWindows }}
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: ${{ inputs.ref }}
+      app: desktop
+      mode: ${{ inputs.mode }}
+      target: "win:nsis:x64"
+
+  build-mac:
+    if: ${{ inputs.buildMac }}
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: ${{ inputs.ref }}
+      app: desktop
+      mode: ${{ inputs.mode }}
+      target: "mac:dmg:universal"
+
+  build-linux:
+    if: ${{ inputs.buildLinux }}
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: ${{ inputs.ref }}
+      app: desktop
+      mode: ${{ inputs.mode }}
+      target: "linux:appimage:x64"
+
+  # ---------------------------------------------------------------------------
+  # Publish to Steam — runs after all builds, downloads artifacts, deploys.
+  # ---------------------------------------------------------------------------
+
+  publish-steam:
+    if: ${{ inputs.steamBranch != 'DO NOT PUBLISH' }}
+    needs: [build-windows, build-mac, build-linux]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout (for .env files)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          sparse-checkout: apps/desktop
+          sparse-checkout-cone-mode: true
+
+      - name: Read STEAM_APP_ID from .env
+        id: steam
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP_ID="$(grep -E '^STEAM_APP_ID=' apps/desktop/.env | cut -d= -f2 | tr -d '[:space:]')"
+          if [ -z "$APP_ID" ]; then
+            echo "::error::STEAM_APP_ID not found in apps/desktop/.env"
+            exit 1
+          fi
+          echo "app_id=$APP_ID" >> "$GITHUB_OUTPUT"
+          echo "Steam App ID: $APP_ID"
+
+      # ---- Download all build artifacts into per-platform dirs ----
+
+      - name: Create depot directories
+        shell: bash
+        run: |
+          mkdir -p steam-depots/windows
+          mkdir -p steam-depots/macos
+          mkdir -p steam-depots/linux
+
+      - name: Download Windows artifact
+        if: ${{ inputs.buildWindows }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-windows.outputs.artifact-name }}
+          path: steam-depots/windows
+
+      - name: Download macOS artifact
+        if: ${{ inputs.buildMac }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-mac.outputs.artifact-name }}
+          path: steam-depots/macos
+
+      - name: Download Linux artifact
+        if: ${{ inputs.buildLinux }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-linux.outputs.artifact-name }}
+          path: steam-depots/linux
+
+      - name: List depot contents
+        shell: bash
+        run: |
+          echo "=== Windows ===" && ls -lah steam-depots/windows/ || true
+          echo "=== macOS ===" && ls -lah steam-depots/macos/ || true
+          echo "=== Linux ===" && ls -lah steam-depots/linux/ || true
+
+      - name: Read version from package.json
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(node -e "console.log(require('./apps/desktop/package.json').version)")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Version: $VERSION"
+
+      - name: Deploy to Steam
+        uses: game-ci/steam-deploy@v3.2.0
+        with:
+          username: ${{ secrets.STEAM_USERNAME }}
+          configVdf: ${{ secrets.STEAM_CONFIG_VDF }}
+          appId: ${{ steps.steam.outputs.app_id }}
+          buildDescription: "v${{ steps.version.outputs.version }} (${{ inputs.ref }}, ${{ inputs.mode }})"
+          rootPath: steam-depots
+          depot1Path: windows
+          depot2Path: macos
+          depot3Path: linux
+          releaseBranch: ${{ inputs.steamBranch }}
+
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Publish summary"
+            echo ""
+            echo "- Ref: **${{ inputs.ref }}**"
+            echo "- Mode: **${{ inputs.mode }}**"
+            echo "- Steam branch: **${{ inputs.steamBranch }}**"
+            echo "- Steam App ID: **${{ steps.steam.outputs.app_id }}**"
+            echo "- Version: **${{ steps.version.outputs.version }}**"
+            echo ""
+            echo "### Platforms"
+            echo "- Windows: ${{ inputs.buildWindows }}"
+            echo "- macOS: ${{ inputs.buildMac }}"
+            echo "- Linux: ${{ inputs.buildLinux }}"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,4 +1,4 @@
-name: Build (manual run)
+name: Build
 run-name: Build (ref=${{ inputs.ref }}, app=${{ inputs.app }}, mode=${{ inputs.mode }}, target=${{ inputs.target }})
 
 on:
@@ -47,6 +47,27 @@ on:
           - "win:nsis:x64"
         description: "Target: platform:artifact:arch"
 
+  # Allow other workflows (publish.yml) to call this as a reusable workflow.
+  # Inputs mirror workflow_dispatch but use type:string (workflow_call has no 'choice' type).
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        required: true
+      app:
+        type: string
+        required: true
+      mode:
+        type: string
+        required: true
+      target:
+        type: string
+        required: true
+    outputs:
+      artifact-name:
+        description: "Name of the uploaded artifact"
+        value: ${{ jobs.build.outputs.artifact-name }}
+
 permissions:
   contents: read
 
@@ -58,10 +79,11 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
     name: Build (${{ inputs.app }} / ${{ inputs.mode }} / ${{ inputs.target }})
     runs-on: ${{ startsWith(inputs.target, 'win:') && 'windows-latest' || startsWith(inputs.target, 'mac:') && 'macos-latest' || 'ubuntu-latest' }}
     timeout-minutes: 30
+    outputs:
+      artifact-name: ${{ steps.artifact-name.outputs.name }}
 
     env:
       TARGET: ${{ inputs.target }}
@@ -312,6 +334,12 @@ jobs:
 
       # ---- Upload artifacts ----
       # Keep retention low because artifacts are huge.
+      - name: Set artifact name
+        id: artifact-name
+        shell: bash
+        run: |
+          echo "name=build-${{ inputs.app }}-${{ inputs.mode }}-${{ steps.safe.outputs.target }}-${{ github.run_id }}" >> "$GITHUB_OUTPUT"
+
       - name: Upload artifact (core)
         if: ${{ inputs.app == 'core' }}
         uses: actions/upload-artifact@v4

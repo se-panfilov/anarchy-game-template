@@ -38,6 +38,7 @@ Replace project's placeholders with your details.
 - `XXX_BASELINE_EFFECTIVE_DATE_CORE` - (Core app) The date of the first CE-market release
 - `XXX_BASELINE_EFFECTIVE_DATE_DESKTOP` - (Desktop app) The date of the first CE-market release
 - `XXX_INITIAL_RELEASE_DATE` - The date of the initial release of the game
+- `XXX_STEAM_APP_ID` - the Steam App ID of the game
 
 TODO:
 
