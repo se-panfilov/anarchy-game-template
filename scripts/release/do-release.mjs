@@ -1,10 +1,8 @@
-import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
 const repoRoot = process.cwd();
 
 // Releases apps:
-// - build each app (npm run build --workspace <path>)
 // - create annotated tag key@version (if missing)
 // - push tags
 // - create GitHub release per tag
@@ -53,15 +51,6 @@ function main() {
     ) {
       throw new Error(`Plan contains path outside apps/: path="${r.path}" for key="${r.key}".`);
     }
-  }
-
-  // Build each app
-  for (const r of releases) {
-    const wsPath = String(r.path);
-
-    console.log(`\n=== Build: ${r.key} (${wsPath}) ===`);
-    if (dryRun) console.log(`[dry] npm run --workspace ${wsPath} build`);
-    else run('npm', ['run', '--workspace', wsPath, 'build']);
   }
 
   // Tags: key@version

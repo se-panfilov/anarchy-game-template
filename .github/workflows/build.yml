@@ -64,7 +64,6 @@ jobs:
     timeout-minutes: 30
 
     env:
-      NODE_VERSION: "24"
       TARGET: ${{ inputs.target }}
       MODE: ${{ inputs.mode }}
       APP: ${{ inputs.app }}
