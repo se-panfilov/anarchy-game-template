@@ -1,8 +1,9 @@
-# Build desktop artifacts for selected platforms, then publish to Steam.
+# Build desktop artifacts for selected platforms, then publish to Steam via SteamCMD.
 # Builds are delegated to build.yml (reusable workflow).
+# Steam upload uses explicit VDF scripts (scripts/steam/) for full control over depot mapping.
 
 name: Publish
-run-name: Publish (ref=${{ inputs.ref }}, steam=${{ inputs.steamBranch }}, win=${{ inputs.buildWindows }}, mac=${{ inputs.buildMac }}, linux=${{ inputs.buildLinux }})
+run-name: "Publish (ref=${{ inputs.ref }}, steam=${{ inputs.steamBranch }}, win=${{ inputs.buildWindows }}, mac=${{ inputs.buildMac }}, linux=${{ inputs.buildLinux }})"
 
 on:
   workflow_dispatch:
@@ -25,12 +26,12 @@ on:
       steamBranch:
         type: choice
         required: true
-        default: "DO NOT PUBLISH"
+        default: test
         options:
-          - "DO NOT PUBLISH"
+          - pre-release
           - beta
-          - prerelease
-        description: "Steam branch (DO NOT PUBLISH = build only, skip Steam upload)"
+          - test
+        description: "Steam branch to set live after upload"
 
       # ---- Platform toggles ----
       buildWindows:
@@ -89,37 +90,27 @@ jobs:
       target: "linux:appimage:x64"
 
   # ---------------------------------------------------------------------------
-  # Publish to Steam — runs after all builds, downloads artifacts, deploys.
+  # Publish to Steam — downloads build artifacts, generates VDF, runs SteamCMD.
   # ---------------------------------------------------------------------------
 
   publish-steam:
-    if: ${{ inputs.steamBranch != 'DO NOT PUBLISH' }}
     needs: [build-windows, build-mac, build-linux]
+    # Run even if some build jobs were skipped (platform unchecked).
+    if: ${{ always() && !cancelled() && !contains(needs.*.result, 'failure') }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
     steps:
-      - name: Checkout (for .env files)
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.ref }}
-          sparse-checkout: apps/desktop
-          sparse-checkout-cone-mode: true
 
-      - name: Read STEAM_APP_ID from .env
-        id: steam
-        shell: bash
-        run: |
-          set -euo pipefail
-          APP_ID="$(grep -E '^STEAM_APP_ID=' apps/desktop/.env | cut -d= -f2 | tr -d '[:space:]')"
-          if [ -z "$APP_ID" ]; then
-            echo "::error::STEAM_APP_ID not found in apps/desktop/.env"
-            exit 1
-          fi
-          echo "app_id=$APP_ID" >> "$GITHUB_OUTPUT"
-          echo "Steam App ID: $APP_ID"
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
 
-      # ---- Download all build artifacts into per-platform dirs ----
+      # ---- Collect build artifacts into per-platform dirs ----
 
       - name: Create depot directories
         shell: bash
@@ -152,9 +143,11 @@ jobs:
       - name: List depot contents
         shell: bash
         run: |
-          echo "=== Windows ===" && ls -lah steam-depots/windows/ || true
-          echo "=== macOS ===" && ls -lah steam-depots/macos/ || true
-          echo "=== Linux ===" && ls -lah steam-depots/linux/ || true
+          echo "=== Windows ===" && ls -lah steam-depots/windows/ 2>/dev/null || echo "(empty)"
+          echo "=== macOS ===" && ls -lah steam-depots/macos/ 2>/dev/null || echo "(empty)"
+          echo "=== Linux ===" && ls -lah steam-depots/linux/ 2>/dev/null || echo "(empty)"
+
+      # ---- Read version ----
 
       - name: Read version from package.json
         id: version
@@ -165,18 +158,61 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Version: $VERSION"
 
-      - name: Deploy to Steam
-        uses: game-ci/steam-deploy@v3.2.0
-        with:
-          username: ${{ secrets.STEAM_USERNAME }}
-          configVdf: ${{ secrets.STEAM_CONFIG_VDF }}
-          appId: ${{ steps.steam.outputs.app_id }}
-          buildDescription: "v${{ steps.version.outputs.version }} (${{ inputs.ref }}, ${{ inputs.mode }})"
-          rootPath: steam-depots
-          depot1Path: windows
-          depot2Path: macos
-          depot3Path: linux
-          releaseBranch: ${{ inputs.steamBranch }}
+      # ---- Generate VDF ----
+
+      - name: Determine enabled platforms
+        id: platforms
+        shell: bash
+        run: |
+          platforms=""
+          if [ "${{ inputs.buildWindows }}" = "true" ]; then platforms="${platforms:+$platforms,}win"; fi
+          if [ "${{ inputs.buildMac }}" = "true" ]; then platforms="${platforms:+$platforms,}mac"; fi
+          if [ "${{ inputs.buildLinux }}" = "true" ]; then platforms="${platforms:+$platforms,}linux"; fi
+          echo "list=$platforms" >> "$GITHUB_OUTPUT"
+          echo "Enabled platforms: $platforms"
+
+      - name: Generate VDF build script
+        shell: bash
+        env:
+          STEAM_APP_ID: ${{ secrets.STEAM_APP_ID }}
+          STEAM_DEPOT_ID_WIN: ${{ secrets.STEAM_DEPOT_ID_WIN }}
+          STEAM_DEPOT_ID_MAC: ${{ secrets.STEAM_DEPOT_ID_MAC }}
+          STEAM_DEPOT_ID_LINUX: ${{ secrets.STEAM_DEPOT_ID_LINUX }}
+          BUILD_DESC: "v${{ steps.version.outputs.version }} (${{ inputs.ref }}, ${{ inputs.mode }})"
+          CONTENT_ROOT: "${{ github.workspace }}/steam-depots"
+          BUILD_OUTPUT: "${{ github.workspace }}/steam-output"
+          SET_LIVE: ${{ inputs.steamBranch }}
+          VDF_PREVIEW: "0"
+          PLATFORMS: ${{ steps.platforms.outputs.list }}
+          OUTPUT_DIR: "${{ github.workspace }}/steam-vdf"
+        run: node scripts/steam/generate-vdf.mjs
+
+      # ---- SteamCMD ----
+
+      - name: Install SteamCMD
+        uses: buildalon/setup-steamcmd@v1
+
+      - name: Write Steam config.vdf
+        shell: bash
+        env:
+          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+        run: |
+          set -euo pipefail
+          STEAM_HOME="$HOME/Steam"
+          mkdir -p "$STEAM_HOME/config"
+          echo "$STEAM_CONFIG_VDF" | base64 -d > "$STEAM_HOME/config/config.vdf"
+          echo "Wrote config.vdf to $STEAM_HOME/config/config.vdf"
+
+      - name: Upload to Steam
+        shell: bash
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        run: |
+          set -euo pipefail
+          echo "Uploading to Steam (branch: ${{ inputs.steamBranch }})..."
+          steamcmd +login "$STEAM_USERNAME" +run_app_build "${{ github.workspace }}/steam-vdf/app_build.vdf" +quit
+
+      # ---- Summary ----
 
       - name: Summary
         if: always()
@@ -188,7 +224,6 @@ jobs:
             echo "- Ref: **${{ inputs.ref }}**"
             echo "- Mode: **${{ inputs.mode }}**"
             echo "- Steam branch: **${{ inputs.steamBranch }}**"
-            echo "- Steam App ID: **${{ steps.steam.outputs.app_id }}**"
             echo "- Version: **${{ steps.version.outputs.version }}**"
             echo ""
             echo "### Platforms"

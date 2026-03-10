@@ -1,4 +1,7 @@
-Important:
+# In your Project
+
+## Placeholders
+
 Replace project's placeholders with your details.
 (please use case-sensitive search and replace).
 
@@ -39,8 +42,15 @@ Replace project's placeholders with your details.
 - `XXX_BASELINE_EFFECTIVE_DATE_DESKTOP` - (Desktop app) The date of the first CE-market release
 - `XXX_INITIAL_RELEASE_DATE` - The date of the initial release of the game
 - `XXX_STEAM_APP_ID` - the Steam App ID of the game
+- `XXX_DEPOT_ID_WIN` - the Steam Depot ID for Windows version of the game
+- `XXX_DEPOT_ID_MAC` - the Steam Depot ID for macOS version of the game
+- `XXX_DEPOT_ID_LINUX` - the Steam Depot ID for Linux version of the game
 
-TODO:
+## Secrets
+
+...
+
+## TODO:
 
 - fix: npm run -w @hellpig/anarchy-legal
 - fix: releases script (only works with anarchy-\* packages)

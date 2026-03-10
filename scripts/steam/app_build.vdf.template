@@ -1,0 +1,13 @@
+"appbuild"
+{
+  "appid" "__APP_ID__"
+  "desc" "__BUILD_DESC__"
+  "buildoutput" "__BUILD_OUTPUT__"
+  "contentroot" "__CONTENT_ROOT__"
+  "setlive" "__SET_LIVE__"
+  "preview" "__PREVIEW__"
+  "depots"
+  {
+__DEPOT_ENTRIES__
+  }
+}
