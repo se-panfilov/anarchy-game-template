@@ -1,0 +1,76 @@
+import type { TFromGuiActionEvent } from '@GUI/models';
+import type { TIntersectionEvent, TIntersectionsCameraWatcher, TModel3d, TModels3dRegistry, TSceneWrapper, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
+import { spaceService } from '@hellpig/anarchy-engine';
+import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
+import { gameTranslationService } from '@I18N';
+import type { TFromGuiEvent } from '@Shared';
+import { initGuiApp } from 'gui/src/main';
+import { filter, Subject } from 'rxjs';
+
+import { fromGuiEventsBus$, fromMenuEventsBus$, toGuiEventsBus$, toMenuEventsBus$ } from '@/Levels/Demo/EventsBus';
+import { initGuiEvents, initInputActors } from '@/Levels/Demo/Helpers';
+import type { TAppService, TEventsService, TGuiService, TMainMenuService, TSettingsService } from '@/Levels/Demo/Models';
+import { AppService, EventsService, GuiService, MainMenuService, SettingsService } from '@/Levels/Demo/Services';
+import type { TAppSettings } from '@/Models';
+import { watchActiveRendererReady, watchResourceLoading } from '@/Utils';
+
+import spaceConfigJson from './space.json';
+
+const spaceConfig: TSpaceConfig = spaceConfigJson as TSpaceConfig;
+
+export function start(settings?: TAppSettings): void {
+  const spaces: Record<string, TSpace> = asRecord('name', spaceService.createFromConfig([spaceConfig], settings?.spaceSettings));
+  const space: TSpace = spaces[spaceConfig.name];
+  if (isNotDefined(space)) throw new Error(`[APP] Space "${spaceConfig.name}" is not defined`);
+  watchResourceLoading(space);
+
+  space.built$.subscribe(showcase);
+}
+
+export function showcase(space: TSpace): void {
+  watchActiveRendererReady(space);
+  const { actorService, models3dService, keyboardService, scenesService, textService, intersectionsWatcherService, mouseService } = space.services;
+  const { kinematicLoop } = space.loops;
+  const models3dRegistry: TModels3dRegistry = models3dService.getRegistry();
+  const { clickLeftRelease$ } = mouseService;
+  const sceneW: TSceneWrapper = scenesService.getActive();
+  const openMenu$: Subject<boolean> = new Subject<boolean>();
+
+  textService.setTextTranslationService(gameTranslationService);
+
+  const planeModel3d: TModel3d = models3dRegistry.getByName('surface_model');
+
+  sceneW.addModel3d(planeModel3d);
+
+  const mainMenuService: TMainMenuService = MainMenuService();
+  const guiService: TGuiService = GuiService(mainMenuService);
+  const appService: TAppService = AppService();
+  const settingsService: TSettingsService = SettingsService();
+  settingsService.isFirstRun().then((isFirstRun: boolean): void => {
+    if (isFirstRun) settingsService.setFirstRun(false);
+  });
+  const eventsService: TEventsService = EventsService({ mainMenuService, appService, settingsService });
+
+  //Subscribe the menu app's events (clicks, etc.).
+  eventsService.handleFromMenuEvents(fromMenuEventsBus$.asObservable(), toMenuEventsBus$);
+
+  // Init the gui app.
+  initGuiApp('#gui', fromGuiEventsBus$, toGuiEventsBus$.asObservable());
+
+  fromGuiEventsBus$.subscribe((event: TFromGuiEvent | TFromGuiActionEvent): void => guiService.onGuiEvents(event));
+
+  const watcherMenuCube: TIntersectionsCameraWatcher = intersectionsWatcherService.getCameraWatcher('watcher_menu_cube');
+
+  let isMouseOverMenuCube: boolean = false;
+  watcherMenuCube.value$.subscribe((value: TIntersectionEvent): void => void (isMouseOverMenuCube = !!value));
+  clickLeftRelease$.pipe(filter((): boolean => isMouseOverMenuCube)).subscribe((): void => openMenu$.next(true));
+
+  guiService.openGui();
+  initGuiEvents(keyboardService, mouseService, toGuiEventsBus$);
+
+  openMenu$.pipe().subscribe(mainMenuService.openMainMenu);
+
+  initInputActors(actorService, keyboardService, mouseService, intersectionsWatcherService, kinematicLoop);
+
+  space.start$.next(true);
+}
