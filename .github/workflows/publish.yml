@@ -1,6 +1,9 @@
 # Build desktop artifacts for selected platforms, then publish to Steam via SteamCMD.
 # Builds are delegated to build.yml (reusable workflow).
 # Steam upload uses explicit VDF scripts (scripts/steam/) for full control over depot mapping.
+#
+# Steam config (STEAM_APP_ID, depot IDs) is read from apps/desktop/.env.
+# Secrets required: STEAM_USERNAME, STEAM_CONFIG_VDF.
 
 name: Publish
 run-name: "Publish (ref=${{ inputs.ref }}, steam=${{ inputs.steamBranch }}, win=${{ inputs.buildWindows }}, mac=${{ inputs.buildMac }}, linux=${{ inputs.buildLinux }})"
@@ -110,6 +113,72 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      # ---- Validate required config ----
+
+      - name: Validate Steam secrets
+        shell: bash
+        env:
+          HAS_USERNAME: ${{ secrets.STEAM_USERNAME != '' }}
+          HAS_CONFIG: ${{ secrets.STEAM_CONFIG_VDF != '' }}
+        run: |
+          set -euo pipefail
+          errors=0
+
+          if [ "$HAS_USERNAME" != "true" ]; then
+            echo "::error::Missing GitHub Secret: STEAM_USERNAME. See TO_REPLACE.md for setup instructions."
+            errors=$((errors + 1))
+          fi
+
+          if [ "$HAS_CONFIG" != "true" ]; then
+            echo "::error::Missing GitHub Secret: STEAM_CONFIG_VDF. See TO_REPLACE.md for setup instructions."
+            errors=$((errors + 1))
+          fi
+
+          if [ "$errors" -gt 0 ]; then
+            echo ""
+            echo "❌ $errors required secret(s) missing. Please configure them in:"
+            echo "   Settings → Secrets and variables → Actions → Repository secrets"
+            echo ""
+            echo "See TO_REPLACE.md in the root of the repository for detailed setup instructions."
+            exit 1
+          fi
+
+          echo "✅ All required secrets present."
+
+      - name: Validate Steam .env config
+        shell: bash
+        run: |
+          set -euo pipefail
+          errors=0
+          env_file="apps/desktop/.env"
+
+          check_var() {
+            local key="$1"
+            local value
+            value="$(grep -E "^${key}=" "$env_file" 2>/dev/null | cut -d= -f2 | tr -d '[:space:]')" || true
+
+            if [ -z "$value" ] || [[ "$value" == XXX_* ]]; then
+              echo "::error::${key} is not configured in ${env_file}. Replace the placeholder with your actual value."
+              errors=$((errors + 1))
+            fi
+          }
+
+          check_var "STEAM_APP_ID"
+
+          # Only check depot IDs for enabled platforms.
+          if [ "${{ inputs.buildWindows }}" = "true" ]; then check_var "STEAM_DEPOT_ID_WIN"; fi
+          if [ "${{ inputs.buildMac }}" = "true" ]; then check_var "STEAM_DEPOT_ID_MAC"; fi
+          if [ "${{ inputs.buildLinux }}" = "true" ]; then check_var "STEAM_DEPOT_ID_LINUX"; fi
+
+          if [ "$errors" -gt 0 ]; then
+            echo ""
+            echo "❌ $errors placeholder(s) still need to be replaced in ${env_file}."
+            echo "See TO_REPLACE.md in the root of the repository for details."
+            exit 1
+          fi
+
+          echo "✅ All required .env variables configured."
+
       # ---- Collect build artifacts into per-platform dirs ----
 
       - name: Create depot directories
@@ -174,10 +243,7 @@ jobs:
       - name: Generate VDF build script
         shell: bash
         env:
-          STEAM_APP_ID: ${{ secrets.STEAM_APP_ID }}
-          STEAM_DEPOT_ID_WIN: ${{ secrets.STEAM_DEPOT_ID_WIN }}
-          STEAM_DEPOT_ID_MAC: ${{ secrets.STEAM_DEPOT_ID_MAC }}
-          STEAM_DEPOT_ID_LINUX: ${{ secrets.STEAM_DEPOT_ID_LINUX }}
+          # Steam config is read from apps/desktop/.env by generate-vdf.mjs (not from secrets).
           BUILD_DESC: "v${{ steps.version.outputs.version }} (${{ inputs.ref }}, ${{ inputs.mode }})"
           CONTENT_ROOT: "${{ github.workspace }}/steam-depots"
           BUILD_OUTPUT: "${{ github.workspace }}/steam-output"

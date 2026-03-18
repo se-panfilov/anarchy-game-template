@@ -48,9 +48,39 @@ Replace project's placeholders with your details.
 
 ## Secrets
 
-...
+The following secrets must be configured in your GitHub repository settings
+(**Settings → Secrets and variables → Actions → Repository secrets**).
 
-## TODO:
+### `STEAM_USERNAME`
 
-- fix: npm run -w @hellpig/anarchy-legal
-- fix: releases script (only works with anarchy-\* packages)
+The username of a dedicated **Steam Build Account**.
+
+This account must have the following permissions on your Steamworks app:
+
+- _Edit App Metadata_
+- _Publish App Changes To Steam_
+
+Create a dedicated build account here:
+https://partner.steamgames.com/doc/sdk/uploading#Build_Account
+
+> **Do NOT use your personal Steam account.**
+
+### `STEAM_CONFIG_VDF`
+
+Base64-encoded `config.vdf` file from SteamCMD, used for Steam Guard authentication in CI.
+
+**How to generate:**
+
+1. Install [SteamCMD](https://partner.steamgames.com/doc/sdk/uploading#1) on your local machine.
+2. Log in: `steamcmd +login <username> <password> +quit`
+   (enter the Steam Guard MFA code when prompted).
+3. Verify MFA is cached: `steamcmd +login <username> +quit`
+   (should succeed without MFA prompt).
+4. Encode `config.vdf`:
+   - **Linux**: `cat config/config.vdf | base64 > config_base64.txt`
+   - **macOS**: `cat ~/Library/Application\ Support/Steam/config/config.vdf | base64 > config_base64.txt`
+5. Copy the contents of `config_base64.txt` and store as the `STEAM_CONFIG_VDF` secret.
+
+> ⚠️ The encoded `config.vdf` contains sensitive authentication data.
+> Never commit it to the repository. Rotate it periodically.
+> If CI requests a new MFA code, re-run `steamcmd +login` locally and update the secret.
