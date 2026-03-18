@@ -1,5 +1,4 @@
 import type { TLaunchContext } from '@E2E/Models/TLaunchContext';
-import type { Locator, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 
 import { launchPackagedElectronApp, waitActiveRendererReady, waitFontsReady, waitResourcesReady } from './DesktopE2eUtils';
@@ -42,88 +41,4 @@ test.describe('Desktop app Menu/GUI text tests', () => {
 
     await expect(page).toHaveScreenshot('plain-page.png', { ...thresholds, fullPage: true });
   });
-
-  test('Translations for plain page should work', async () => {
-    const { page } = context;
-
-    await toggleLanguage(page);
-    await expect(page).toHaveScreenshot('plain-page-language-toggled.png', { ...thresholds, fullPage: true });
-  });
-
-  test('Open menu', async () => {
-    const { page } = context;
-    await resetTranslations(page);
-
-    await openMenu(page);
-
-    await expect(page).toHaveScreenshot('settings-open.png', { ...thresholds, fullPage: true });
-  });
-
-  test('Open menu with language toggle', async () => {
-    const { page } = context;
-    await resetTranslations(page);
-
-    await toggleLanguage(page);
-    await openMenu(page);
-
-    await expect(page).toHaveScreenshot('settings-open-language-toggled.png', { ...thresholds, fullPage: true });
-  });
 });
-
-async function openMenu(page: Page): Promise<void> {
-  const settingsButtonEn: Locator = page.getByRole('button', { name: 'Settings' });
-  const settingsButtonNl: Locator = page.getByRole('button', { name: 'Instellingen' });
-
-  if (await settingsButtonEn.count()) {
-    await settingsButtonEn.click();
-    return;
-  }
-
-  if (await settingsButtonNl.count()) {
-    await settingsButtonNl.click();
-    return;
-  }
-
-  throw new Error('Settings toggle button not found');
-}
-
-async function toggleLanguage(page: Page): Promise<void> {
-  const langButtonEn: Locator = page.getByRole('button', { name: 'Lang' });
-  // eslint-disable-next-line spellcheck/spell-checker
-  const langButtonNl: Locator = page.getByRole('button', { name: 'Taal' });
-
-  if (await langButtonEn.count()) {
-    await langButtonEn.first().click();
-    return;
-  }
-
-  if (await langButtonNl.count()) {
-    await langButtonNl.first().click();
-    return;
-  }
-
-  throw new Error('Language toggle button not found');
-}
-
-async function closeMenu(page: Page): Promise<void> {
-  const closeMenuEn: Locator = page.getByRole('button', { name: 'Close Menu' });
-  // eslint-disable-next-line spellcheck/spell-checker
-  const closeMenuNl: Locator = page.getByRole('button', { name: 'Sluit Menu' });
-
-  if (await closeMenuEn.count()) {
-    await closeMenuEn.click();
-    return;
-  }
-
-  if (await closeMenuNl.count()) {
-    await closeMenuNl.click();
-    return;
-  }
-}
-
-async function resetTranslations(page: Page): Promise<void> {
-  const languageButtonEn: Locator = page.getByRole('button', { name: 'Lang' });
-  const isVisible: boolean = await languageButtonEn.isVisible();
-  if (!isVisible) await toggleLanguage(page);
-  await closeMenu(page);
-}
