@@ -71,14 +71,7 @@ function main() {
   for (const r of releases) {
     const tag = `${r.key}@${r.version}`;
 
-    const notes = [
-      `**${r.name}**`,
-      ``,
-      `- Version: \`${r.prev ?? 'none'}\` → \`${r.version}\``,
-      `- Workspace: \`${r.path}\``,
-      ``,
-      `_Source of truth: git tag \`${tag}\`._`
-    ].join('\n');
+    const notes = [`**${r.name}**`, ``, `- Version: \`${r.prev ?? 'none'}\` → \`${r.version}\``, `- Workspace: \`${r.path}\``, ``, `_Source of truth: git tag \`${tag}\`._`].join('\n');
 
     if (ghReleaseExists(tag)) {
       console.log(`GitHub release exists: ${tag} (skip)`);
