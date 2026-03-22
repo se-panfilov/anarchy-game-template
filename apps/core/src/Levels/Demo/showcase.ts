@@ -1,10 +1,11 @@
+import { initGuiApp } from '@GUI/main';
 import type { TFromGuiActionEvent } from '@GUI/models';
 import type { TIntersectionEvent, TIntersectionsCameraWatcher, TModel3d, TModels3dRegistry, TSceneWrapper, TSpace, TSpaceConfig } from '@hellpig/anarchy-engine';
 import { spaceService } from '@hellpig/anarchy-engine';
 import { asRecord, isNotDefined } from '@hellpig/anarchy-shared/Utils';
 import { gameTranslationService } from '@I18N';
+import { initMenuApp } from '@Menu/main';
 import type { TFromGuiEvent } from '@Shared';
-import { initGuiApp } from 'gui/src/main';
 import { filter, Subject } from 'rxjs';
 
 import { fromGuiEventsBus$, fromMenuEventsBus$, toGuiEventsBus$, toMenuEventsBus$ } from '@/Levels/Demo/EventsBus';
@@ -53,6 +54,9 @@ export function showcase(space: TSpace): void {
 
   //Subscribe the menu app's events (clicks, etc.).
   eventsService.handleFromMenuEvents(fromMenuEventsBus$.asObservable(), toMenuEventsBus$);
+
+  // Init the menu app.
+  initMenuApp('#menu', fromMenuEventsBus$, toMenuEventsBus$.asObservable());
 
   // Init the gui app.
   initGuiApp('#gui', fromGuiEventsBus$, toGuiEventsBus$.asObservable());
